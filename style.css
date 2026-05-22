@@ -61,6 +61,22 @@ body {
     overflow-x: hidden;
 }
 
+/* ── CUSTOM SCROLLBAR ── */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--gray-50);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
+}
+
 /* ── ARABIC FONT OVERRIDE ── */
 html[lang="ar"] body,
 html[lang="ar"] .hero__title,
@@ -718,23 +734,24 @@ html[lang="ar"] .why-card__desc {
 }
 
 .roadmap-timeline {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     position: relative;
-    padding-left: 48px;
+    padding-left: 0;
 }
 
 /* RTL timeline */
 html[lang="ar"] .roadmap-timeline {
     padding-left: 0;
-    padding-right: 48px;
+    padding-right: 0;
 }
 
 /* Vertical line */
 .roadmap-timeline::before {
     content: '';
     position: absolute;
-    left: 23px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 0;
     bottom: 0;
     width: 3px;
@@ -743,20 +760,18 @@ html[lang="ar"] .roadmap-timeline {
 }
 
 html[lang="ar"] .roadmap-timeline::before {
-    left: auto;
-    right: 23px;
+    left: 50%;
+    right: auto;
+    transform: translateX(50%);
 }
 
 .level {
-    display: flex;
-    gap: clamp(16px, 3vw, 24px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 4vw, 64px);
     margin-bottom: clamp(24px, 4vw, 40px);
     position: relative;
-    text-align: left;
-}
-
-html[lang="ar"] .level {
-    text-align: right;
+    align-items: center;
 }
 
 .level__badge {
@@ -768,22 +783,27 @@ html[lang="ar"] .level {
     align-items: center;
     justify-content: center;
     position: absolute;
-    left: -48px;
-    top: 0;
+    left: 50%;
+    top: 24px;
+    transform: translate(-50%, 0);
     z-index: 2;
     box-shadow: 0 0 0 5px var(--white), var(--shadow-md);
-    flex-shrink: 0;
     transition: var(--transition);
 }
 
 .level:hover .level__badge {
-    transform: scale(1.1);
+    transform: translate(-50%, 0) scale(1.1);
     box-shadow: 0 0 0 5px var(--white), var(--shadow-lg);
 }
 
 html[lang="ar"] .level__badge {
-    left: auto;
-    right: -48px;
+    left: 50%;
+    right: auto;
+    transform: translate(50%, 0);
+}
+
+html[lang="ar"] .level:hover .level__badge {
+    transform: translate(50%, 0) scale(1.1);
 }
 
 .level__badge--orange {
@@ -808,27 +828,97 @@ html[lang="ar"] .level__badge {
 }
 
 .level__content {
-    background: var(--bg);
+    background: var(--white);
     border: 1px solid var(--gray-100);
     border-radius: var(--radius-xl);
     padding: clamp(18px, 3vw, 28px);
-    flex: 1;
+    box-shadow: var(--shadow-md);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     min-width: 0;
 }
 
-.level--orange .level__content {
-    background: var(--orange-pale);
-    border-color: rgba(245,180,0,0.15);
-}
-
 .level__content:hover {
     box-shadow: var(--shadow-lg);
-    transform: translateX(4px);
+    transform: translateY(-4px);
+}
+
+/* LTR Odd */
+.level:nth-child(odd) .level__content {
+    order: 1;
+    border-left: 8px solid var(--blue);
+}
+.level:nth-child(odd).level--orange .level__content {
+    border-left-color: var(--orange);
+}
+.level:nth-child(odd) .level__skill {
+    order: 2;
+    text-align: right;
+}
+
+/* LTR Even */
+.level:nth-child(even) .level__content {
+    order: 2;
+    border-right: 8px solid var(--orange);
+}
+.level:nth-child(even).level--blue .level__content {
+    border-right-color: var(--blue);
+}
+.level:nth-child(even) .level__skill {
+    order: 1;
+    text-align: left;
+}
+
+/* RTL (Arabic) Mirrors */
+html[lang="ar"] .level:nth-child(odd) .level__content {
+    border-left: 1px solid var(--gray-100);
+    border-right: 8px solid var(--blue);
+}
+html[lang="ar"] .level:nth-child(odd).level--orange .level__content {
+    border-right-color: var(--orange);
+}
+html[lang="ar"] .level:nth-child(odd) .level__skill {
+    text-align: left;
+}
+
+html[lang="ar"] .level:nth-child(even) .level__content {
+    border-right: 1px solid var(--gray-100);
+    border-left: 8px solid var(--orange);
+}
+html[lang="ar"] .level:nth-child(even).level--blue .level__content {
+    border-left-color: var(--blue);
+}
+html[lang="ar"] .level:nth-child(even) .level__skill {
+    text-align: right;
+}
+
+/* Skill Styling */
+.level__skill {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+}
+.level__skill-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.level--blue .level__skill-title { color: var(--blue); }
+.level--orange .level__skill-title { color: var(--orange); }
+
+.level__skill-desc {
+    color: var(--gray-500);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+html[lang="ar"] .level__skill-title {
+    font-family: 'Cairo', sans-serif;
 }
 
 html[lang="ar"] .level__content:hover {
-    transform: translateX(-4px);
+    transform: translateY(-4px);
 }
 
 .level__header {
@@ -1451,6 +1541,61 @@ html[lang="ar"] .footer__brand-text {
     html[lang="ar"] .roadmap-timeline {
         padding-left: 0;
         padding-right: 40px;
+    }
+    .roadmap-timeline::before {
+        left: 20px;
+        transform: translateX(-50%);
+    }
+    html[lang="ar"] .roadmap-timeline::before {
+        left: auto;
+        right: 20px;
+        transform: translateX(50%);
+    }
+    
+    .level {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 30px;
+    }
+    
+    .level__badge {
+        left: -20px;
+        top: 0;
+        transform: translate(-50%, -50%);
+    }
+    html[lang="ar"] .level__badge {
+        left: auto;
+        right: -20px;
+        transform: translate(50%, -50%);
+    }
+    .level:hover .level__badge {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    html[lang="ar"] .level:hover .level__badge {
+        transform: translate(50%, -50%) scale(1.1);
+    }
+    
+    .level__skill {
+        display: none;
+    }
+
+    /* Keep the alternating thick borders on mobile */
+    .level__content {
+        order: 1 !important;
+        margin-top: 10px;
+        border: 1px solid var(--gray-100) !important;
+        border-left: 8px solid var(--blue) !important;
+        border-right: none !important;
+    }
+    .level--orange .level__content {
+        border-left-color: var(--orange) !important;
+    }
+    html[lang="ar"] .level__content {
+        border-left: 1px solid var(--gray-100) !important;
+        border-right: 8px solid var(--blue) !important;
+    }
+    html[lang="ar"] .level--orange .level__content {
+        border-right-color: var(--orange) !important;
     }
 
     .lesson-cards {

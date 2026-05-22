@@ -25,11 +25,7 @@
     <div class="hero__brand">
         <img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="hero__logo-icon" id="acwad-logo">
         <div class="hero__brand-text">
-            <div class="brand-title-row" style="padding-bottom:5px ;">
-                <span class="brand-en">ACWAD</span>
-                <span class="brand-ar">أكواد</span>
-            </div>
-            <span class="hero__brand-sub">BUILD YOUR FUTURE</span>
+            <img src="./Screenshot 2026-05-22 210014.png" alt="" style="width: 200px;">
         </div>
     </div>
     <div class="hero__content">
@@ -392,6 +388,10 @@
                     </div>
                 </div>
             </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Basic interface navigation and simple animation logic." data-ar="التنقل الأساسي في الواجهة ومنطق الحركة البسيط."></p>
+            </div>
         </div>
 
         <!-- ─── LEVEL 2 ─── -->
@@ -444,6 +444,10 @@
                     </div>
                 </div>
             </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Understanding events, variables, and control flow." data-ar="فهم الأحداث والمتغيرات والتحكم في التدفق."></p>
+            </div>
         </div>
 
         <!-- ─── LEVEL 3 ─── -->
@@ -493,6 +497,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Advanced game mechanics and object cloning." data-ar="آليات الألعاب المتقدمة واستنساخ الكائنات."></p>
             </div>
         </div>
 
@@ -544,6 +552,10 @@
                     </div>
                 </div>
             </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="User interaction and mathematical operations." data-ar="تفاعل المستخدم والعمليات الحسابية."></p>
+            </div>
         </div>
 
         <!-- ─── LEVEL 5 ─── -->
@@ -578,6 +590,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Data structures and modular programming." data-ar="هياكل البيانات والبرمجة النمطية."></p>
             </div>
         </div>
 
@@ -999,6 +1015,9 @@ function playSynthesizedMeow() {
 // Coordinate sync helper
 function updateMascotTransform() {
     mascot.style.transform = `translate(calc(-50% + ${mascotX}px), calc(-50% + ${mascotY}px)) rotate(${mascotRot}deg) scaleX(${mascotScaleX})`;
+    // Position bubble above the mascot
+    bubble.style.left = `calc(50% + ${mascotX}px)`;
+    bubble.style.top = `calc(50% + ${mascotY - 70}px)`;
     // Update live coordinates in stage header (invert Y to match standard Cartesian coordinates)
     coordsText.textContent = `X: ${mascotX}, Y: ${-mascotY}`;
 }
@@ -1032,6 +1051,8 @@ document.querySelectorAll('.scratch-btn').forEach(btn => {
 });
 
 function addBlockToWorkspace(action, labelEn, labelAr) {
+    if (isSandboxRunning) return;
+    
     // Hide empty helper text
     const emptyHelper = sandboxWorkspace.querySelector('.workspace-empty');
     if (emptyHelper) {
@@ -1069,6 +1090,7 @@ function addBlockToWorkspace(action, labelEn, labelAr) {
     delBtn.innerHTML = '&times;';
     delBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        if (isSandboxRunning) return;
         block.remove();
         checkWorkspaceEmpty();
     });
@@ -1090,6 +1112,7 @@ function checkWorkspaceEmpty() {
 
 // Clear all blocks in stack
 document.getElementById('btn-clear-sandbox').addEventListener('click', () => {
+    if (isSandboxRunning) return;
     sandboxWorkspace.querySelectorAll('.workspace-block').forEach(b => b.remove());
     checkWorkspaceEmpty();
     resetMascot();
@@ -1191,6 +1214,8 @@ function executeBlockAction(action) {
     } else {
         setLang('en');
     }
+    // Initialize mascot and bubble position
+    resetMascot();
 })();
 </script>
 </body>
