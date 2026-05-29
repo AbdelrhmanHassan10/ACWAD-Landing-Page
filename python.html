@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Roadmap — ACWAD Academy</title>
+    <meta name="description" content="A professional project-based learning journey designed to help kids and teens build logical thinking and real text-based programming skills through Python at ACWAD Academy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scroll-progress" id="scroll-progress-bar"></div>
+
+<!-- ══════════════ LANGUAGE TOGGLE ══════════════ -->
+<div class="lang-toggle" id="lang-toggle">
+    <button class="lang-btn lang-btn--active" id="btn-en" onclick="setLang('en')">English</button>
+    <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">العربية</button>
+</div>
+
+<!-- ══════════════════════ HEADER / HERO ══════════════════════ -->
+<header class="hero" id="hero-section">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero__brand">
+        <img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="hero__logo-icon" id="acwad-logo">
+        <div class="hero__brand-text">
+            <img src="./Screenshot 2026-05-22 210014.png" alt="" style="width: 200px;">
+        </div>
+    </div>
+    <div class="hero__content">
+        <p class="hero__eyebrow">
+            <span class="dot dot--orange"></span>
+            <span data-en="Professional Coding Program" data-ar="برنامج البرمجة الاحترافي"></span>
+            <span class="dot dot--blue"></span>
+        </p>
+        <h1 class="hero__title" id="main-title">
+            <span data-en="PYTHON PROGRAMMING" data-ar="خريطة طريق برمجة"></span><br>
+            <span class="hero__title--accent" data-en="ROADMAP" data-ar="بايثون"></span>
+        </h1>
+        <p class="hero__subtitle" data-en="MASTER TEXT-BASED CODING & BUILD REAL APPS" data-ar="احترف البرمجة النصية وابنِ تطبيقات حقيقية"></p>
+        <p class="hero__desc" data-en="A professional project-based learning journey designed to help students build strong logic, problem-solving abilities, and real programming skills through Python." data-ar="رحلة تعليمية احترافية قائمة على المشاريع، مصمّمة لمساعدة الطلاب على بناء مهارات التفكير المنطقي وحل المشكلات والبرمجة الحقيقية من خلال لغة بايثون."></p>
+    </div>
+   
+</header>
+
+<!-- ══════════════════════ TOP INFO CARDS ══════════════════════ -->
+<section class="info-cards" id="info-cards-section">
+    <div class="info-card reveal" id="info-age">
+        <div class="info-card__icon info-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/><circle cx="19" cy="8" r="3"/><path d="M22 21v-1a4 4 0 0 0-4-4"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Age Group" data-ar="الفئة العمرية"></span>
+            <span class="info-card__value" data-en="11 — 16 Years" data-ar="١١ — ١٦ سنة"></span>
+        </div>
+    </div>
+    <div class="info-card reveal" id="info-sessions">
+        <div class="info-card__icon info-card__icon--orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="16" r="2"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Total Sessions" data-ar="إجمالي الجلسات"></span>
+            <span class="info-card__value" data-en="18 Sessions" data-ar="١٨ جلسة"></span>
+        </div>
+    </div>
+    <div class="info-card reveal" id="info-hands-on">
+        <div class="info-card__icon info-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Hands-on" data-ar="تطبيق عملي"></span>
+            <span class="info-card__value" data-en="100% Practical" data-ar="١٠٠٪ عملي"></span>
+        </div>
+    </div>
+    <div class="info-card reveal" id="info-project">
+        <div class="info-card__icon info-card__icon--orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7l2 3h9v14H3V3z"/><path d="M12 11v6m-3-3h6"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Project-Based" data-ar="قائم على المشاريع"></span>
+            <span class="info-card__value" data-en="Learn by Doing" data-ar="التعلّم بالممارسة"></span>
+        </div>
+    </div>
+    <div class="info-card reveal" id="info-final">
+        <div class="info-card__icon info-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Final Project" data-ar="مشروع نهائي"></span>
+            <span class="info-card__value" data-en="Real App/Game" data-ar="تطبيق/لعبة حقيقية"></span>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ WHAT IS PYTHON ══════════════════════ -->
+<section class="section-what" id="what-is-python">
+    <div class="section-what__header reveal">
+        <span class="section-badge section-badge--blue" data-en="ABOUT" data-ar="نبذة"></span>
+        <h2 class="section-title">
+            <span data-en="What is " data-ar="ما هي "></span><span class="text--orange" data-en="Python" data-ar="بايثون"></span><span data-en="?" data-ar="؟"></span>
+        </h2>
+    </div>
+    <div class="what-grid">
+        <div class="what-card reveal" id="what-card-1">
+            <div class="what-card__icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <rect x="4" y="8" width="40" height="28" rx="4" fill="#0D47A1" opacity="0.1" stroke="#0D47A1" stroke-width="2"/>
+                    <rect x="10" y="14" width="12" height="4" rx="2" fill="#F5B400"/>
+                    <rect x="10" y="22" width="16" height="4" rx="2" fill="#0D47A1" opacity="0.5"/>
+                    <rect x="10" y="30" width="10" height="3" rx="1.5" fill="#F5B400" opacity="0.6"/>
+                    <circle cx="36" cy="22" r="6" fill="#0D47A1" opacity="0.15"/>
+                    <path d="M34 22l4-2v4l-4-2z" fill="#0D47A1"/>
+                    <rect x="14" y="40" width="20" height="3" rx="1.5" fill="#0D47A1" opacity="0.2"/>
+                </svg>
+            </div>
+            <h3 class="what-card__title" data-en="Text-Based Coding" data-ar="البرمجة النصية الحقيقية"></h3>
+            <p class="what-card__desc" data-en="Transition from drag-and-drop blocks to writing real text-based code used by professional developers worldwide." data-ar="الانتقال من سحب وإفلات الكتل إلى كتابة أكواد نصية حقيقية يستخدمها المطورون المحترفون في جميع أنحاء العالم."></p>
+        </div>
+        <div class="what-card reveal" id="what-card-2">
+            <div class="what-card__icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <circle cx="24" cy="24" r="18" fill="#F5B400" opacity="0.1" stroke="#F5B400" stroke-width="2"/>
+                    <path d="M16 28 C16 20, 24 14, 24 14 C24 14, 32 20, 32 28" stroke="#0D47A1" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <circle cx="18" cy="20" r="3" fill="#F5B400"/>
+                    <circle cx="30" cy="18" r="2.5" fill="#0D47A1" opacity="0.5"/>
+                    <rect x="21" y="28" width="6" height="8" rx="2" fill="#F5B400" opacity="0.6"/>
+                    <path d="M15 32h18" stroke="#0D47A1" stroke-width="1.5" opacity="0.3"/>
+                </svg>
+            </div>
+            <h3 class="what-card__title" data-en="Apps, Games & AI" data-ar="تطبيقات وألعاب وذكاء اصطناعي"></h3>
+            <p class="what-card__desc" data-en="Python is incredibly versatile. Students can build everything from fun text-based adventure games to smart algorithms." data-ar="لغة بايثون متعددة الاستخدامات. يمكن للطلاب بناء كل شيء بدءاً من الألعاب النصية الممتعة وحتى الخوارزميات الذكية."></p>
+        </div>
+        <div class="what-card reveal" id="what-card-3">
+            <div class="what-card__icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <rect x="6" y="6" width="36" height="36" rx="18" fill="#0D47A1" opacity="0.08"/>
+                    <path d="M18 16 L24 12 L30 16 L30 24 L24 28 L18 24Z" fill="#F5B400" opacity="0.3" stroke="#F5B400" stroke-width="1.5"/>
+                    <circle cx="24" cy="20" r="4" fill="#0D47A1" opacity="0.6"/>
+                    <path d="M14 34 C14 30, 19 28, 24 28 C29 28, 34 30, 34 34" stroke="#0D47A1" stroke-width="2" fill="none" opacity="0.4"/>
+                    <circle cx="16" cy="30" r="2" fill="#F5B400" opacity="0.5"/>
+                    <circle cx="32" cy="30" r="2" fill="#F5B400" opacity="0.5"/>
+                </svg>
+            </div>
+            <h3 class="what-card__title" data-en="Real-World Skills" data-ar="مهارات العالم الحقيقي"></h3>
+            <p class="what-card__desc" data-en="Learning Python equips students with a highly demanded industry skill, giving them a massive head start in tech and logic." data-ar="تعلم بايثون يزود الطلاب بمهارة مطلوبة بشدة في سوق العمل، مما يمنحهم انطلاقة قوية في مجال التكنولوجيا والمنطق."></p>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ INTERACTIVE SANDBOX (PLAYGROUND) ══════════════════════ -->
+<section class="section-sandbox" id="python-sandbox">
+    <div class="section-sandbox__header reveal">
+        <span class="section-badge section-badge--blue" data-en="PLAYGROUND" data-ar="منطقة اللعب"></span>
+        <h2 class="section-title">
+            <span data-en="Interactive " data-ar="مُحاكي "></span><span class="text--orange" data-en="Python Sandbox" data-ar="بايثون التفاعلي"></span>
+        </h2>
+        <p class="sandbox-desc" data-en="Click the snippets below to build a Python script, then run it to see the output in the terminal!" data-ar="اضغط على الأكواد بالأسفل لبناء برنامج، ثم شغّله لترى النتيجة في وحدة التحكم (Terminal)!"></p>
+    </div>
+    
+    <div class="sandbox-container">
+        <div class="sandbox-editor">
+            <div class="sandbox-editor__header">
+                <div class="sandbox-dots">
+                    <span class="s-dot s-dot--red"></span>
+                    <span class="s-dot s-dot--yellow"></span>
+                    <span class="s-dot s-dot--green"></span>
+                </div>
+                <div class="sandbox-editor__title" data-en="Coding Workspace" data-ar="بيئة العمل البرمجية"></div>
+            </div>
+            
+            <div class="sandbox-editor__body">
+                <div class="sandbox-block-palette">
+                    <h4 class="sandbox-subtitle" data-en="Code Snippets (Click to Add)" data-ar="أجزاء الكود (اضغط للإضافة)"></h4>
+                    <div class="palette-blocks">
+                        <button class="scratch-btn scratch-btn--looks" data-action="print" data-en="print('Hello World!')" data-ar="طباعة نص">
+                            <span class="s-icon">📝</span>
+                            <span data-en="print('Hello World!')" data-ar="طباعة نص"></span>
+                        </button>
+                        <button class="scratch-btn scratch-btn--motion" data-action="variable" data-en="name = 'Python'" data-ar="إنشاء متغير">
+                            <span class="s-icon">📦</span>
+                            <span data-en="name = 'Python'" data-ar="إنشاء متغير"></span>
+                        </button>
+                        <button class="scratch-btn scratch-btn--sound" data-action="loop" data-en="for i in range(3):" data-ar="حلقة تكرار">
+                            <span class="s-icon">🔄</span>
+                            <span data-en="for i in range(3):" data-ar="حلقة تكرار"></span>
+                        </button>
+                        <button class="scratch-btn scratch-btn--orange" data-action="condition" data-en="if name == 'Python':" data-ar="جملة شرطية">
+                            <span class="s-icon">🤔</span>
+                            <span data-en="if name == 'Python':" data-ar="جملة شرطية"></span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="sandbox-workspace-wrapper">
+                    <h4 class="sandbox-subtitle" data-en="Your Python Script" data-ar="برنامج بايثون الخاص بك"></h4>
+                    <div class="sandbox-workspace" id="sandbox-workspace">
+                        <div class="workspace-empty" data-en="Click on the snippets above to write your code!" data-ar="اضغط على الأكواد في الأعلى لكتابة برنامجك هنا!"></div>
+                    </div>
+                </div>
+                
+                <div class="sandbox-controls">
+                    <button class="control-btn control-btn--flag" id="btn-run-sandbox">
+                        <span class="s-icon">▶️</span>
+                        <span data-en="Run Code" data-ar="تشغيل الكود"></span>
+                    </button>
+                    <button class="control-btn control-btn--clear" id="btn-clear-sandbox">
+                        <span class="s-icon">🗑️</span>
+                        <span data-en="Clear All" data-ar="مسح الكل"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Terminal Panel -->
+        <div class="sandbox-stage-panel" style="background: #1e1e1e; border: 1px solid #333;">
+            <div class="sandbox-stage-header" style="background: #2d2d2d; color: #fff;">
+                <span class="stage-badge" data-en="TERMINAL" data-ar="وحدة التحكم"></span>
+                <span class="stage-coords" id="sandbox-coords">Python 3.10.4</span>
+            </div>
+            
+            <div class="sandbox-stage" id="sandbox-stage" style="background: #1e1e1e; color: #a5d6ff; font-family: monospace; padding: 20px; align-items: flex-start; justify-content: flex-start;">
+                <!-- Terminal Output Text -->
+                <div id="sandbox-terminal-output" style="text-align: left; width: 100%; white-space: pre-wrap; font-size: 14px;">> Ready to run code...</div>
+            </div>
+            
+            <div class="sandbox-stage-footer" style="background: #2d2d2d; border-top: 1px solid #333;">
+                <button class="stage-control-btn" id="btn-toggle-grid" data-en="Clear Terminal" data-ar="مسح الشاشة">Clear Terminal</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ WHY LEARN PYTHON ══════════════════════ -->
+<section class="section-why" id="why-learn-python">
+    <div class="section-why__header reveal">
+        <span class="section-badge section-badge--orange" data-en="BENEFITS" data-ar="الفوائد"></span>
+        <h2 class="section-title">
+            <span data-en="Why Should Students Learn " data-ar="لماذا يجب أن يتعلّم الطلاب "></span><span class="text--blue" data-en="Python" data-ar="بايثون"></span><span data-en="?" data-ar="؟"></span>
+        </h2>
+    </div>
+    <div class="why-grid">
+        <div class="why-card reveal" id="why-card-logic">
+            <div class="why-card__icon why-card__icon--blue">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="16" r="12"/><path d="M10 16h4l2-4 2 8 2-4h4"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Logical Thinking" data-ar="التفكير المنطقي"></h4>
+            <p class="why-card__desc" data-en="Develop structured reasoning and sequential logic skills" data-ar="تطوير التفكير المنظّم ومهارات المنطق التسلسلي"></p>
+        </div>
+        <div class="why-card reveal" id="why-card-creativity">
+            <div class="why-card__icon why-card__icon--orange">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4a8 8 0 0 0-8 8c0 3 1.5 5 4 7v5h8v-5c2.5-2 4-4 4-7a8 8 0 0 0-8-8z"/><path d="M12 28h8"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Creativity" data-ar="الإبداع"></h4>
+            <p class="why-card__desc" data-en="Express ideas through code, games, and digital art" data-ar="التعبير عن الأفكار من خلال البرمجة والألعاب والفن الرقمي"></p>
+        </div>
+        <div class="why-card reveal" id="why-card-problem">
+            <div class="why-card__icon why-card__icon--blue">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="24" height="24" rx="4"/><path d="M10 16h12M16 10v12"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Problem Solving" data-ar="حل المشكلات"></h4>
+            <p class="why-card__desc" data-en="Learn to break big challenges into small, solvable steps" data-ar="تعلّم تقسيم التحديات الكبيرة إلى خطوات صغيرة قابلة للحل"></p>
+        </div>
+        <div class="why-card reveal" id="why-card-computational">
+            <div class="why-card__icon why-card__icon--orange">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="24" height="20" rx="3"/><path d="M4 12h24"/><circle cx="8" cy="9" r="1" fill="currentColor"/><circle cx="12" cy="9" r="1" fill="currentColor"/><path d="M10 18l3 3 5-6"/><path d="M18 18h6M18 22h6"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Computational Thinking" data-ar="التفكير الحاسوبي"></h4>
+            <p class="why-card__desc" data-en="Master algorithms, patterns, and data-driven thinking" data-ar="إتقان الخوارزميات والأنماط والتفكير المبني على البيانات"></p>
+        </div>
+        <div class="why-card reveal" id="why-card-game">
+            <div class="why-card__icon why-card__icon--blue">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="8" width="28" height="16" rx="6"/><circle cx="10" cy="16" r="3"/><circle cx="22" cy="13" r="1.5" fill="currentColor"/><circle cx="26" cy="16" r="1.5" fill="currentColor"/><circle cx="22" cy="19" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Game Development" data-ar="تطوير الألعاب"></h4>
+            <p class="why-card__desc" data-en="Build real playable games from scratch" data-ar="بناء ألعاب حقيقية قابلة للعب من الصفر"></p>
+        </div>
+        <div class="why-card reveal" id="why-card-confidence">
+            <div class="why-card__icon why-card__icon--orange">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Confidence Building" data-ar="بناء الثقة بالنفس"></h4>
+            <p class="why-card__desc" data-en="Gain confidence by creating and sharing real projects" data-ar="اكتساب الثقة من خلال إنشاء ومشاركة مشاريع حقيقية"></p>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ ROADMAP ══════════════════════ -->
+<section class="roadmap" id="roadmap-section">
+    <div class="roadmap__header reveal">
+        <span class="section-badge section-badge--blue" data-en="CURRICULUM" data-ar="المنهج الدراسي"></span>
+        <h2 class="section-title">
+            <span data-en="The Learning " data-ar="خريطة "></span><span class="text--orange" data-en="Roadmap" data-ar="التعلّم"></span>
+        </h2>
+        <p class="roadmap__header-desc" data-en="A step-by-step journey from zero to game developer" data-ar="رحلة خطوة بخطوة من الصفر إلى مطوّر ألعاب"></p>
+    </div>
+
+    <div class="roadmap-timeline">
+
+        <!-- ─── LEVEL 1 ─── -->
+        <div class="level level--blue reveal" id="level-1">
+            <div class="level__badge">
+                <span class="level__number">1</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Python Foundations" data-ar="أساسيات بايثون"></h3>
+                        <span class="level__sessions" data-en="Sessions 1 – 2" data-ar="الجلسات ١ – ٢"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--blue" data-en="Foundation Skills" data-ar="المهارات الأساسية"></span>
+                </div>
+
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-1">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">01</span>
+                            <h4 class="lesson-card__title" data-en="Intro to Programming" data-ar="مقدمة في البرمجة"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Setup" data-ar="إعداد البيئة"></span>
+                            <span class="topic-tag" data-en="How computers think" data-ar="كيف يفكر الحاسوب"></span>
+                            <span class="topic-tag" data-en="Code Editors" data-ar="محررات الكود"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="First Python Script" data-ar="أول سكريبت بايثون"></span>
+                        </div>
+                    </div>
+
+                    <div class="lesson-card" id="lesson-2">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">02</span>
+                            <h4 class="lesson-card__title" data-en="Python Syntax" data-ar="قواعد كتابة الكود"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Indentation" data-ar="المسافات البادئة"></span>
+                            <span class="topic-tag" data-en="Structure" data-ar="هيكلة الكود"></span>
+                            <span class="topic-tag" data-en="Comments" data-ar="التعليقات"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Clean Code Practice" data-ar="تدريب كتابة كود نظيف"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Setting up environments and understanding core code structure." data-ar="تجهيز بيئة العمل وفهم هيكل الكود الأساسي."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 2 ─── -->
+        <div class="level level--orange reveal" id="level-2">
+            <div class="level__badge level__badge--orange">
+                <span class="level__number">2</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Data & Interaction" data-ar="البيانات والتفاعل"></h3>
+                        <span class="level__sessions" data-en="Sessions 3 – 4" data-ar="الجلسات ٣ – ٤"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--orange" data-en="Core Skills" data-ar="مهارات جوهرية"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-3">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">03</span>
+                            <h4 class="lesson-card__title" data-en="Variables & Data Types" data-ar="المتغيرات وأنواع البيانات"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="Integers/Floats" data-ar="الأرقام"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Strings" data-ar="النصوص"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Booleans" data-ar="المنطق الثنائي"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Profile Creator" data-ar="صانع الملف الشخصي"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-4">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">04</span>
+                            <h4 class="lesson-card__title" data-en="Input & Output" data-ar="المدخلات والمخرجات"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="print()" data-ar="الطباعة"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="input()" data-ar="المدخلات"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Formatting" data-ar="التنسيق"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Interactive Chatbot" data-ar="روبوت محادثة تفاعلي"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Storing dynamic data and taking input from users." data-ar="تخزين بيانات متغيرة واستقبال مدخلات من المستخدم."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 3 ─── -->
+        <div class="level level--blue reveal" id="level-3">
+            <div class="level__badge">
+                <span class="level__number">3</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Decisions & Logic" data-ar="القرارات والمنطق"></h3>
+                        <span class="level__sessions" data-en="Sessions 5 – 7" data-ar="الجلسات ٥ – ٧"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--blue" data-en="Logic Skills" data-ar="مهارات المنطق"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-5">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">05</span>
+                            <h4 class="lesson-card__title" data-en="Operators" data-ar="المعاملات"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Arithmetic" data-ar="حسابية"></span>
+                            <span class="topic-tag" data-en="Logical" data-ar="منطقية"></span>
+                            <span class="topic-tag" data-en="Comparison" data-ar="مقارنة"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Math Quiz Tool" data-ar="أداة اختبار رياضيات"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-6">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">06</span>
+                            <h4 class="lesson-card__title" data-en="Conditional Statements" data-ar="الشروط"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="if" data-ar="إذا"></span>
+                            <span class="topic-tag" data-en="elif / else" data-ar="وإلا"></span>
+                            <span class="topic-tag" data-en="Decision making" data-ar="اتخاذ القرار"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Age Checker" data-ar="فاحص العمر"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-7">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">07</span>
+                            <h4 class="lesson-card__title" data-en="Nested Conditions" data-ar="الشروط المتداخلة"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Nested if" data-ar="الشروط المزدوجة"></span>
+                            <span class="topic-tag" data-en="Multiple layers" data-ar="طبقات متعددة"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Adventure Game" data-ar="لعبة المغامرات النصية"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Applying logic to let the program make decisions." data-ar="تطبيق المنطق لجعل البرنامج يتخذ قراراته بنفسه."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 4 ─── -->
+        <div class="level level--orange reveal" id="level-4">
+            <div class="level__badge level__badge--orange">
+                <span class="level__number">4</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Loops & Iteration" data-ar="التكرار والحلقات"></h3>
+                        <span class="level__sessions" data-en="Sessions 8 – 10" data-ar="الجلسات ٨ – ١٠"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--orange" data-en="Automation Skills" data-ar="مهارات الأتمتة"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-8">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">08</span>
+                            <h4 class="lesson-card__title" data-en="For Loop" data-ar="حلقة For"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="Sequences" data-ar="التسلسل"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="range()" data-ar="نطاق"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Multiplication Table" data-ar="جدول الضرب"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-9">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">09</span>
+                            <h4 class="lesson-card__title" data-en="While Loop" data-ar="حلقة While"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="Condition repetition" data-ar="تكرار مشروط"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Infinite loops" data-ar="التكرار اللانهائي"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Guessing Game" data-ar="لعبة التخمين"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-10">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">10</span>
+                            <h4 class="lesson-card__title" data-en="Loop Control" data-ar="التحكم بالحلقات"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="break" data-ar="إيقاف"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="continue" data-ar="استمرار"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="pass" data-ar="تخطي"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Smart Menu" data-ar="القائمة الذكية"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Mastering repetitive tasks and controlling execution flow." data-ar="إتقان المهام المتكررة والتحكم في سير تنفيذ الكود."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 5 ─── -->
+        <div class="level level--blue reveal" id="level-5">
+            <div class="level__badge">
+                <span class="level__number">5</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Text Processing" data-ar="معالجة النصوص"></h3>
+                        <span class="level__sessions" data-en="Session 11" data-ar="الجلسة ١١"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--blue" data-en="String Skills" data-ar="مهارات النصوص"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-11">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">11</span>
+                            <h4 class="lesson-card__title" data-en="Strings Manipulation" data-ar="التعامل مع النصوص"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Operations" data-ar="العمليات النصية"></span>
+                            <span class="topic-tag" data-en="Slicing" data-ar="التقطيع"></span>
+                            <span class="topic-tag" data-en="Methods" data-ar="دوال النصوص"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Text Analyzer Tool" data-ar="أداة تحليل النصوص"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Manipulating text, slicing strings, and using string methods efficiently." data-ar="معالجة النصوص وتقطيعها واستخدام دوال النصوص بكفاءة."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 6 ─── -->
+        <div class="level level--orange reveal" id="level-6">
+            <div class="level__badge level__badge--orange">
+                <span class="level__number">6</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Data Structures" data-ar="هياكل البيانات"></h3>
+                        <span class="level__sessions" data-en="Sessions 12 – 13" data-ar="الجلسات ١٢ – ١٣"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--orange" data-en="Data Skills" data-ar="مهارات البيانات"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-12">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">12</span>
+                            <h4 class="lesson-card__title" data-en="Lists Introduction" data-ar="مقدمة في القوائم"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="Creating lists" data-ar="إنشاء القوائم"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Indexing" data-ar="الفهرسة"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Modifying" data-ar="التعديل"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Inventory System" data-ar="نظام إدارة المخزون"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-13">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">13</span>
+                            <h4 class="lesson-card__title" data-en="List Operations" data-ar="عمليات القوائم"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="append()" data-ar="إضافة"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="remove()" data-ar="حذف"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Looping lists" data-ar="التكرار بالقوائم"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="To-Do List App" data-ar="تطبيق قائمة المهام"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Storing and managing multiple items of data in lists." data-ar="تخزين وإدارة عناصر متعددة من البيانات داخل القوائم."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 7 ─── -->
+        <div class="level level--blue reveal" id="level-7">
+            <div class="level__badge">
+                <span class="level__number">7</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Functions & Modularity" data-ar="الدوال والبرمجة النمطية"></h3>
+                        <span class="level__sessions" data-en="Sessions 14 – 15" data-ar="الجلسات ١٤ – ١٥"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--blue" data-en="Architecture" data-ar="هيكلة الكود"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-14">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">14</span>
+                            <h4 class="lesson-card__title" data-en="Functions Basics" data-ar="أساسيات الدوال"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="def keyword" data-ar="تعريف الدوال"></span>
+                            <span class="topic-tag" data-en="Calling" data-ar="استدعاء الدالة"></span>
+                            <span class="topic-tag" data-en="Reusability" data-ar="إعادة الاستخدام"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Custom Greetings" data-ar="مُرحّب مخصص"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-15">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">15</span>
+                            <h4 class="lesson-card__title" data-en="Functions with Parameters" data-ar="الدوال مع المعطيات"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Arguments" data-ar="المعطيات"></span>
+                            <span class="topic-tag" data-en="Return values" data-ar="القيمة المرجعة"></span>
+                            <span class="topic-tag" data-en="Scope" data-ar="نطاق المتغيرات"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Calculator Function" data-ar="دالة الآلة الحاسبة"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Creating reusable blocks of code for cleaner architecture." data-ar="إنشاء كتل برمجية قابلة لإعادة الاستخدام لبناء كود نظيف."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 8 ─── -->
+        <div class="level level--orange reveal" id="level-8">
+            <div class="level__badge level__badge--orange">
+                <span class="level__number">8</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Problem Solving" data-ar="حل المشكلات"></h3>
+                        <span class="level__sessions" data-en="Session 16" data-ar="الجلسة ١٦"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--orange" data-en="Algorithmic Thinking" data-ar="التفكير الخوارزمي"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-16">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">16</span>
+                            <h4 class="lesson-card__title" data-en="Algorithmic Thinking" data-ar="التفكير الخوارزمي"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="Breaking problems" data-ar="تقسيم المشكلات"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Step-by-step logic" data-ar="المنطق التدريجي"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Debugging" data-ar="إصلاح الأخطاء"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Logic Puzzles" data-ar="ألغاز منطقية"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Approaching complex problems and solving them logically." data-ar="التعامل مع المشكلات المعقدة وحلها بشكل منطقي."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 9 ─── -->
+        <div class="level level--blue reveal" id="level-9">
+            <div class="level__badge level__badge--final">
+                <span class="level__number">9</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Projects & Mastery" data-ar="المشاريع والإتقان"></h3>
+                        <span class="level__sessions" data-en="Sessions 17 – 18" data-ar="الجلسات ١٧ – ١٨"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--gradient" data-en="Mastery Level" data-ar="مستوى الإتقان"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-17">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">17</span>
+                            <h4 class="lesson-card__title" data-en="Mini Projects" data-ar="مشاريع مصغرة"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Integration" data-ar="دمج المهارات"></span>
+                            <span class="topic-tag" data-en="Practice" data-ar="تطبيق عملي"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Build 3 Mini Apps" data-ar="بناء ٣ تطبيقات مصغرة"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card lesson-card--premium" id="lesson-18">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--gradient">18</span>
+                            <h4 class="lesson-card__title" data-en="Final Capstone Project" data-ar="مشروع التخرج النهائي"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--gradient" data-en="Full Application" data-ar="تطبيق متكامل"></span>
+                            <span class="topic-tag topic-tag--gradient" data-en="Presentation" data-ar="عرض المشروع"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--gradient">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="10,2 13,8 19,9 14.5,13.5 15.5,19 10,16 4.5,19 5.5,13.5 1,9 7,8"/></svg>
+                            <span data-en="Real-world Python App" data-ar="تطبيق بايثون حقيقي"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Building complete software solutions from scratch independently." data-ar="بناء حلول برمجية متكاملة من الصفر بشكل مستقل."></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══════════════════════ FINAL PROJECT ══════════════════════ -->
+<section class="final-project" id="final-project-section">
+    <div class="final-project__glow"></div>
+    <div class="final-project__content reveal">
+        <span class="section-badge section-badge--white" data-en="CAPSTONE" data-ar="المشروع الختامي"></span>
+        <h2 class="final-project__title" data-en="Final Project" data-ar="المشروع النهائي"></h2>
+        <p class="final-project__desc" data-en="Each student creates their own complete game — demonstrating everything they've learned throughout the course." data-ar="يقوم كل طالب بإنشاء لعبته الكاملة الخاصة — لإثبات كل ما تعلّمه خلال الدورة."></p>
+        <div class="final-project__games">
+            <div class="game-card reveal" id="game-car">
+                <div class="game-card__icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <rect x="5" y="10" width="30" height="20" rx="3" fill="#fff" opacity="0.9"/>
+                        <rect x="8" y="14" width="24" height="12" fill="#1e1e1e"/>
+                        <path d="M10 16h6M10 20h4" stroke="#4caf50" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span data-en="Terminal App" data-ar="تطبيق وحدة تحكم"></span>
+            </div>
+            <div class="game-card reveal" id="game-space">
+                <div class="game-card__icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="14" stroke="#fff" stroke-width="2"/>
+                        <path d="M12 20h16M20 12v16" stroke="#F5B400" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span data-en="Math Tool" data-ar="أداة رياضيات"></span>
+            </div>
+            <div class="game-card reveal" id="game-maze">
+                <div class="game-card__icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <path d="M8 32h24M12 32V16M20 32v-8M28 32V10" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="12" cy="16" r="3" fill="#F5B400"/>
+                        <circle cx="20" cy="24" r="3" fill="#F5B400"/>
+                        <circle cx="28" cy="10" r="3" fill="#F5B400"/>
+                    </svg>
+                </div>
+                <span data-en="Data Analyzer" data-ar="محلل بيانات"></span>
+            </div>
+            <div class="game-card reveal" id="game-runner">
+                <div class="game-card__icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <rect x="8" y="8" width="24" height="24" rx="4" fill="#fff" opacity="0.2" stroke="#fff" stroke-width="2"/>
+                        <path d="M14 20l4 4 8-8" stroke="#F5B400" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span data-en="Quiz System" data-ar="نظام اختبارات"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ OUTCOMES ══════════════════════ -->
+<section class="outcomes" id="outcomes-section">
+    <div class="outcomes__header reveal">
+        <span class="section-badge section-badge--orange" data-en="OUTCOMES" data-ar="المخرجات"></span>
+        <h2 class="section-title">
+            <span data-en="What Will Your Child Be Able" data-ar="ماذا سيكون طفلك قادراً"></span><br>
+            <span data-en=" to Do " data-ar=" على فعله "></span><span class="text--orange" data-en="After This Course" data-ar="بعد هذه الدورة"></span><span data-en="?" data-ar="؟"></span>
+        </h2>
+    </div>
+    <div class="outcomes-grid">
+        <div class="outcome-card reveal" id="outcome-games">
+            <div class="outcome-card__icon outcome-card__icon--blue">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="28" height="20" rx="4"/><path d="M9 13v6M6 16h6"/><circle cx="22" cy="13" r="1.5" fill="currentColor"/><circle cx="26" cy="16" r="1.5" fill="currentColor"/><circle cx="22" cy="19" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Build Real Applications" data-ar="بناء تطبيقات حقيقية"></h4>
+            <p class="outcome-card__desc" data-en="Create functional text-based apps, automate simple tasks, and process data." data-ar="إنشاء تطبيقات نصية وظيفية، وأتمتة المهام البسيطة، ومعالجة البيانات."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-think">
+            <div class="outcome-card__icon outcome-card__icon--orange">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="14" r="10"/><path d="M10 14h4l2-4 2 6 2-2h4"/><path d="M12 28h8M14 24h4"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Think Like a Programmer" data-ar="التفكير كمبرمج"></h4>
+            <p class="outcome-card__desc" data-en="Develop algorithmic thinking and break complex problems into simple steps." data-ar="تطوير التفكير الخوارزمي وتقسيم المشكلات المعقّدة إلى خطوات بسيطة."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-independent">
+            <div class="outcome-card__icon outcome-card__icon--blue">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Create Projects Independently" data-ar="إنشاء مشاريع بشكل مستقل"></h4>
+            <p class="outcome-card__desc" data-en="Confidently design, plan, and build their own coding projects without help." data-ar="تصميم وتخطيط وبناء مشاريع البرمجة الخاصة بهم بثقة ودون مساعدة."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-fundamentals">
+            <div class="outcome-card__icon outcome-card__icon--orange">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="24" height="20" rx="3"/><path d="M4 12h24"/><path d="M10 18l3 3 5-6"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Understand Programming Fundamentals" data-ar="فهم أساسيات البرمجة"></h4>
+            <p class="outcome-card__desc" data-en="Master loops, conditions, variables, events, and functions." data-ar="إتقان الحلقات والشروط والمتغيّرات والأحداث والدوال."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-creativity">
+            <div class="outcome-card__icon outcome-card__icon--blue">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4C8 4 4 8 4 12c0 6 8 16 12 16s12-10 12-16c0-4-4-8-8-8-2 0-3 1-4 2-1-1-2-2-4-2z"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Improve Creativity" data-ar="تحسين الإبداع"></h4>
+            <p class="outcome-card__desc" data-en="Transform imaginative ideas into real interactive digital creations." data-ar="تحويل الأفكار الإبداعية إلى إبداعات رقمية تفاعلية حقيقية."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-problem-solving">
+            <div class="outcome-card__icon outcome-card__icon--orange">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4a8 8 0 0 0-8 8c0 3 2 5 4 7v5h8v-5c2-2 4-4 4-7a8 8 0 0 0-8-8z"/><path d="M12 28h8"/><path d="M14 20h4"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Develop Problem-Solving Skills" data-ar="تطوير مهارات حل المشكلات"></h4>
+            <p class="outcome-card__desc" data-en="Tackle real-world challenges with critical thinking and logic." data-ar="مواجهة تحديات العالم الحقيقي بالتفكير النقدي والمنطق."></p>
+        </div>
+    </div>
+</section>
+
+<footer class="footer" id="footer-section">
+    <div class="footer__inner">
+        <div class="footer__brand-row">
+            <img src="./2.jpg" alt="ACWAD Logo Icon" class="footer__logo-icon">
+            <div class="footer__brand-text">
+                <div class="brand-title-row">
+                    <span class="brand-en">ACWAD</span>
+                    <span class="brand-ar">أكواد</span>
+                </div>
+                <span class="footer__brand-sub">BUILD YOUR FUTURE</span>
+            </div>
+        </div>
+        <p class="footer__text" data-en="ACWAD — Empowering the Next Generation of Creators" data-ar="أكواد — تمكين الجيل القادم من المبدعين"></p>
+        <div class="footer__line"></div>
+    </div>
+</footer>
+
+<script>
+// ══════════════════════ LANGUAGE SWITCHER ══════════════════════
+let currentLang = 'en';
+
+function setLang(lang) {
+    currentLang = lang;
+    const html = document.documentElement;
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+    // Toggle active button
+    document.getElementById('btn-en').classList.toggle('lang-btn--active', lang === 'en');
+    document.getElementById('btn-ar').classList.toggle('lang-btn--active', lang === 'ar');
+
+    // Swap all [data-en] / [data-ar] elements
+    document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+    });
+
+    // Update page title
+    if (lang === 'ar') {
+        document.title = 'خريطة طريق برمجة سكراتش — أكاديمية ACWAD';
+    } else {
+        document.title = 'Scratch Programming Roadmap — ACWAD Academy';
+    }
+
+    // Save preference
+    localStorage.setItem('acwad-lang', lang);
+
+    // Dynamic translate the sandbox stack if running or populated
+    updateSandboxTranslation();
+}
+
+// ══════════════════════ SCROLL PROGRESS BAR ══════════════════════
+window.addEventListener('scroll', () => {
+    const bar = document.getElementById('scroll-progress-bar');
+    if (bar) {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        bar.style.width = scrolled + '%';
+    }
+});
+
+// ══════════════════════ SCROLL REVEAL OBSERVER ══════════════════════
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal--visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+});
+
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => {
+    revealObserver.observe(el);
+});
+
+// ══════════════════════ ACTIVE TIMELINE OBSERVER ══════════════════════
+const levelObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Remove active from all levels
+            document.querySelectorAll('.level').forEach(el => el.classList.remove('level--active'));
+            // Add active to current level
+            entry.target.classList.add('level--active');
+        }
+    });
+}, {
+    threshold: 0.5
+});
+
+document.querySelectorAll('.level').forEach(el => {
+    levelObserver.observe(el);
+});
+
+// ══════════════════════ HOVER TILT AND SPOTLIGHT GLOW ══════════════════════
+document.querySelectorAll('.info-card, .what-card, .why-card, .lesson-card, .outcome-card, .game-card').forEach(card => {
+    // Append spotlight overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'spotlight-overlay';
+    if (card.classList.contains('game-card') || card.classList.contains('level__badge')) {
+        overlay.classList.add('spotlight-overlay--white');
+    }
+    card.style.position = 'relative';
+    card.appendChild(overlay);
+
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const px = (x / rect.width) - 0.5;
+        const py = (y / rect.height) - 0.5;
+        
+        card.style.setProperty('--rx', (-py * 12) + 'deg');
+        card.style.setProperty('--ry', (px * 12) + 'deg');
+        card.style.setProperty('--mx', (x / rect.width) * 100 + '%');
+        card.style.setProperty('--my', (y / rect.height) * 100 + '%');
+        
+        card.classList.add('tilt-hover');
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.classList.remove('tilt-hover');
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+    });
+});
+
+// ══════════════════════ HERO PARTICLES STARFIELD ══════════════════════
+const canvas = document.getElementById('hero-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const symbols = ['{ }', '[ ]', 'def', 'Py', 'Python', '1', '0', '+', '=', 'if', 'while'];
+    const colors = ['rgba(13, 71, 161, 0.45)', 'rgba(245, 180, 0, 0.45)', 'rgba(76, 151, 255, 0.45)', 'rgba(153, 102, 255, 0.45)'];
+    
+    let mouseX = null;
+    let mouseY = null;
+    
+    const hero = document.getElementById('hero-section');
+    if (hero) {
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+        
+        hero.addEventListener('mouseleave', () => {
+            mouseX = null;
+            mouseY = null;
+        });
+    }
+    
+    function resizeCanvas() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    class Particle {
+        constructor() {
+            this.reset();
+            this.y = Math.random() * canvas.height;
+        }
+        
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = -20;
+            this.text = symbols[Math.floor(Math.random() * symbols.length)];
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.size = Math.random() * 16 + 12;
+            this.vx = Math.random() * 0.8 - 0.4;
+            this.vy = Math.random() * 0.5 + 0.2;
+            this.alpha = Math.random() * 0.5 + 0.3;
+        }
+        
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            
+            // Mouse repel
+            if (mouseX !== null && mouseY !== null) {
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    const force = (120 - dist) / 120;
+                    const angle = Math.atan2(dy, dx);
+                    this.x += Math.cos(angle) * force * 5;
+                    this.y += Math.sin(angle) * force * 5;
+                }
+            }
+            
+            if (this.y > canvas.height + 20 || this.x < -20 || this.x > canvas.width + 20) {
+                this.reset();
+            }
+        }
+        
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.font = `bold ${this.size}px 'Outfit', sans-serif`;
+            ctx.fillText(this.text, this.x, this.y);
+        }
+    }
+    
+    // Initialize particles
+    const particleCount = 28;
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+    
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw connection lines
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                
+                if (dist < 110) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y - 5);
+                    ctx.lineTo(particles[j].x, particles[j].y - 5);
+                    ctx.strokeStyle = `rgba(13, 71, 161, ${0.1 * (1 - dist / 110)})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        
+        requestAnimationFrame(animateParticles);
+    }
+    
+    animateParticles();
+}
+
+// ══════════════════════ INTERACTIVE SANDBOX PLAYGROUND ══════════════════════
+const sandboxWorkspace = document.getElementById('sandbox-workspace');
+const terminalOutput = document.getElementById('sandbox-terminal-output');
+
+let isSandboxRunning = false;
+
+// Click snippets to add to Workspace Stack
+document.querySelectorAll('.scratch-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        const labelEn = btn.getAttribute('data-en');
+        const labelAr = btn.getAttribute('data-ar');
+        addBlockToWorkspace(action, labelEn, labelAr);
+    });
+});
+
+function addBlockToWorkspace(action, labelEn, labelAr) {
+    if (isSandboxRunning) return;
+    
+    // Hide empty helper text
+    const emptyHelper = sandboxWorkspace.querySelector('.workspace-empty');
+    if (emptyHelper) {
+        emptyHelper.style.display = 'none';
+    }
+
+    // Determine category block styling class
+    let categoryClass = 'motion';
+    if (action === 'print') categoryClass = 'looks';
+    if (action === 'loop') categoryClass = 'sound';
+    if (action === 'condition') categoryClass = 'orange';
+    if (action === 'variable') categoryClass = 'motion';
+
+    // Limit stack size to 8 blocks for neat UI
+    const existingCount = sandboxWorkspace.querySelectorAll('.workspace-block').length;
+    if (existingCount >= 8) {
+        alert(currentLang === 'ar' ? 'أقصى عدد للأوامر المسموح بها في نفس الوقت هو 8!' : 'Maximum 8 code snippets allowed!');
+        return;
+    }
+
+    const block = document.createElement('div');
+    block.className = `workspace-block workspace-block--${categoryClass}`;
+    block.setAttribute('data-action', action);
+    block.setAttribute('data-en', labelEn);
+    block.setAttribute('data-ar', labelAr);
+
+    // Label span
+    const labelSpan = document.createElement('span');
+    labelSpan.className = 'block-label';
+    labelSpan.setAttribute('data-en', labelEn);
+    labelSpan.setAttribute('data-ar', labelAr);
+    labelSpan.textContent = currentLang === 'ar' ? labelAr : labelEn;
+
+    // Delete button
+    const delBtn = document.createElement('button');
+    delBtn.className = 'workspace-block__delete';
+    delBtn.innerHTML = '&times;';
+    delBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isSandboxRunning) return;
+        block.remove();
+        checkWorkspaceEmpty();
+    });
+
+    block.appendChild(labelSpan);
+    block.appendChild(delBtn);
+    sandboxWorkspace.appendChild(block);
+}
+
+function checkWorkspaceEmpty() {
+    const blocks = sandboxWorkspace.querySelectorAll('.workspace-block');
+    if (blocks.length === 0) {
+        const emptyHelper = sandboxWorkspace.querySelector('.workspace-empty');
+        if (emptyHelper) {
+            emptyHelper.style.display = 'flex';
+        }
+    }
+}
+
+// Clear all blocks in stack
+document.getElementById('btn-clear-sandbox').addEventListener('click', () => {
+    if (isSandboxRunning) return;
+    sandboxWorkspace.querySelectorAll('.workspace-block').forEach(b => b.remove());
+    checkWorkspaceEmpty();
+});
+
+// Clear terminal output
+document.getElementById('btn-toggle-grid').addEventListener('click', () => {
+    if (terminalOutput) {
+        terminalOutput.textContent = '> Ready to run code...';
+    }
+});
+
+// Update block translations dynamically
+function updateSandboxTranslation() {
+    sandboxWorkspace.querySelectorAll('.workspace-block .block-label').forEach(el => {
+        el.textContent = el.getAttribute('data-' + currentLang);
+    });
+}
+
+// Sequence Runner
+document.getElementById('btn-run-sandbox').addEventListener('click', async () => {
+    if (isSandboxRunning) return;
+    
+    const blocks = sandboxWorkspace.querySelectorAll('.workspace-block');
+    if (blocks.length === 0) {
+        alert(currentLang === 'ar' ? 'أضف بعض الأكواد أولاً بالضغط عليها.' : 'Add some code snippets to run them.');
+        return;
+    }
+
+    isSandboxRunning = true;
+    document.getElementById('btn-run-sandbox').style.opacity = '0.6';
+    
+    if (terminalOutput) {
+        terminalOutput.textContent = '> Running script...\n';
+    }
+
+    for (let i = 0; i < blocks.length; i++) {
+        const block = blocks[i];
+        
+        // Highlight current running block
+        block.classList.add('workspace-block--running');
+        
+        const action = block.getAttribute('data-action');
+        
+        // Execute block logic in terminal
+        if (terminalOutput) {
+            if (action === 'print') {
+                terminalOutput.textContent += 'Hello World!\n';
+            } else if (action === 'variable') {
+                terminalOutput.textContent += 'Variable `name` assigned to "Python"\n';
+            } else if (action === 'loop') {
+                terminalOutput.textContent += 'Iteration 0\nIteration 1\nIteration 2\n';
+            } else if (action === 'condition') {
+                terminalOutput.textContent += 'Condition matched! Name is Python.\n';
+            }
+        }
+        
+        // Pause 800ms between blocks
+        await new Promise(resolve => setTimeout(resolve, 800));
+        
+        block.classList.remove('workspace-block--running');
+    }
+    
+    if (terminalOutput) {
+        terminalOutput.textContent += '\n> Process completed.';
+    }
+
+    isSandboxRunning = false;
+    document.getElementById('btn-run-sandbox').style.opacity = '1';
+});
+
+// Initialize saved language
+(function() {
+    const saved = localStorage.getItem('acwad-lang');
+    if (saved) {
+        setLang(saved);
+    } else {
+        setLang('en');
+    }
+})();
+</script>
+</body>
+</html>
