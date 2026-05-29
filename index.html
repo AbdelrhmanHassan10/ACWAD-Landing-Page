@@ -266,15 +266,21 @@
     </footer>
 
 <script>
-let currentLang = 'en';
+let currentLang = localStorage.getItem('acwad-lang') || 'en';
 
 function setLang(lang) {
     currentLang = lang;
+    localStorage.setItem('acwad-lang', lang);
     
     // Update language buttons
-    document.getElementById('btn-en').classList.remove('lang-btn--active');
-    document.getElementById('btn-ar').classList.remove('lang-btn--active');
-    document.getElementById(`btn-${lang}`).classList.add('lang-btn--active');
+    const btnEn = document.getElementById('btn-en');
+    const btnAr = document.getElementById('btn-ar');
+    if (btnEn && btnAr) {
+        btnEn.classList.remove('lang-btn--active');
+        btnAr.classList.remove('lang-btn--active');
+        const activeBtn = document.getElementById(`btn-${lang}`);
+        if (activeBtn) activeBtn.classList.add('lang-btn--active');
+    }
     
     // Set document direction
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
@@ -287,7 +293,7 @@ function setLang(lang) {
     });
 }
 
-// Initialize default language on page load
+// Initialize language immediately
 setLang(currentLang);
 // ══════════════════════ HERO PARTICLES STARFIELD ══════════════════════
 const canvas = document.getElementById('hero-canvas');
