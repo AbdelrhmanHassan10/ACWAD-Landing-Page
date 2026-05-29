@@ -266,7 +266,7 @@
     </footer>
 
 <script>
-let currentLang = 'ar';
+let currentLang = 'en';
 
 function setLang(lang) {
     currentLang = lang;
@@ -286,6 +286,9 @@ function setLang(lang) {
         el.innerHTML = el.getAttribute(`data-${lang}`);
     });
 }
+
+// Initialize default language on page load
+setLang(currentLang);
 // ══════════════════════ HERO PARTICLES STARFIELD ══════════════════════
 const canvas = document.getElementById('hero-canvas');
 if (canvas) {
