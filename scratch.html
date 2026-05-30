@@ -13,19 +13,22 @@
 <body>
 <div class="scroll-progress" id="scroll-progress-bar"></div>
 
-<!-- ══════════════ LANGUAGE TOGGLE ══════════════ -->
-<div class="lang-toggle" id="lang-toggle">
-    <button class="lang-btn lang-btn--active" id="btn-en" onclick="setLang('en')">English</button>
-    <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">العربية</button>
-</div>
-
 <!-- ══════════════════════ HEADER / HERO ══════════════════════ -->
 <header class="hero" id="hero-section">
     <canvas id="hero-canvas"></canvas>
-    <div class="hero__brand">
-        <a href="index.html"><img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="hero__logo-icon" id="acwad-logo"></a>
-        <div class="hero__brand-text">
-            <a href="index.html"><img src="./Screenshot 2026-05-22 210014.png" alt="" style="width: 200px;"></a>
+
+    <div class="hero__top-bar" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; position: relative; z-index: 10; margin-bottom: clamp(24px, 4vw, 40px); flex-wrap: nowrap; gap: 15px; direction: ltr;">
+        <div class="hero__brand" style="margin-bottom: 0;">
+            <a href="index.html"><img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="hero__logo-icon" id="acwad-logo"></a>
+            <div class="hero__brand-text">
+                <a href="index.html"><img src="./Screenshot 2026-05-22 210014.png" alt="" style="width: 200px; max-width: 100%;"></a>
+            </div>
+        </div>
+
+        <!-- ══════════════ LANGUAGE TOGGLE ══════════════ -->
+        <div class="lang-toggle" id="lang-toggle" style="position: relative; top: auto; right: auto; left: auto; margin: 0; flex-shrink: 0;">
+            <button class="lang-btn lang-btn--active" id="btn-en" onclick="setLang('en')">English</button>
+            <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">العربية</button>
         </div>
     </div>
     <div class="hero__content">

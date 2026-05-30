@@ -198,7 +198,7 @@ html[lang="ar"] .lang-toggle {
 .hero__brand {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap:10px;
     margin-bottom: clamp(24px, 4vw, 40px);
     align-self: flex-start;
     position: relative;
@@ -223,6 +223,7 @@ html[lang="ar"] .lang-toggle {
     flex-direction: column;
     line-height: 1.1;
     align-items: flex-start;
+    margin-left: -10px;
 }
 
 
