@@ -136,21 +136,25 @@
 </head>
 <body>
 
-    <!-- ══════════════ LANGUAGE TOGGLE ══════════════ -->
-    <div class="lang-toggle" id="lang-toggle">
-        <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
-        <button class="lang-btn lang-btn--active" id="btn-ar" onclick="setLang('ar')">العربية</button>
-    </div>
-
     <!-- ══════════════════════ HEADER / HERO ══════════════════════ -->
     <header class="hero" id="hero-section">
         <canvas id="hero-canvas"></canvas>
-        <div class="hero__brand">
-            <a href="index.html"><img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="hero__logo-icon" id="acwad-logo"></a>
-            <div class="hero__brand-text">
-                <a href="index.html"><img src="./Screenshot 2026-05-22 210014.png" alt="" style="width: 200px;"></a>
+        
+        <div class="hero__top-bar" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; position: relative; z-index: 10; margin-bottom: clamp(24px, 4vw, 40px); flex-wrap: nowrap; gap: 15px; direction: ltr;">
+            <div class="hero__brand" style="margin-bottom: 0;">
+                <a href="index.html"><img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="hero__logo-icon" id="acwad-logo"></a>
+                <div class="hero__brand-text" >
+                    <a href="index.html"><img src="./Screenshot 2026-05-22 210014.png" alt="" style="width: 200px; max-width: 100%;"></a>
+                </div>
+            </div>
+
+            <!-- ══════════════ LANGUAGE TOGGLE ══════════════ -->
+            <div class="lang-toggle" id="lang-toggle" style="position: relative; top: auto; right: auto; left: auto; margin: 0; flex-shrink: 0;">
+                <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+                <button class="lang-btn lang-btn--active" id="btn-ar" onclick="setLang('ar')">العربية</button>
             </div>
         </div>
+
         <div class="hero__content">
             <p class="hero__eyebrow" style="margin-bottom: 20px;">
                 <span class="dot dot--orange"></span>
@@ -164,6 +168,11 @@
             <p class="hero__subtitle" data-en="An integrated learning journey designed to build logic and software engineering skills in a fun and practical way. Choose your starting point!" data-ar="رحلة تعليمية متكاملة مصممة خصيصاً لبناء مهارات التفكير المنطقي وهندسة البرمجيات بطريقة عملية وممتعة. اختر نقطة انطلاقك!">
                 رحلة تعليمية متكاملة مصممة خصيصاً لبناء مهارات التفكير المنطقي وهندسة البرمجيات بطريقة عملية وممتعة. اختر نقطة انطلاقك!
             </p>
+            <div style="display: inline-block; background: rgba(245, 180, 0, 0.1); border: 1px solid rgba(245, 180, 0, 0.3); padding: 8px 24px; border-radius: 50px;">
+                <p style="color: #d49a00; font-weight: 700; font-size: 1.1rem; margin: 0;" data-en="For ages 6 to 17 years" data-ar="نقبل الطلاب من سن 6 إلى 17 سنة">
+                    نقبل الطلاب من سن 6 إلى 17 سنة
+                </p>
+            </div>
         </div>
     </header>
 
@@ -217,11 +226,7 @@
         <div class="section-what__header">
             <span class="section-badge section-badge--orange" data-en="Why ACWAD Academy?" data-ar="لماذا أكاديمية أكواد؟">لماذا أكاديمية أكواد؟</span>
             <h2 class="section-title" style="margin-bottom: 15px;" data-en="Your Ultimate Programming Destination" data-ar="وجهتك المثالية لاحتراف البرمجة">وجهتك المثالية لاحتراف البرمجة</h2>
-            <div style="display: inline-block; background: rgba(245, 180, 0, 0.1); border: 1px solid rgba(245, 180, 0, 0.3); padding: 8px 24px; border-radius: 50px;">
-                <p style="color: #d49a00; font-weight: 700; font-size: 1.1rem; margin: 0;" data-en="For ages 6 to 17 years" data-ar="نقبل الطلاب من سن 6 إلى 17 سنة">
-                    نقبل الطلاب من سن 6 إلى 17 سنة
-                </p>
-            </div>
+            
         </div>
         <div class="what-grid">
             <div class="what-card">

@@ -205,10 +205,7 @@ html[lang="ar"] .lang-toggle {
     z-index: 2;
 }
 
-html[lang="ar"] .hero__brand {
-    align-self: flex-end;
-    flex-direction: row-reverse;
-}
+
 
 .hero__logo-icon {
     width: clamp(48px, 7vw, 64px);
@@ -228,10 +225,7 @@ html[lang="ar"] .hero__brand {
     align-items: flex-start;
 }
 
-html[lang="ar"] .hero__brand-text {
-    align-items: flex-end;
-    text-align: right;
-}
+
 
 .brand-title-row {
     display: flex;
