@@ -437,6 +437,11 @@
         .custom-select-trigger.open .custom-select-arrow { transform: rotate(180deg); color: #2563eb; }
         
         .custom-select-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 50;
             margin-top: 0;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
@@ -452,7 +457,8 @@
 
         .custom-dropdown-wrapper.open .custom-select-options {
             margin-top: 8px;
-            max-height: 500px;
+            max-height: 250px;
+            overflow-y: auto;
             border-color: rgba(226, 232, 240, 0.8);
             opacity: 1;
             visibility: visible;
@@ -710,7 +716,7 @@
     <!-- Check theme before render -->
     <script>
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
@@ -817,6 +823,7 @@
                             <option value="nub">النهضة NUB</option>
                             <option value="bsnu">بني سويف الأهلية BSNU</option>
                             <option value="bsu">جامعة بني سويف BSU</option>
+                            <option value="other">other</option>
                         </select>
                         
                         <div class="custom-select-trigger">
@@ -852,6 +859,14 @@
                                     <span class="custom-option-title" data-en="Beni Suef University BSU" data-ar="جامعة بني سويف BSU">جامعة بني سويف BSU</span>
                                 </div>
                             </div>
+                            <div class="custom-option hover-orange" data-value="other">
+                                <div class="custom-option-icon opt-orange">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Other" data-ar="أخرى">أخرى</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -872,7 +887,7 @@
                         <select id="course-select" style="display: none;" required>
                             <option value="" disabled selected>--</option>
                             <option value="frontend">Frontend</option>
-                            <option value="backend">Backend</option>
+                            <option value="ccna">CCNA Network</option>
                             <option value="cyber">Cyber Security</option>
                             <option value="master-cs">Master CS</option>
                             <option value="data">Data Analysis</option>
@@ -897,12 +912,12 @@
                                     <span class="custom-option-title" data-en="Frontend Development" data-ar="Frontend Development">Frontend Development</span>
                                 </div>
                             </div>
-                            <div class="custom-option hover-blue" data-value="backend">
+                            <div class="custom-option hover-blue" data-value="ccna">
                                 <div class="custom-option-icon opt-orange">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
                                 </div>
                                 <div class="custom-option-text">
-                                    <span class="custom-option-title" data-en="Backend Development" data-ar="Backend Development">Backend Development</span>
+                                    <span class="custom-option-title" data-en="CCNA Network" data-ar="CCNA Network">CCNA Network</span>
                                 </div>
                             </div>
                             <div class="custom-option hover-orange" data-value="cyber">
