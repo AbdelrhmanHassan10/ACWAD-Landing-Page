@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACWAD | Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            /* Navy Blue & Orange Theme */
+            --bg-dark: #0a1121; /* Deep Navy */
+            --bg-card: rgba(24, 24, 27, 0.6);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            
+            /* Vibrant Neon Brand Colors for Dark Mode */
+            --brand-python: #38bdf8; /* Vibrant Sky Blue */
+            --brand-scratch: #fbbf24; /* Glowing Amber */
+            --brand-web: #34d399; /* Vibrant Emerald */
+            --brand-accent: #f97316; /* Orange Accent */
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(249, 115, 22, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.08) 0%, transparent 40%),
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        /* Static Glowing Orbs for extreme smoothness */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 50vw;
+            height: 50vw;
+            max-width: 600px;
+            max-height: 600px;
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::before {
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 70%);
+            top: -10%;
+            right: -10%;
+        }
+
+        body::after {
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+            bottom: -10%;
+            left: -10%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .dashboard-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-glass);
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header h1 .header-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid rgba(249, 115, 22, 0.4);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+        }
+
+        .total-badge {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 88, 12, 0.2));
+            padding: 12px 28px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .total-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .total-badge svg {
+            color: #fb923c;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            
+            /* Horizontal Layout via Grid */
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto;
+            align-items: center;
+            text-align: right;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 10% 50%, var(--glow-color), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--glow-color);
+        }
+        
+        .stat-card.active {
+            border-color: var(--glow-color);
+            box-shadow: 0 0 40px var(--glow-color);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .stat-card.active::after {
+            opacity: 0.15;
+        }
+
+        .stat-card:hover::after {
+            opacity: 0.08;
+        }
+        
+        .stat-card { cursor: pointer; }
+
+        .stat-card.python-card { --glow-color: var(--brand-python); }
+        .stat-card.scratch-card { --glow-color: var(--brand-scratch); }
+        .stat-card.web-card { --glow-color: var(--brand-web); }
+        
+        .stat-card.frontend-card { --glow-color: #3b82f6; }
+        .stat-card.backend-card { --glow-color: #f97316; }
+        .stat-card.cyber-card { --glow-color: #10b981; }
+        .stat-card.master-card { --glow-color: #a855f7; }
+        .stat-card.data-card { --glow-color: #ec4899; }
+        .stat-card.ai-card { --glow-color: #eab308; }
+        .stat-card.mobile-card { --glow-color: #06b6d4; }
+        
+        .tabs-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .tab-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+        .tab-btn.active {
+            background: rgba(37, 99, 235, 0.2);
+            color: #60a5fa;
+            border-color: rgba(37, 99, 235, 0.4);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+        }
+        
+        .stat-icon {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--glow-color);
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
+            margin-bottom: 0;
+        }
+        
+        .stat-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .stat-card h3 {
+            grid-column: 1;
+            grid-row: 1;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            align-self: flex-end;
+        }
+
+        .stat-card .value {
+            grid-column: 1;
+            grid-row: 2;
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+            font-family: 'Outfit', sans-serif;
+            text-shadow: 0 0 20px var(--glow-color);
+            align-self: flex-start;
+        }
+
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            overflow-x: auto;
+            opacity: 0;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.4s;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+            text-align: right;
+        }
+
+        th, td {
+            padding: 1.2rem 1.5rem;
+        }
+
+        th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 1.5rem;
+        }
+
+        tbody tr {
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        tbody tr td:first-child { border-top-right-radius: 16px; border-bottom-right-radius: 16px; }
+        tbody tr td:last-child { border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
+
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: scale(1.01);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        td {
+            font-size: 1.05rem;
+            color: #f4f4f5;
+            font-weight: 500;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .badge.scratch { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+        .badge.python { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); text-shadow: 0 0 10px rgba(96, 165, 250, 0.5); }
+        .badge.web { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); text-shadow: 0 0 10px rgba(52, 211, 153, 0.5); }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .loading svg {
+            animation: spin 1s linear infinite;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 1.5rem;
+            stroke: #8b5cf6;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .total-badge {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            .stats-row {
+                grid-template-columns: 1fr; /* Stack cards vertically on mobile */
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+            /* Remove heavy backdrop-filter (glassmorphism blur) on mobile to fix lag */
+            .stat-card, .glass-panel {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background: #141419; /* Solid dark color as fallback */
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+            }
+            .stat-card {
+                padding: 1.5rem;
+                /* Keep grid but slightly tighter */
+            }
+            .stat-card .value {
+                font-size: 2.8rem;
+            }
+            .glass-panel {
+                padding: 1rem;
+                border-radius: 16px;
+            }
+            th, td {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+            .badge {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            .stat-icon {
+                width: 40px;
+                height: 40px;
+            }
+            .stat-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    <div class="header">
+        <h1>
+            <img src="../2.jpg" alt="ACWAD Logo" class="header-logo">
+            لوحة التحكم | التسجيلات
+        </h1>
+        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <div id="total-count" class="total-badge">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>0 مسجلين</span>
+            </div>
+            <button id="logout-btn" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; padding: 10px 16px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Tajawal'; display: flex; align-items: center; gap: 8px;">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                خروج
+            </button>
+        </div>
+    </div>
+
+    <div class="stats-row" id="dashboard-content" style="display: none;">
+        <!-- The stats and table will be shown only after auth -->
+    </div>
+    
+    <div id="loading-auth" style="display: flex; justify-content: center; align-items: center; padding: 5rem; flex-direction: column; gap: 1rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" style="width: 40px; height: 40px; animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+        <span style="color: #a1a1aa;">جاري التحقق من الصلاحيات...</span>
+    </div>
+
+    <!-- Move the actual content here so we can toggle it -->
+    <div id="secure-content" style="display: none;">
+        
+        <div class="tabs-container">
+            <button class="tab-btn active" data-target="kids">تسجيلات الأطفال</button>
+            <button class="tab-btn" data-target="adults">تسجيلات الكبار</button>
+        </div>
+
+        <div class="stats-row" id="stats-kids">
+            <div class="stat-card python-card" data-course="python">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 128 128" width="28" height="28" fill="currentColor">
+                       <path d="M63.858 2.016c-30.825 0-29.356 13.385-29.356 13.385l.063 13.88h30.08v4.256H33.272S12.78 32.06 12.78 63.858c0 31.796 17.587 30.554 17.587 30.554h9.123V80.37s-.188-14.131 14.256-14.131h29.58s13.88-.188 13.88-14.004V28.324s1.127-26.308-33.348-26.308zm-15.65 8.765a5.266 5.266 0 1 1 0 10.531 5.266 5.266 0 0 1 0-10.531z"/>
+                       <path d="M64.672 125.984c30.825 0 29.356-13.385 29.356-13.385l-.063-13.88H63.884v-4.256h31.374s20.491 1.477 20.491-30.32c0-31.797-17.587-30.555-17.587-30.555h-9.123V47.63s.188 14.13-14.256 14.13H45.183s-13.88.188-13.88 14.004v24.01s-1.127 26.308 33.368 26.308zm15.65-8.765a5.266 5.266 0 1 1 0-10.531 5.266 5.266 0 0 1 0 10.531z"/>
+                    </svg>
+                </div>
+                <h3>مسار بايثون</h3>
+                <div class="value" id="count-python">0</div>
+            </div>
+            <div class="stat-card scratch-card" data-course="scratch">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3>مسار سكراتش</h3>
+                <div class="value" id="count-scratch">0</div>
+            </div>
+            <div class="stat-card web-card" data-course="web">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <h3>مسار الويب</h3>
+                <div class="value" id="count-web">0</div>
+            </div>
+        </div>
+
+        <div class="stats-row" id="stats-adults" style="display: none;">
+            <div class="stat-card frontend-card" data-course="frontend">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
+                <h3>Frontend</h3><div class="value" id="count-frontend">0</div>
+            </div>
+            <div class="stat-card backend-card" data-course="backend">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div>
+                <h3>Backend</h3><div class="value" id="count-backend">0</div>
+            </div>
+            <div class="stat-card cyber-card" data-course="cyber">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                <h3>Cyber Security</h3><div class="value" id="count-cyber">0</div>
+            </div>
+            <div class="stat-card master-card" data-course="master-cs">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>
+                <h3>Master CS</h3><div class="value" id="count-master-cs">0</div>
+            </div>
+            <div class="stat-card data-card" data-course="data">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                <h3>Data Analysis</h3><div class="value" id="count-data">0</div>
+            </div>
+            <div class="stat-card ai-card" data-course="ai">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect></svg></div>
+                <h3>AI</h3><div class="value" id="count-ai">0</div>
+            </div>
+            <div class="stat-card mobile-card" data-course="mobile">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect></svg></div>
+                <h3>Mobile App</h3><div class="value" id="count-mobile">0</div>
+            </div>
+        </div>
+    
+        <div class="glass-panel">
+            <table>
+                <thead id="table-head">
+                    <tr>
+                        <th>الاسم</th>
+                        <th>العمر</th>
+                        <th>رقم الموبايل</th>
+                        <th>المسار</th>
+                        <th>تاريخ التسجيل</th>
+                    </tr>
+                </thead>
+                <tbody id="leads-table-body">
+                    <tr>
+                        <td colspan="5">
+                            <div class="loading">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                                <span>جاري جلب البيانات من قاعدة البيانات...</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDm1vyD8m9E3PGO2xoKlZsZ5Zka8mvgyHk",
+  authDomain: "acwad-462f8.firebaseapp.com",
+  databaseURL: "https://acwad-462f8-default-rtdb.firebaseio.com",
+  projectId: "acwad-462f8",
+  storageBucket: "acwad-462f8.firebasestorage.app",
+  messagingSenderId: "1088179859100",
+  appId: "1:1088179859100:web:b5773f9fa7e04d205a4759",
+  measurementId: "G-KLJS29Y9HV"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth(app);
+
+// Check Authentication Status First
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in, show dashboard and load data
+        document.getElementById('loading-auth').style.display = 'none';
+        document.getElementById('secure-content').style.display = 'block';
+        loadDashboardData();
+    } else {
+        // User is signed out, redirect to login
+        window.location.href = 'login.html';
+    }
+});
+
+// Logout functionality
+document.getElementById('logout-btn').addEventListener('click', () => {
+    signOut(auth).then(() => {
+        window.location.href = 'login.html';
+    }).catch((error) => {
+        console.error("Logout Error", error);
+    });
+});
+
+let allLeads = [];
+let currentView = 'kids';
+let currentCourseFilter = null;
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentView = e.target.getAttribute('data-target');
+        
+        // Reset filter on tab change
+        currentCourseFilter = null;
+        document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'));
+
+        if (currentView === 'kids') {
+            document.getElementById('stats-kids').style.display = 'grid';
+            document.getElementById('stats-adults').style.display = 'none';
+        } else {
+            document.getElementById('stats-kids').style.display = 'none';
+            document.getElementById('stats-adults').style.display = 'grid';
+        }
+        renderDashboard();
+    });
+});
+
+document.querySelectorAll('.stat-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+        const course = card.getAttribute('data-course');
+        if (currentCourseFilter === course) {
+            // Un-toggle
+            currentCourseFilter = null;
+            card.classList.remove('active');
+        } else {
+            // Toggle
+            currentCourseFilter = course;
+            document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+        }
+        renderDashboard();
+    });
+});
+
+function loadDashboardData() {
+    const leadsRef = ref(db, 'leads');
+    
+    onValue(leadsRef, (snapshot) => {
+        const data = snapshot.val();
+        
+        if (!data) {
+            allLeads = [];
+        } else {
+            allLeads = Object.values(data).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        }
+        
+        renderDashboard();
+    }, (error) => {
+        const tbody = document.getElementById('leads-table-body');
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5" style="padding: 2rem;">
+                    <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 2rem; text-align: center; max-width: 600px; margin: 0 auto;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" style="width: 48px; height: 48px; margin-bottom: 1rem;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <h3 style="color: #ef4444; font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: bold;">خطأ في الصلاحيات (Permission Denied)</h3>
+                        <p style="color: #e2e8f0; margin-bottom: 1.5rem; line-height: 1.6;">
+                            يبدو أن <strong>قواعد الأمان (Security Rules)</strong> في الفايربيز تمنع قراءة البيانات.<br>
+                            يرجى الذهاب إلى إعدادات الفايربيز وتعديل القواعد لتسمح بالقراءة والكتابة.
+                        </p>
+                        <div dir="ltr" style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px; color: #fca5a5; font-size: 0.9rem; font-family: monospace; border: 1px solid rgba(255,255,255,0.05);">
+                            ${error.message}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        `;
+        console.error("Firebase Error:", error);
+    });
+}
+
+function renderDashboard() {
+    const tbody = document.getElementById('leads-table-body');
+    
+    let filteredLeads = [];
+    if (currentView === 'kids') {
+        filteredLeads = allLeads.filter(l => l.formType === 'kids' || !l.formType);
+    } else {
+        filteredLeads = allLeads.filter(l => l.formType === 'adults');
+    }
+
+    // Always calculate totals based on tab level, not the filter level, to keep stats accurate
+    const totalCount = filteredLeads.length;
+    let counts = {};
+    filteredLeads.forEach(l => {
+        counts[l.course] = (counts[l.course] || 0) + 1;
+    });
+
+    if (currentView === 'kids') {
+        document.getElementById('count-python').textContent = counts['python'] || 0;
+        document.getElementById('count-scratch').textContent = counts['scratch'] || 0;
+        document.getElementById('count-web').textContent = counts['web'] || 0;
+    } else {
+        document.getElementById('count-frontend').textContent = counts['frontend'] || 0;
+        document.getElementById('count-backend').textContent = counts['backend'] || 0;
+        document.getElementById('count-cyber').textContent = counts['cyber'] || 0;
+        document.getElementById('count-master-cs').textContent = counts['master-cs'] || 0;
+        document.getElementById('count-data').textContent = counts['data'] || 0;
+        document.getElementById('count-ai').textContent = counts['ai'] || 0;
+        document.getElementById('count-mobile').textContent = counts['mobile'] || 0;
+    }
+
+    // Now apply course filter
+    if (currentCourseFilter) {
+        filteredLeads = filteredLeads.filter(l => l.course === currentCourseFilter);
+    }
+
+    const thead = document.getElementById('table-head');
+    
+    if (currentView === 'kids') {
+        thead.innerHTML = `
+            <tr>
+                <th>الاسم</th>
+                <th>العمر</th>
+                <th>رقم الموبايل</th>
+                <th>المسار</th>
+                <th>تاريخ التسجيل</th>
+            </tr>
+        `;
+    } else {
+        thead.innerHTML = `
+            <tr>
+                <th>الاسم</th>
+                <th>الجامعة</th>
+                <th>الكلية</th>
+                <th>رقم الموبايل</th>
+                <th>المسار</th>
+                <th>تاريخ التسجيل</th>
+            </tr>
+        `;
+    }
+
+    if (filteredLeads.length === 0) {
+        const colCount = currentView === 'kids' ? 5 : 6;
+        tbody.innerHTML = `<tr><td colspan="${colCount}" style="text-align:center; padding: 2rem; color: #a1a1aa;">لا توجد تسجيلات لعرضها.</td></tr>`;
+        document.querySelector('#total-count span').textContent = '0 مسجلين';
+        return;
+    }
+
+    document.querySelector('#total-count span').textContent = filteredLeads.length + ' مسجلين' + (currentCourseFilter ? ' (تصفية)' : '');
+    // Totals updated above
+
+    tbody.innerHTML = '';
+    
+    // Thead updated above
+    
+    filteredLeads.forEach(lead => {
+        const tr = document.createElement('tr');
+        
+        let courseBadge = '';
+        if (lead.course === 'python') courseBadge = '<span class="badge python">برمجة بايثون</span>';
+        else if (lead.course === 'scratch') courseBadge = '<span class="badge scratch">برمجة سكراتش</span>';
+        else if (lead.course === 'web') courseBadge = '<span class="badge web">تطوير الويب</span>';
+        else if (lead.course === 'frontend') courseBadge = '<span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">Frontend</span>';
+        else if (lead.course === 'backend') courseBadge = '<span class="badge" style="background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3);">Backend</span>';
+        else if (lead.course === 'cyber') courseBadge = '<span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">Cyber Sec</span>';
+        else if (lead.course === 'master-cs') courseBadge = '<span class="badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3);">Master CS</span>';
+        else if (lead.course === 'data') courseBadge = '<span class="badge" style="background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3);">Data Analysis</span>';
+        else if (lead.course === 'ai') courseBadge = '<span class="badge" style="background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3);">AI</span>';
+        else if (lead.course === 'mobile') courseBadge = '<span class="badge" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.3);">Mobile App</span>';
+        else courseBadge = `<span class="badge">${lead.course || 'غير محدد'}</span>`;
+
+        const date = new Date(lead.timestamp).toLocaleString('ar-EG');
+        
+        let uniText = '';
+        if (lead.university === 'Beni Suef University') uniText = 'جامعة بني سويف';
+        else if (lead.university === 'Nahda University') uniText = 'جامعة النهضة';
+        else if (lead.university === 'Beni Suef National University') uniText = 'جامعة بني سويف الأهلية';
+        else uniText = lead.university || '-';
+
+        if (currentView === 'kids') {
+            tr.innerHTML = `
+                <td><strong>${lead.name || '-'}</strong></td>
+                <td>${lead.age || '-'}</td>
+                <td dir="ltr" style="text-align: right;">${lead.phone ? '+20 ' + lead.phone : '-'}</td>
+                <td>${courseBadge}</td>
+                <td style="color: #a1a1aa; font-size: 0.9rem;">${date}</td>
+            `;
+        } else {
+            tr.innerHTML = `
+                <td><strong>${lead.name || '-'}</strong></td>
+                <td><span style="color: #cbd5e1;">${uniText}</span></td>
+                <td><span style="color: #cbd5e1;">${lead.faculty || '-'}</span></td>
+                <td dir="ltr" style="text-align: right;">${lead.phone ? '+20 ' + lead.phone : '-'}</td>
+                <td>${courseBadge}</td>
+                <td style="color: #a1a1aa; font-size: 0.9rem;">${date}</td>
+            `;
+        }
+        
+        tbody.appendChild(tr);
+    });
+}
+</script>
+
+</body>
+</html>

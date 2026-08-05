@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التسجيل للكبار — ACWAD Academy</title>
+    <meta name="description" content="التسجيل للكبار في أكاديمية أكواد. 18 سنة فما فوق.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Animated Background Glow */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            background-color: #f8fafc;
+            background-image: radial-gradient(rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .bg-glow::before, .bg-glow::after {
+            content: '';
+            position: absolute;
+            width: 60vw;
+            height: 60vw;
+            max-width: 600px;
+            max-height: 600px;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: floatGlow 20s infinite ease-in-out alternate;
+            opacity: 0.15;
+            will-change: transform;
+        }
+
+        @media (max-width: 768px) {
+            .bg-glow::before, .bg-glow::after {
+                width: 120vw;
+                height: 120vw;
+                filter: blur(50px);
+                opacity: 0.18;
+            }
+        }
+
+        .bg-glow::before {
+            top: -10%;
+            right: -10%;
+            background: #3b82f6;
+        }
+
+        .bg-glow::after {
+            bottom: -10%;
+            left: -10%;
+            background: #f97316;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(10%, 15%) scale(1.1); }
+            100% { transform: translate(-10%, -5%) scale(0.9); }
+        }
+
+        /* ---------------- HEADER ---------------- */
+        .page-header {
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            box-shadow: 0 4px 20px -10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .visit-website-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #2563eb;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .visit-website-btn:hover {
+            background: #3b82f6;
+            color: #ffffff;
+            transform: translateY(-2px);
+            transition: transform 0.3s;
+        }
+        .header-logo:hover { transform: scale(1.02); }
+        .header-logo img.icon { width: 45px; }
+        .header-logo img.text { width: 170px; }
+
+        .theme-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .theme-btn:hover { background: #e2e8f0; color: #1e293b; transform: translateY(-2px); }
+
+        .lang-toggle {
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 18px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #64748b;
+            cursor: pointer;
+            border-radius: 24px;
+            transition: all 0.3s;
+        }
+        .lang-btn--active {
+            background: #ffffff;
+            color: #2563eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* ---------------- HERO LAYOUT ---------------- */
+        .hero-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            width: 100%;
+        }
+
+        /* ---------------- TEXT CONTENT ---------------- */
+        .hero-content {
+            padding-right: 20px;
+        }
+        html[dir="ltr"] .hero-content { padding-right: 0; padding-left: 20px; }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fef3c7;
+            color: #d97706;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            border: 1px solid #fde68a;
+            box-shadow: 0 4px 10px -2px rgba(217, 119, 6, 0.15);
+        }
+        .badge svg { width: 18px; height: 18px; }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #172554;
+            line-height: 1.25;
+            margin-bottom: 24px;
+        }
+        .text-highlight {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        .text-highlight-orange {
+            background: linear-gradient(135deg, #ea580c, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 32px;
+            font-weight: 500;
+            max-width: 95%;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #172554;
+        }
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #dbeafe;
+            color: #2563eb;
+            border-radius: 50%;
+        }
+
+        /* ---------------- FORM CARD ---------------- */
+        .form-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.15);
+            border: 1px solid #eff6ff;
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .form-header h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #172554;
+            margin-bottom: 8px;
+        }
+        .form-header p {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+        
+        .field-label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #475569;
+            margin-bottom: 8px;
+            padding-right: 4px;
+        }
+        html[dir="ltr"] .field-label { padding-right: 0; padding-left: 4px; }
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 18px;
+            width: 22px;
+            height: 22px;
+            color: #94a3b8;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+        }
+        html[dir="ltr"] .input-icon { right: auto; left: 18px; }
+        
+        .input-wrapper:focus-within .input-icon {
+            transform: scale(1.1);
+        }
+        .icon-name { color: #3b82f6; }
+        .icon-age { color: #f97316; }
+
+        .premium-input {
+            width: 100%;
+            padding: 16px 44px 16px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            font-family: inherit;
+            color: #1e293b;
+            background: #ffffff;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html[dir="ltr"] .premium-input { padding: 16px 16px 16px 44px; }
+        .premium-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-1px);
+        }
+        .premium-input::placeholder { color: #94a3b8; font-weight: 500; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 16px;
+        }
+
+        .phone-wrapper {
+            display: flex;
+            align-items: stretch;
+            direction: ltr;
+            border-radius: 14px;
+            border: 2px solid #e2e8f0;
+            background: #ffffff;
+            overflow: hidden;
+            width: 100%;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .phone-wrapper:focus-within {
+            border-color: #3b82f6;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-1px);
+        }
+        .phone-prefix {
+            background: rgba(59, 130, 246, 0.08);
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            color: #3b82f6;
+            border-right: 1px solid #e2e8f0;
+        }
+        .phone-input {
+            flex: 1;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            background: transparent;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1e293b;
+            font-family: inherit;
+            letter-spacing: 1px;
+        }
+        .phone-input:focus { outline: none; }
+        .phone-input::placeholder { color: #94a3b8; font-weight: 500; letter-spacing: normal; }
+        
+        .phone-icon-wrapper {
+            display: flex;
+            align-items: center;
+            padding-left: 16px;
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.08);
+            z-index: 10;
+            position: relative;
+        }
+
+        /* ---------------- CUSTOM SELECT ---------------- */
+        .custom-dropdown-wrapper {
+            position: relative;
+        }
+        .custom-select-trigger {
+            width: 100%;
+            padding: 16px 16px 16px 44px;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            background: #ffffff;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #475569;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html[dir="ltr"] .custom-select-trigger { padding: 16px 44px 16px 16px; }
+        .custom-select-trigger:hover {
+            border-color: #cbd5e1;
+        }
+        .custom-select-trigger.open {
+            border-color: #3b82f6;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-1px);
+        }
+        .custom-select-arrow {
+            width: 20px;
+            height: 20px;
+            color: #64748b;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 10;
+        }
+        .custom-select-trigger.open .custom-select-arrow { transform: rotate(180deg); color: #2563eb; }
+        
+        .custom-select-options {
+            margin-top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid transparent;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1), 0 4px 12px rgba(37, 99, 235, 0.05);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .custom-dropdown-wrapper.open .custom-select-options {
+            margin-top: 8px;
+            max-height: 500px;
+            border-color: rgba(226, 232, 240, 0.8);
+            opacity: 1;
+            visibility: visible;
+        }
+        .custom-option {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .custom-option:last-child { border-bottom: none; }
+        .custom-option { transition: background 0.2s; }
+        .custom-option:hover, .custom-option.selected { background: #f8fafc; }
+        .custom-option.hover-orange:hover, .custom-option.hover-orange.selected { background: #fff7ed; }
+        .custom-option.hover-blue:hover, .custom-option.hover-blue.selected { background: #eff6ff; }
+        
+        .custom-option-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            border: 1px solid transparent;
+        }
+        .opt-blue { background: #eff6ff; color: #2563eb; border-color: #dbeafe; }
+        .opt-orange { background: #fff7ed; color: #ea580c; border-color: #ffedd5; }
+
+        .custom-option-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .custom-option-title { font-weight: 700; color: #1e293b; font-size: 0.95rem; }
+        .custom-option-desc { font-size: 0.8rem; color: #64748b; margin-top: 2px; }
+
+        /* ---------------- SUBMIT BUTTON ---------------- */
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 12px;
+            background: #3b82f6;
+            color: white;
+            font-size: 1.15rem;
+            font-weight: 800;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+        }
+        .submit-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        .submit-btn svg { width: 22px; height: 22px; transition: transform 0.3s; }
+        html[dir="rtl"] .submit-btn:hover svg { transform: translateX(-5px); }
+        html[dir="ltr"] .submit-btn:hover svg { transform: translateX(5px); }
+
+        .secure-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #64748b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+        .secure-note svg { width: 16px; height: 16px; color: #64748b; }
+
+        /* ---------------- FOOTER ---------------- */
+        .page-footer {
+            margin-top: 80px;
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .page-footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, #f97316, transparent);
+            opacity: 0.5;
+        }
+
+        .footer-cta-box {
+            max-width: 1000px;
+            margin: 40px auto 40px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-radius: 24px;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.15);
+            color: #1e293b;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .cta-text h4 { font-size: 1.4rem; margin-bottom: 6px; font-weight: 800; color: #1e293b; }
+        .cta-text p { color: #64748b; font-size: 0.95rem; margin: 0; }
+        .cta-button {
+            background: #3b82f6; color: white; display: flex; align-items: center; gap: 8px;
+            padding: 14px 28px; border-radius: 12px; font-weight: 700; text-decoration: none;
+            transition: all 0.3s;
+        }
+        .cta-button:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(59,130,246,0.4); color: white; }
+        .cta-button svg { width: 18px; height: 18px; }
+
+        .footer-main {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+            padding: 0 40px; gap: 40px;
+        }
+
+        .footer-slogan { color: #64748b; font-weight: 600; font-size: 1rem; line-height: 1.6; text-align: start; margin: 0; }
+        
+        .footer-brand { display: flex; justify-content: center; }
+        .footer-logo-link { display: flex; align-items: center; gap: 15px; transition: transform 0.3s; text-decoration: none; }
+        .footer-logo-link:hover { transform: scale(1.02); }
+        .footer-logo { width: 140px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
+        .footer-icon-img { width: 45px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
+
+        .footer-socials { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+        .social-title { font-weight: 700; color: #1e293b; font-size: 1.1rem; }
+        .social-icons-wrapper { display: flex; gap: 12px; }
+        
+        .social-icon {
+            width: 44px; height: 44px; border-radius: 12px; background: #f1f5f9; color: #475569;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .social-icon svg { width: 20px; height: 20px; }
+        [data-theme="dark"] .page-footer { background: #0b1120; border-top-color: rgba(255, 255, 255, 0.05); }
+        [data-theme="dark"] .footer-cta-box { background: linear-gradient(135deg, #1e293b, #0f172a); border-color: rgba(255,255,255,0.05); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5); }
+        [data-theme="dark"] .footer-cta-box .cta-text h4 { color: white; }
+        [data-theme="dark"] .footer-cta-box .cta-text p { color: #94a3b8; }
+        [data-theme="dark"] .footer-slogan { color: #94a3b8; }
+        [data-theme="dark"] .social-title { color: #f8fafc; }
+        [data-theme="dark"] .social-icon { background: rgba(255, 255, 255, 0.05); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1); }
+        [data-theme="dark"] .social-icon:hover { background: #3b82f6; border-color: #3b82f6; color: white; }
+        [data-theme="dark"] .footer-bottom { border-top-color: rgba(255, 255, 255, 0.05); color: #64748b; }
+        .social-icon:hover { background: #3b82f6; color: white; transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3); }
+
+        .footer-bottom {
+            max-width: 1200px; margin: 40px auto 0; padding: 20px 40px 0;
+            border-top: 1px solid #e2e8f0; text-align: center;
+            font-size: 0.9rem; color: #94a3b8; font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero-content { padding-right: 0; display: flex; flex-direction: column; align-items: center; }
+            .hero-title { font-size: 3rem; }
+            .hero-subtitle { max-width: 100%; }
+            .features-list { align-items: center; }
+        }
+        @media (max-width: 768px) {
+            .footer-cta-box { flex-direction: column; text-align: center; gap: 20px; padding: 24px; margin: 40px 20px 40px; }
+            .footer-main { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; gap: 30px; }
+            .footer-slogan { text-align: center; order: 2; }
+            .footer-brand { order: 1; margin-bottom: 0; }
+            .footer-socials { align-items: center; order: 3; }
+        }
+        @media (max-width: 640px) {
+            .form-row { grid-template-columns: 1fr; }
+            .form-card { padding: 24px; }
+            .hero-title { font-size: 2.2rem; }
+            .page-header { padding: 6px 10px; }
+            .header-logo { gap: 8px; }
+            .header-logo img.text { width: 130px; }
+            .header-logo img.icon { width: 38px; }
+            .visit-website-btn { padding: 6px 10px; }
+            .visit-website-btn .btn-text { display: none; }
+            .lang-btn { padding: 6px 10px; font-size: 0.75rem; }
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* ---------------- DARK MODE ---------------- */
+        [data-theme="dark"] body { background-color: #0b1120; color: #e2e8f0; }
+        [data-theme="dark"] .bg-glow { background-color: #0b1120; background-image: none; }
+        [data-theme="dark"] .bg-glow::before { background: #2563eb; opacity: 0.35; filter: blur(130px); }
+        [data-theme="dark"] .bg-glow::after { background: #d97706; opacity: 0.35; filter: blur(130px); }
+        
+        [data-theme="dark"] .page-header { background: rgba(15, 23, 42, 0.85); border-bottom-color: rgba(255, 255, 255, 0.05); box-shadow: 0 4px 20px -10px rgba(0,0,0,0.3); }
+        [data-theme="dark"] .hero-title { color: #f8fafc; }
+        [data-theme="dark"] .hero-subtitle { color: #cbd5e1; }
+        [data-theme="dark"] .feature-item { color: #e2e8f0; }
+        [data-theme="dark"] .feature-icon { background: #1e293b; color: #60a5fa; }
+        [data-theme="dark"] .badge { background: rgba(245, 158, 11, 0.1); border-color: #b45309; color: #fbbf24; }
+        [data-theme="dark"] .text-highlight-orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); -webkit-background-clip: text; }
+        
+        [data-theme="dark"] .form-card { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-color: rgba(255, 255, 255, 0.08); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        [data-theme="dark"] .form-header h3 { color: #f8fafc; }
+        [data-theme="dark"] .form-header p { color: #94a3b8; }
+        [data-theme="dark"] .field-label { color: #94a3b8; }
+        [data-theme="dark"] .premium-input, [data-theme="dark"] .phone-wrapper, [data-theme="dark"] .custom-select-trigger { background: rgba(11, 17, 32, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-color: rgba(255, 255, 255, 0.12); color: #f1f5f9; box-shadow: none; }
+        [data-theme="dark"] .premium-input:focus, [data-theme="dark"] .phone-wrapper:focus-within, [data-theme="dark"] .custom-select-trigger.open { border-color: rgba(59, 130, 246, 0.6); background: rgba(15, 23, 42, 0.8); }
+        [data-theme="dark"] .premium-input::placeholder, [data-theme="dark"] .phone-input::placeholder { color: #64748b; }
+        [data-theme="dark"] .phone-prefix, [data-theme="dark"] .phone-icon-wrapper { background: rgba(59, 130, 246, 0.1); border-color: #334155; }
+        [data-theme="dark"] .phone-input { color: #f1f5f9; }
+        [data-theme="dark"] .custom-select-trigger { color: #cbd5e1; }
+        [data-theme="dark"] .custom-select-options { background: #1e293b; border-color: #334155; }
+        [data-theme="dark"] .custom-option { border-bottom-color: #334155; color: #e2e8f0; }
+        [data-theme="dark"] .custom-option:hover, [data-theme="dark"] .custom-option.selected { background: #334155; }
+        [data-theme="dark"] .custom-option-icon, [data-theme="dark"] .custom-option-image { background: #0f172a; border: 1px solid #334155; }
+        [data-theme="dark"] .custom-option-title { color: #f8fafc; }
+        [data-theme="dark"] .page-footer { background: #0f172a; border-top-color: #1e293b; }
+        [data-theme="dark"] .lang-toggle { background: #1e293b; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+        [data-theme="dark"] .lang-btn--active { background: #334155; color: #60a5fa; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        [data-theme="dark"] .lang-btn { color: #94a3b8; }
+        [data-theme="dark"] .theme-btn { background: #1e293b; color: #94a3b8; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+        [data-theme="dark"] .theme-btn:hover { background: #334155; color: #f8fafc; }
+        [data-theme="dark"] .input-icon { color: #94a3b8; }
+        [data-theme="dark"] .input-icon.icon-name { color: #60a5fa; }
+        [data-theme="dark"] .input-icon.icon-age { color: #fb923c; }
+        [data-theme="dark"] .dropdown-chevron, [data-theme="dark"] .custom-select-arrow { color: #94a3b8; }
+        [data-theme="dark"] .secure-note, [data-theme="dark"] .secure-note svg { color: #94a3b8; }
+        [data-theme="dark"] .opt-web-3d { border: none; box-shadow: none; }
+
+        .theme-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #64748b;
+            transition: all 0.3s;
+        }
+        .theme-btn:hover { background: #e2e8f0; color: #0f172a; }
+        [data-theme="dark"] .theme-btn { background: #1e293b; color: #cbd5e1; }
+        [data-theme="dark"] .theme-btn:hover { background: #334155; color: #f8fafc; }
+        [data-theme="dark"] .sun-icon { display: none !important; }
+        [data-theme="dark"] .moon-icon { display: block !important; }
+    </style>
+    <!-- Check theme before render -->
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <header class="page-header">
+        <a href="index.html" class="header-logo">
+            <img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="icon">
+            <img src="./acwad_logo_transparent copy.png" alt="ACWAD" class="text">
+        </a>
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <div class="lang-toggle">
+                <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+                <button class="lang-btn lang-btn--active" id="btn-ar" onclick="setLang('ar')">العربية</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero-container">
+        <!-- Text Content -->
+        <div class="hero-content">
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span data-en="Limited Seats Available!" data-ar="مقاعد محدودة متاحة!">مقاعد محدودة متاحة!</span>
+            </div>
+            
+            <h1 class="hero-title" data-en="Launch your career in the <span class='text-highlight'>Tech</span> world" data-ar="انطلق نحو مستقبلك في عالم <span class='text-highlight-orange'>التكنولوجيا</span>">
+                انطلق نحو مستقبلك في عالم <span class="text-highlight-orange">التكنولوجيا</span>
+            </h1>
+            
+            <p class="hero-subtitle" data-en="The job market is looking for creators! Acquire the most in-demand technical skills through intensive practical training that saves you years of self-learning." data-ar="سوق العمل يبحث عن المبدعين! اكتسب المهارات التقنية الأكثر طلباً وانضم إلى نخبة المبرمجين عبر تدريب عملي مكثف يختصر عليك سنوات من التعلم الذاتي.">
+                سوق العمل يبحث عن المبدعين! اكتسب المهارات التقنية الأكثر طلباً وانضم إلى نخبة المبرمجين عبر تدريب عملي مكثف يختصر عليك سنوات من التعلم الذاتي.
+            </p>
+            
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <span data-en="100% Practical Projects" data-ar="مشاريع عملية 100%">مشاريع عملية 100%</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <span data-en="Expert Mentorship" data-ar="تدريب على يد خبراء">تدريب على يد خبراء</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <div class="form-header">
+                <h3 data-en="Reserve Your Seat in the Course" data-ar="احجز مقعدك في الكورس الآن">احجز مقعدك في الكورس الآن</h3>
+                <p data-en="Register your details and our team will contact you to determine your track." data-ar="سجل بياناتك وسيتواصل معك فريقنا لتحديد مسارك.">سجل بياناتك وسيتواصل معك فريقنا لتحديد مسارك.</p>
+            </div>
+
+            <form class="enroll-form" action="#" method="POST">
+                
+                <div class="input-group">
+                    <label class="field-label" for="student-name" data-en="Full Name" data-ar="الاسم الرباعي">الاسم الرباعي</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon icon-name" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <input type="text" id="student-name" class="premium-input" placeholder="الاسم الرباعي..." data-en-placeholder="Full Name..." required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <!-- Age Input -->
+                    <div class="input-group">
+                        <label class="field-label" for="student-age" data-en="Age" data-ar="العمر">العمر</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon icon-age" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <input type="number" id="student-age" class="premium-input" placeholder="العمر (18+)" data-en-placeholder="Age (18+)" min="18" max="99" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Phone Input -->
+                    <div class="input-group">
+                        <label class="field-label" for="parent-phone" data-en="Phone Number" data-ar="رقم الموبايل">رقم الموبايل</label>
+                        <div class="phone-wrapper">
+                            <div class="phone-icon-wrapper">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <span class="phone-prefix">+20</span>
+                            <input type="tel" id="parent-phone" class="phone-input" placeholder="10xxxxxxxx" data-en-placeholder="10xxxxxxxx" pattern="^(10|11|12|15)[0-9]{8}$" title="يجب أن يكون رقم موبايل مصري صحيح (مثال: 1012345678)" maxlength="10" required>
+                        </div>
+                        <div id="phone-error" style="display: none; color: #ef4444; font-size: 0.85rem; margin-top: 6px; font-weight: 600; padding: 0 4px;" data-en="Number must start with 10, 11, 12, or 15" data-ar="يجب أن يبدأ بـ 10 أو 11 أو 12 أو 15">يجب أن يبدأ بـ 10 أو 11 أو 12 أو 15</div>
+                    </div>
+                </div>
+                
+                <!-- University Dropdown -->
+                <div class="input-group">
+                    <label class="field-label" data-en="University" data-ar="الجامعة">الجامعة</label>
+                    <div class="custom-dropdown-wrapper" id="custom-uni-dropdown">
+                        <select id="uni-select" style="display: none;" required>
+                            <option value="" disabled selected>--</option>
+                            <option value="nub">النهضة NUB</option>
+                            <option value="bsnu">بني سويف الأهلية BSNU</option>
+                            <option value="bsu">جامعة بني سويف BSU</option>
+                        </select>
+                        
+                        <div class="custom-select-trigger">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="custom-select-trigger-icon" id="selected-uni-icon" style="display: none; width:24px; height:24px; border-radius:6px; align-items:center; justify-content:center; font-size:1rem;"></div>
+                                <span class="custom-select-text" data-en="-- Select University --" data-ar="-- اختر الجامعة --">-- اختر الجامعة --</span>
+                            </div>
+                            <svg viewBox="0 0 24 24" class="custom-select-arrow" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        
+                        <div class="custom-select-options">
+                            <div class="custom-option hover-blue" data-value="nub">
+                                <div class="custom-option-icon opt-blue">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Al-Nahda NUB" data-ar="النهضة NUB">النهضة NUB</span>
+                                </div>
+                            </div>
+                            <div class="custom-option hover-orange" data-value="bsnu">
+                                <div class="custom-option-icon opt-orange">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Beni Suef National BSNU" data-ar="بني سويف الأهلية BSNU">بني سويف الأهلية BSNU</span>
+                                </div>
+                            </div>
+                            <div class="custom-option hover-blue" data-value="bsu">
+                                <div class="custom-option-icon opt-blue">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Beni Suef University BSU" data-ar="جامعة بني سويف BSU">جامعة بني سويف BSU</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Faculty Input -->
+                <div class="input-group" style="margin-bottom: 24px;">
+                    <label class="field-label" for="student-faculty" data-en="Faculty" data-ar="الكلية">الكلية</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon icon-name" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        <input type="text" id="student-faculty" class="premium-input" placeholder="الكلية..." data-en-placeholder="Faculty..." required>
+                    </div>
+                </div>
+
+                <!-- Course Dropdown -->
+                <div class="input-group">
+                    <label class="field-label" data-en="Track / Course" data-ar="المسار">المسار</label>
+                    <div class="custom-dropdown-wrapper" id="custom-course-dropdown">
+                        <select id="course-select" style="display: none;" required>
+                            <option value="" disabled selected>--</option>
+                            <option value="frontend">Frontend</option>
+                            <option value="backend">Backend</option>
+                            <option value="cyber">Cyber Security</option>
+                            <option value="master-cs">Master CS</option>
+                            <option value="data">Data Analysis</option>
+                            <option value="ai">AI</option>
+                            <option value="mobile">Mobile App</option>
+                        </select>
+                        
+                        <div class="custom-select-trigger">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="custom-select-trigger-icon" id="selected-course-icon" style="display: none; width:24px; height:24px; border-radius:6px; align-items:center; justify-content:center; font-size:1rem;"></div>
+                                <span class="custom-select-text" data-en="-- Select a Track --" data-ar="-- اختر مساراً --">-- اختر مساراً --</span>
+                            </div>
+                            <svg viewBox="0 0 24 24" class="custom-select-arrow" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        
+                        <div class="custom-select-options">
+                            <div class="custom-option hover-orange" data-value="frontend">
+                                <div class="custom-option-icon opt-blue">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Frontend Development" data-ar="Frontend Development">Frontend Development</span>
+                                </div>
+                            </div>
+                            <div class="custom-option hover-blue" data-value="backend">
+                                <div class="custom-option-icon opt-orange">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Backend Development" data-ar="Backend Development">Backend Development</span>
+                                </div>
+                            </div>
+                            <div class="custom-option hover-orange" data-value="cyber">
+                                <div class="custom-option-icon opt-blue">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Cyber Security" data-ar="Cyber Security">Cyber Security</span>
+                                </div>
+                            </div>
+                            <div class="custom-option hover-blue" data-value="master-cs">
+                                <div class="custom-option-icon opt-orange">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Master Computer Science" data-ar="Master Computer Science">Master Computer Science</span>
+                                </div>
+                            </div>
+                            <div class="custom-option hover-orange" data-value="data">
+                                <div class="custom-option-icon opt-blue">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Data Analysis" data-ar="Data Analysis">Data Analysis</span>
+                                </div>
+                            </div>
+                            <div class="custom-option hover-blue" data-value="ai">
+                                <div class="custom-option-icon opt-orange">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Artificial Intelligence (AI)" data-ar="Artificial Intelligence (AI)">Artificial Intelligence (AI)</span>
+                                </div>
+                            </div>
+                            <div class="custom-option hover-orange" data-value="mobile">
+                                <div class="custom-option-icon opt-blue">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                                </div>
+                                <div class="custom-option-text">
+                                    <span class="custom-option-title" data-en="Mobile App Development" data-ar="Mobile App Development">Mobile App Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span data-en="Reserve Your Seat Now" data-ar="احجز مقعدك الآن">احجز مقعدك الآن</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+                
+                <div class="secure-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span data-en="Your data is secure and will never be shared." data-ar="بياناتك آمنة ولن يتم مشاركتها أبداً.">بياناتك آمنة ولن يتم مشاركتها أبداً.</span>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="footer-cta-box">
+            <div class="cta-text">
+                <h4 data-en="Ready to start learning?" data-ar="مستعد لبدء رحلة التعلم؟">مستعد لبدء رحلة التعلم؟</h4>
+                <p data-en="Discover more about our tracks and roadmap" data-ar="اكتشف المزيد عن مساراتنا التعليمية وخطة الطريق.">اكتشف المزيد عن مساراتنا التعليمية وخطة الطريق.</p>
+            </div>
+            <a href="index.html" class="cta-button">
+                <span data-en="Visit Main Website" data-ar="تصفح الموقع الرئيسي">تصفح الموقع الرئيسي</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        
+        <div class="footer-main">
+            <div class="footer-text">
+                <p class="footer-slogan" data-en="ACWAD Academy — Empowering the Next Generation of Creators" data-ar="أكاديمية أكواد — تمكين الجيل القادم من المبدعين">
+                    أكاديمية أكواد — تمكين الجيل القادم من المبدعين
+                </p>
+            </div>
+            
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo-link">
+                    <img src="./acwad logo(1)(1).png" alt="ACWAD Icon" class="footer-icon-img">
+                    <img src="./acwad_logo_transparent copy.png" alt="ACWAD Logo" class="footer-logo">
+                </a>
+            </div>
+            
+            <div class="footer-socials">
+                <span class="social-title" data-en="Follow Us" data-ar="تابعنا على">تابعنا على</span>
+                <div class="social-icons-wrapper">
+                    <a href="https://wa.me/201011745357" class="social-icon" aria-label="WhatsApp" target="_blank" id="whatsapp-link-adults">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/share/18AVFxvNXh/?mibextid=wwXIfr" class="social-icon" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://www.instagram.com/acwadacademy?igsh=cjVuaGdzb3RwazRk" class="social-icon" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span data-en="© 2026 ACWAD Academy. All rights reserved." data-ar="© 2026 أكاديمية أكواد. جميع الحقوق محفوظة.">© 2026 أكاديمية أكواد. جميع الحقوق محفوظة.</span>
+        </div>
+    </footer>
+
+    <script>
+    let currentLang = localStorage.getItem('acwad-lang') || 'ar';
+
+    function setLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('acwad-lang', lang);
+        
+        document.getElementById('btn-en').classList.toggle('lang-btn--active', lang === 'en');
+        document.getElementById('btn-ar').classList.toggle('lang-btn--active', lang === 'ar');
+        
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.lang = lang;
+        
+        document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+            el.innerHTML = el.getAttribute(`data-${lang}`);
+        });
+
+        document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+            if (!el.hasAttribute('data-ar-placeholder')) {
+                el.setAttribute('data-ar-placeholder', el.getAttribute('placeholder'));
+            }
+            el.setAttribute('placeholder', el.getAttribute(`data-${lang}-placeholder`));
+        });
+        
+        const btnArrow = document.querySelector('.submit-btn svg');
+        if(btnArrow) {
+            btnArrow.style.transform = lang === 'ar' ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    }
+
+    setLang(currentLang);
+
+    document.addEventListener('input', function(e) {
+        if (e.target.id === 'parent-phone') {
+            let val = e.target.value.replace(/\D/g, ''); 
+            let hasError = false;
+            
+            if (val.startsWith('0')) val = val.substring(1);
+            if (val.length > 0 && val[0] !== '1') { val = ''; hasError = true; }
+            if (val.length > 1 && !['0', '1', '2', '5'].includes(val[1])) { val = val[0]; hasError = true; }
+            if (val.length > 10) val = val.substring(0, 10);
+            
+            e.target.value = val;
+            
+            const errorMsg = document.getElementById('phone-error');
+            if (errorMsg) {
+                if (hasError) {
+                    errorMsg.style.display = 'block';
+                    clearTimeout(window.phoneErrorTimer);
+                    window.phoneErrorTimer = setTimeout(() => { errorMsg.style.display = 'none'; }, 4000);
+                } else if (val.length > 1) {
+                    errorMsg.style.display = 'none';
+                }
+            }
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const customDropdowns = document.querySelectorAll('.custom-dropdown-wrapper');
+        customDropdowns.forEach(customDropdown => {
+            const trigger = customDropdown.querySelector('.custom-select-trigger');
+            const triggerText = customDropdown.querySelector('.custom-select-text');
+            const options = customDropdown.querySelectorAll('.custom-option');
+            const hiddenSelect = customDropdown.querySelector('select');
+
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // Close other open dropdowns
+                document.querySelectorAll('.custom-dropdown-wrapper.open').forEach(el => {
+                    if (el !== customDropdown) el.classList.remove('open');
+                });
+                customDropdown.classList.toggle('open');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!customDropdown.contains(e.target)) {
+                    customDropdown.classList.remove('open');
+                }
+            });
+
+            options.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    options.forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
+                    
+                    const val = opt.getAttribute('data-value');
+                    hiddenSelect.value = val;
+                    
+                    const titleEl = opt.querySelector('.custom-option-title');
+                    const iconEl = opt.querySelector('.custom-option-icon');
+                    const triggerIcon = customDropdown.querySelector('.custom-select-trigger-icon');
+                    
+                    triggerText.textContent = titleEl.textContent;
+                    triggerText.setAttribute('data-en', titleEl.getAttribute('data-en'));
+                    triggerText.setAttribute('data-ar', titleEl.getAttribute('data-ar'));
+                    
+                    if (triggerIcon && iconEl) {
+                        triggerIcon.style.display = 'flex';
+                        triggerIcon.innerHTML = iconEl.innerHTML;
+                        triggerIcon.style.background = getComputedStyle(iconEl).background;
+                        triggerIcon.style.color = getComputedStyle(iconEl).color;
+                    }
+                    
+                    customDropdown.classList.remove('open');
+                });
+            });
+        });
+        
+        const btnArrow = document.querySelector('.submit-btn svg');
+        if(btnArrow) {
+            btnArrow.style.transform = currentLang === 'ar' ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    });
+    </script>
+
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDm1vyD8m9E3PGO2xoKlZsZ5Zka8mvgyHk",
+      authDomain: "acwad-462f8.firebaseapp.com",
+      databaseURL: "https://acwad-462f8-default-rtdb.firebaseio.com",
+      projectId: "acwad-462f8",
+      storageBucket: "acwad-462f8.firebasestorage.app",
+      messagingSenderId: "1088179859100",
+      appId: "1:1088179859100:web:b5773f9fa7e04d205a4759",
+      measurementId: "G-KLJS29Y9HV"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const form = document.querySelector('.enroll-form');
+    const submitBtn = form.querySelector('.submit-btn');
+
+    window.toggleTheme = function() {
+        const html = document.documentElement;
+        if (html.getAttribute('data-theme') === 'dark') {
+            html.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            html.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px; height:24px; animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> <span data-en="Sending..." data-ar="جاري الإرسال...">جاري الإرسال...</span>`;
+            submitBtn.disabled = true;
+
+            try {
+                const name = document.getElementById('student-name') ? document.getElementById('student-name').value : '';
+                const age = document.getElementById('student-age') ? document.getElementById('student-age').value : '';
+                const phone = document.getElementById('parent-phone') ? document.getElementById('parent-phone').value : '';
+                const course = document.getElementById('course-select') ? document.getElementById('course-select').value : '';
+                const uni = document.getElementById('uni-select') ? document.getElementById('uni-select').value : '';
+                const faculty = document.getElementById('student-faculty') ? document.getElementById('student-faculty').value : '';
+                
+                await push(ref(db, 'leads'), {
+                    name: name,
+                    age: age,
+                    phone: phone,
+                    course: course,
+                    university: uni,
+                    faculty: faculty,
+                    formType: 'adults',
+                    timestamp: new Date().toISOString()
+                });
+                
+                form.innerHTML = `
+                    <div style="text-align: center; padding: 4rem 1rem 2rem;">
+                        <div style="width: 90px; height: 90px; margin: 0 auto 2rem;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" style="width: 100%; height: 100%; stroke-linecap: round; stroke-linejoin: round;">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 2rem; margin-bottom: 0.75rem; font-weight: 800; color: #1e293b;" data-en="Successfully Registered!" data-ar="تم التسجيل بنجاح!">تم التسجيل بنجاح!</h3>
+                        <p style="color: #94a3b8; font-size: 1.15rem; line-height: 1.6;" data-en="We will contact you very soon." data-ar="سنتواصل معك في أقرب وقت.">سنتواصل معك في أقرب وقت.</p>
+                        
+                        <a href="index.html" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 2.5rem; background: #eff6ff; color: #3b82f6; border: 1px solid #bfdbfe; padding: 12px 28px; border-radius: 12px; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#3b82f6'; this.style.color='white'; this.style.borderColor='#3b82f6'" onmouseout="this.style.background='#eff6ff'; this.style.color='#3b82f6'; this.style.borderColor='#bfdbfe'">
+                            <span data-en="Return to Home" data-ar="العودة للموقع الرئيسي">العودة للموقع الرئيسي</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; stroke-linecap: round; stroke-linejoin: round;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                `;
+                
+                if(window.currentLang) {
+                    const lang = window.currentLang;
+                    const els = form.querySelectorAll('[data-' + lang + ']');
+                    els.forEach(el => el.textContent = el.getAttribute('data-' + lang));
+                }
+                
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                alert(window.currentLang === 'en' ? 'An error occurred. Please try again.' : 'حدث خطأ، يرجى المحاولة مرة أخرى.');
+            }
+        });
+    }
+    </script>
+</body>
+</html>
