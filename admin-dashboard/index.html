@@ -144,7 +144,7 @@
 
         .stats-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2.5rem;
         }
@@ -221,6 +221,7 @@
         
         .tabs-container {
             display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
             margin-bottom: 2rem;
             animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -309,6 +310,7 @@
             border-collapse: separate;
             border-spacing: 0 12px;
             text-align: right;
+            white-space: nowrap;
         }
 
         th, td {
@@ -520,9 +522,9 @@
                 <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
                 <h3>Frontend</h3><div class="value" id="count-frontend">0</div>
             </div>
-            <div class="stat-card backend-card" data-course="backend">
-                <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div>
-                <h3>Backend</h3><div class="value" id="count-backend">0</div>
+            <div class="stat-card backend-card" data-course="ccna">
+                <div class="stat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg></div>
+                <h3>CCNA Network</h3><div class="value" id="count-ccna">0</div>
             </div>
             <div class="stat-card cyber-card" data-course="cyber">
                 <div class="stat-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
@@ -715,7 +717,7 @@ function renderDashboard() {
         document.getElementById('count-web').textContent = counts['web'] || 0;
     } else {
         document.getElementById('count-frontend').textContent = counts['frontend'] || 0;
-        document.getElementById('count-backend').textContent = counts['backend'] || 0;
+        document.getElementById('count-ccna').textContent = counts['ccna'] || 0;
         document.getElementById('count-cyber').textContent = counts['cyber'] || 0;
         document.getElementById('count-master-cs').textContent = counts['master-cs'] || 0;
         document.getElementById('count-data').textContent = counts['data'] || 0;
@@ -775,6 +777,7 @@ function renderDashboard() {
         else if (lead.course === 'scratch') courseBadge = '<span class="badge scratch">برمجة سكراتش</span>';
         else if (lead.course === 'web') courseBadge = '<span class="badge web">تطوير الويب</span>';
         else if (lead.course === 'frontend') courseBadge = '<span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">Frontend</span>';
+        else if (lead.course === 'ccna') courseBadge = '<span class="badge" style="background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3);">CCNA Network</span>';
         else if (lead.course === 'backend') courseBadge = '<span class="badge" style="background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3);">Backend</span>';
         else if (lead.course === 'cyber') courseBadge = '<span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">Cyber Sec</span>';
         else if (lead.course === 'master-cs') courseBadge = '<span class="badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3);">Master CS</span>';
