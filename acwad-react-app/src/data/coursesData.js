@@ -541,7 +541,7 @@ export const kidsCourses = [
         en: 'The perfect start to learn programming logic and build interactive games visually in a fun and easy way.'
     },
     duration: { ar: '9 جلسات', en: '9 Sessions' },
-    link: '/kids-track/scratch.html',
+    link: '/kids/scratch',
     image: '/assets/courses/kids_scratch.png',
     iconSvg: '',
     iconClass: 'opt-orange'
@@ -554,7 +554,7 @@ export const kidsCourses = [
         en: 'Learn Python and build real applications, from simple games to smart programs.'
     },
     duration: { ar: '12 جلسة', en: '12 Sessions' },
-    link: '/kids-track/python.html',
+    link: '/kids/python',
     image: '/assets/courses/kids_python_v2.png',
     iconSvg: '',
     iconClass: 'opt-blue'
@@ -567,7 +567,7 @@ export const kidsCourses = [
         en: 'A project-based journey that turns kids into builders of real AI programs.'
     },
     duration: { ar: '20 جلسة', en: '20 Sessions' },
-    link: '/kids-track/pictoblox.html',
+    link: '/kids/pictoblox',
     image: '/assets/courses/kids_pictoblox.png',
     iconSvg: '',
     iconClass: 'opt-orange'

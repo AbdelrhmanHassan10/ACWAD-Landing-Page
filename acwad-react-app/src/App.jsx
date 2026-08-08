@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Home from './pages/Home';
 import CoursesCatalog from './pages/CoursesCatalog';
 import KidsCoursesCatalog from './pages/KidsCoursesCatalog';
+import KidsPython from './pages/KidsPython';
+import KidsScratch from './pages/KidsScratch';
+import KidsPictoBlox from './pages/KidsPictoBlox';
 import CourseDetails from './pages/CourseDetails';
 import Booking from './pages/Booking';
 import AdminDashboard from './pages/AdminDashboard';
@@ -48,6 +51,9 @@ function MainLayout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/kids" element={<KidsCoursesCatalog />} />
+          <Route path="/kids/python" element={<KidsPython />} />
+          <Route path="/kids/scratch" element={<KidsScratch />} />
+          <Route path="/kids/pictoblox" element={<KidsPictoBlox />} />
           <Route path="/adults" element={<CoursesCatalog />} />
           <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/book/:courseId" element={<Booking />} />

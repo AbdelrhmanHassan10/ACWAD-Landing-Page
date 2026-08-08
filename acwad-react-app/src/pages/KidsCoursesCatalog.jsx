@@ -35,7 +35,7 @@ function KidsCoursesCatalog() {
 
       <div className="courses-grid">
         {kidsCourses.map((course, index) => (
-            <a href={course.link} key={course.id} className="course-card" data-aos="fade-up" data-aos-delay={index * 100}>
+            <Link to={course.link} key={course.id} className="course-card" data-aos="fade-up" data-aos-delay={index * 100}>
                 <div className="course-card-header">
                     {course.image ? (
                         <div className="course-icon custom-image-icon">
@@ -62,7 +62,7 @@ function KidsCoursesCatalog() {
                         }
                     </svg>
                 </div>
-            </a>
+            </Link>
         ))}
       </div>
     </div>
