@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PictoBlox AI Creator — ACWAD Academy</title>
+    <meta name="description" content="A project-based journey that turns kids into builders of real AI — teaching them to think logically, solve problems, and code with purpose, one smart project at a time.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Check theme before render -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="scroll-progress" id="scroll-progress-bar"></div>
+
+<!-- ══════════════════════ HEADER / HERO ══════════════════════ -->
+<header class="hero" id="hero-section" style="--accent-color: #8b5cf6;">
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="hero__top-bar" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; position: relative; z-index: 10; margin-bottom: clamp(24px, 4vw, 40px); flex-wrap: nowrap; gap: 15px; direction: ltr;">
+        <div class="hero__brand" style="margin-bottom: 0;">
+            <a href="/"><img src="./acwad%20logo(1)(1).png" alt="ACWAD Logo Icon" class="hero__logo-icon" id="acwad-logo"></a>
+            <div class="hero__brand-text">
+                <a href="/"><img src="./acwad_logo_transparent.png" alt="" style="width: 200px; max-width: 100%;"></a>
+            </div>
+        </div>
+
+        <!-- ══════════════ CONTROLS ══════════════ -->
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <div class="lang-toggle" id="lang-toggle" style="position: relative; top: auto; right: auto; left: auto; margin: 0; flex-shrink: 0;">
+                <button class="lang-btn lang-btn--active" id="btn-en" onclick="setLang('en')">English</button>
+                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">العربية</button>
+            </div>
+        </div>
+    </div>
+    <div class="hero__content">
+        <p class="hero__eyebrow">
+            <span class="dot" style="background: #a78bfa; box-shadow: 0 0 10px #a78bfa;"></span>
+            <span data-en="Professional Kids Coding Program" data-ar="برنامج البرمجة الاحترافي للأطفال"></span>
+            <span class="dot dot--blue"></span>
+        </p>
+        <h1 class="hero__title" id="main-title">
+            <span data-en="PICTOBLOX AI" data-ar="مسار الذكاء الاصطناعي"></span><br>
+            <span class="hero__title--accent" style="color: #a78bfa; text-shadow: 0 0 30px rgba(167,139,250,0.5);" data-en="CREATOR" data-ar="بيكتوبلوكس"></span>
+        </h1>
+        <p class="hero__subtitle" data-en="FROM CURIOUS BEGINNER TO YOUNG AI CREATOR" data-ar="من مبتدئ فضولي إلى صانع ذكاء اصطناعي صغير"></p>
+        <p class="hero__desc" data-en="A project-based journey that turns kids into builders of real AI — teaching them to think logically, solve problems, and code with purpose, one smart project at a time." data-ar="رحلة قائمة على المشاريع تحول الأطفال إلى بناة للذكاء الاصطناعي الحقيقي — تعلمهم التفكير المنطقي وحل المشكلات والبرمجة الهادفة، من خلال مشاريع ذكية ممتعة."></p>
+    </div>
+   
+</header>
+
+<!-- ══════════════════════ TOP INFO CARDS ══════════════════════ -->
+<section class="info-cards" id="info-cards-section">
+    <div class="info-card reveal" id="info-age">
+        <div class="info-card__icon info-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/><circle cx="19" cy="8" r="3"/><path d="M22 21v-1a4 4 0 0 0-4-4"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Age Group" data-ar="الفئة العمرية"></span>
+            <span class="info-card__value" data-en="9 — 15 Years" data-ar="٩ — ١٥ سنة"></span>
+        </div>
+    </div>
+    <div class="info-card reveal" id="info-sessions">
+        <div class="info-card__icon" style="background: rgba(167, 139, 250, 0.1); color: #8b5cf6;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="16" r="2"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Total Sessions" data-ar="إجمالي الجلسات"></span>
+            <span class="info-card__value" data-en="20 Sessions" data-ar="٢٠ جلسة"></span>
+        </div>
+    </div>
+    <div class="info-card reveal" id="info-hands-on">
+        <div class="info-card__icon info-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Hands-on" data-ar="تطبيق عملي"></span>
+            <span class="info-card__value" data-en="100% Practical" data-ar="١٠٠٪ عملي"></span>
+        </div>
+    </div>
+    <div class="info-card reveal" id="info-project">
+        <div class="info-card__icon" style="background: rgba(167, 139, 250, 0.1); color: #8b5cf6;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7l2 3h9v14H3V3z"/><path d="M12 11v6m-3-3h6"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Project-Based" data-ar="قائم على المشاريع"></span>
+            <span class="info-card__value" data-en="Learn by Doing" data-ar="التعلّم بالممارسة"></span>
+        </div>
+    </div>
+    <div class="info-card reveal" id="info-final">
+        <div class="info-card__icon info-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9"/></svg>
+        </div>
+        <div class="info-card__text">
+            <span class="info-card__label" data-en="Final Project" data-ar="المشروع النهائي"></span>
+            <span class="info-card__value" data-en="Final AI Project" data-ar="مشروع ذكاء اصطناعي"></span>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ WHAT IS PICTOBLOX ══════════════════════ -->
+<section class="section-what" id="what-is-scratch">
+    <div class="section-what__header reveal">
+        <span class="section-badge section-badge--blue" style="background: rgba(167, 139, 250, 0.1); color: #8b5cf6;" data-en="ABOUT" data-ar="نبذة"></span>
+        <h2 class="section-title">
+            <span data-en="What is " data-ar="ما هو "></span><span class="text--orange" style="color: #8b5cf6;" data-en="PictoBlox" data-ar="بيكتوبلوكس"></span><span data-en="?" data-ar="؟"></span>
+        </h2>
+    </div>
+    <div class="what-grid">
+        <div class="what-card reveal" id="what-card-1">
+            <div class="what-card__icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <rect x="4" y="8" width="40" height="28" rx="4" fill="#8b5cf6" opacity="0.1" stroke="#8b5cf6" stroke-width="2"/>
+                    <rect x="10" y="14" width="12" height="4" rx="2" fill="#a78bfa"/>
+                    <rect x="10" y="22" width="16" height="4" rx="2" fill="#8b5cf6" opacity="0.5"/>
+                    <rect x="10" y="30" width="10" height="3" rx="1.5" fill="#a78bfa" opacity="0.6"/>
+                    <circle cx="36" cy="22" r="6" fill="#8b5cf6" opacity="0.15"/>
+                    <path d="M34 22l4-2v4l-4-2z" fill="#8b5cf6"/>
+                    <rect x="14" y="40" width="20" height="3" rx="1.5" fill="#8b5cf6" opacity="0.2"/>
+                </svg>
+            </div>
+            <h3 class="what-card__title" data-en="Visual Programming" data-ar="البرمجة المرئية"></h3>
+            <p class="what-card__desc" data-en="PictoBlox is a visual, block-based programming platform built for kids to learn coding through simple drag-and-drop blocks — no complex syntax, just logic and creativity." data-ar="بيكتوبلوكس هي منصة برمجة مرئية تعتمد على الكتل مصممة للأطفال لتعلم البرمجة من خلال السحب والإفلات — بدون كتابة أكواد معقدة، مجرد منطق وإبداع."></p>
+        </div>
+        <div class="what-card reveal" id="what-card-2">
+            <div class="what-card__icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <circle cx="24" cy="24" r="18" fill="#8b5cf6" opacity="0.1" stroke="#8b5cf6" stroke-width="2"/>
+                    <circle cx="18" cy="20" r="3" fill="#a78bfa"/>
+                    <circle cx="30" cy="18" r="2.5" fill="#8b5cf6" opacity="0.5"/>
+                    <path d="M16 28 C16 22, 32 22, 32 28" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <rect x="22" y="14" width="4" height="4" fill="#a78bfa"/>
+                </svg>
+            </div>
+            <h3 class="what-card__title" data-en="AI & Smart Projects" data-ar="الذكاء الاصطناعي والمشاريع الذكية"></h3>
+            <p class="what-card__desc" data-en="Children don't just build games and animations — they learn to create smart, intelligent projects by training their own AI models for image, sound, and object recognition, all using simple blocks." data-ar="لا يقتصر عمل الأطفال على بناء الألعاب — بل يتعلمون إنشاء مشاريع ذكية من خلال تدريب نماذج الذكاء الاصطناعي الخاصة بهم للتعرف على الصور والصوت والكائنات باستخدام كتل بسيطة."></p>
+        </div>
+        <div class="what-card reveal" id="what-card-3">
+            <div class="what-card__icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <rect x="6" y="6" width="36" height="36" rx="18" fill="#8b5cf6" opacity="0.08"/>
+                    <path d="M18 16 L24 12 L30 16 L30 24 L24 28 L18 24Z" fill="#a78bfa" opacity="0.3" stroke="#a78bfa" stroke-width="1.5"/>
+                    <circle cx="24" cy="20" r="4" fill="#8b5cf6" opacity="0.6"/>
+                    <path d="M14 34 C14 30, 19 28, 24 28 C29 28, 34 30, 34 34" stroke="#8b5cf6" stroke-width="2" fill="none" opacity="0.4"/>
+                </svg>
+            </div>
+            <h3 class="what-card__title" data-en="Creativity & Problem Solving" data-ar="الإبداع وحل المشكلات"></h3>
+            <p class="what-card__desc" data-en="PictoBlox encourages creative thinking and problem-solving, helping kids build essential 21st-century skills — combining logical thinking with real, hands-on AI exploration." data-ar="تشجع منصة بيكتوبلوكس التفكير الإبداعي وحل المشكلات، مما يساعد الأطفال على بناء مهارات القرن الحادي والعشرين الأساسية من خلال الجمع بين التفكير المنطقي واستكشاف الذكاء الاصطناعي العملي."></p>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ INTERACTIVE SANDBOX (PLAYGROUND) - HIDDEN FOR PICTOBLOX ══════════════════════ -->
+<section class="section-sandbox" id="scratch-sandbox" style="display: none;">
+    <div class="section-sandbox__header reveal">
+        <span class="section-badge section-badge--blue" data-en="PLAYGROUND" data-ar="منطقة اللعب"></span>
+        <h2 class="section-title">
+            <span data-en="Interactive " data-ar="مُحاكي "></span><span class="text--orange" data-en="Scratch Sandbox" data-ar="سكراتش التفاعلي"></span>
+        </h2>
+        <p class="sandbox-desc" data-en="Click the blocks below to build a stack, then run the sequence to animate the mascot!" data-ar="اضغط على الأوامر بالأسفل لبناء مجموعة، ثم شغّل التسلسل لتحريك شخصية القط!"></p>
+    </div>
+    
+    <div class="sandbox-container">
+        <div class="sandbox-editor">
+            <div class="sandbox-editor__header">
+                <div class="sandbox-dots">
+                    <span class="s-dot s-dot--red"></span>
+                    <span class="s-dot s-dot--yellow"></span>
+                    <span class="s-dot s-dot--green"></span>
+                </div>
+                <div class="sandbox-editor__title" data-en="Coding Workspace" data-ar="بيئة العمل البرمجية"></div>
+            </div>
+            
+            <div class="sandbox-editor__body">
+                <div class="sandbox-block-palette">
+                    <h4 class="sandbox-subtitle" data-en="Blocks Palette (Click to Add)" data-ar="مجموعة الأوامر (اضغط للإضافة)"></h4>
+                    <div class="palette-blocks">
+                        <button class="scratch-btn scratch-btn--motion" data-action="move" data-en="Move 30 Steps" data-ar="تحرك ٣٠ خطوة">
+                            <span class="s-icon">🏃</span>
+                            <span data-en="Move 30 Steps" data-ar="تحرك ٣٠ خطوة"></span>
+                        </button>
+                        <button class="scratch-btn scratch-btn--motion" data-action="turn" data-en="Turn 45 Degrees" data-ar="استدر ٤٥ درجة">
+                            <span class="s-icon">🔄</span>
+                            <span data-en="Turn 45 Degrees" data-ar="استدر ٤٥ درجة"></span>
+                        </button>
+                        <button class="scratch-btn scratch-btn--looks" data-action="say" data-en="Say Hello!" data-ar="قل مرحباً!">
+                            <span class="s-icon">💬</span>
+                            <span data-en="Say Hello!" data-ar="قل مرحباً!"></span>
+                        </button>
+                        <button class="scratch-btn scratch-btn--sound" data-action="sound" data-en="Play Sound Meow" data-ar="شغل صوت مواء">
+                            <span class="s-icon">🔊</span>
+                            <span data-en="Play Sound Meow" data-ar="شغل صوت مواء"></span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="sandbox-workspace-wrapper">
+                    <h4 class="sandbox-subtitle" data-en="Your Code Stack" data-ar="مجموعة الأوامر الخاصة بك"></h4>
+                    <div class="sandbox-workspace" id="sandbox-workspace">
+                        <div class="workspace-empty" data-en="Click on the blocks above to build your program!" data-ar="اضغط على الأوامر البرمجية في الأعلى لبناء برنامجك هنا!"></div>
+                    </div>
+                </div>
+                
+                <div class="sandbox-controls">
+                    <button class="control-btn control-btn--flag" id="btn-run-sandbox">
+                        <span class="s-icon">🟢</span>
+                        <span data-en="Run Stack" data-ar="تشغيل الأوامر"></span>
+                    </button>
+                    <button class="control-btn control-btn--clear" id="btn-clear-sandbox">
+                        <span class="s-icon">🗑️</span>
+                        <span data-en="Clear All" data-ar="مسح الكل"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stage Panel -->
+        <div class="sandbox-stage-panel">
+            <div class="sandbox-stage-header">
+                <span class="stage-badge" data-en="STAGE" data-ar="منصة العرض"></span>
+                <span class="stage-coords" id="sandbox-coords">X: 0, Y: 0</span>
+            </div>
+            
+            <div class="sandbox-stage" id="sandbox-stage">
+                <!-- Grid coordinates lines -->
+                <div class="sandbox-grid-lines" id="sandbox-grid-lines"></div>
+                
+                <!-- Speech bubble for mascot -->
+                <div class="sandbox-bubble" id="sandbox-bubble" data-en="Hello!" data-ar="مرحباً!">Hello!</div>
+                
+                <!-- Mascot (Scratch Cat SVG) -->
+                <div class="sandbox-mascot" id="sandbox-mascot" style="transform: translate(0px, 0px) rotate(0deg) scaleX(1);">
+                    <svg class="cat-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Head -->
+                        <ellipse cx="50" cy="50" rx="35" ry="30" fill="#FF8C1A"/>
+                        <!-- Ears -->
+                        <polygon points="20,30 35,15 40,32" fill="#FF8C1A"/>
+                        <polygon points="80,30 65,15 60,32" fill="#FF8C1A"/>
+                        <polygon points="23,28 32,18 36,29" fill="#FFB366"/>
+                        <polygon points="77,28 68,18 64,29" fill="#FFB366"/>
+                        <!-- Snout/Cheeks -->
+                        <ellipse cx="43" cy="58" rx="8" ry="6" fill="#FFFFFF"/>
+                        <ellipse cx="57" cy="58" rx="8" ry="6" fill="#FFFFFF"/>
+                        <!-- Eyes -->
+                        <ellipse cx="38" cy="42" rx="7" ry="9" fill="#FFFFFF"/>
+                        <ellipse cx="62" cy="42" rx="7" ry="9" fill="#FFFFFF"/>
+                        <ellipse cx="38" cy="42" rx="3" ry="5" fill="#000000"/>
+                        <ellipse cx="62" cy="42" rx="3" ry="5" fill="#000000"/>
+                        <!-- Nose -->
+                        <polygon points="47,51 53,51 50,55" fill="#FF3300"/>
+                        <!-- Mouth -->
+                        <path d="M43,58 Q50,65 57,58" stroke="#000000" stroke-width="2.5" fill="none"/>
+                        <!-- Whiskers -->
+                        <line x1="12" y1="52" x2="28" y2="54" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="10" y1="58" x2="28" y2="58" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="12" y1="64" x2="28" y2="62" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="88" y1="52" x2="72" y2="54" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="90" y1="58" x2="72" y2="58" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="88" y1="64" x2="72" y2="62" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="sandbox-stage-footer">
+                <button class="stage-control-btn" id="btn-toggle-grid" data-en="Show Grid" data-ar="شبكة الإحداثيات">Show Grid</button>
+                <button class="stage-control-btn" id="btn-reset-mascot" data-en="Reset Mascot" data-ar="إعادة الضبط">Reset Mascot</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ WHY LEARN PICTOBLOX ══════════════════════ -->
+<section class="section-why" id="why-learn-scratch">
+    <div class="section-why__header reveal">
+        <span class="section-badge section-badge--orange" style="background: rgba(167, 139, 250, 0.1); color: #8b5cf6;" data-en="BENEFITS" data-ar="الفوائد"></span>
+        <h2 class="section-title">
+            <span data-en="Why Should Kids Learn " data-ar="لماذا يجب أن يتعلّم الأطفال "></span><span class="text--blue" style="color: #8b5cf6;" data-en="PictoBlox" data-ar="بيكتوبلوكس"></span><span data-en="?" data-ar="؟"></span>
+        </h2>
+    </div>
+    <div class="why-grid">
+        <div class="why-card reveal" id="why-card-logic">
+            <div class="why-card__icon" style="color: #8b5cf6; background: rgba(167, 139, 250, 0.1);">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="16" r="12"/><path d="M10 16h4l2-4 2 8 2-4h4"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Logical Thinking" data-ar="التفكير المنطقي"></h4>
+            <p class="why-card__desc" data-en="Develop structured reasoning and sequential logic skills through block-based coding." data-ar="تطوير التفكير المنظم ومهارات المنطق التسلسلي من خلال البرمجة القائمة على الكتل."></p>
+        </div>
+        <div class="why-card reveal" id="why-card-creativity">
+            <div class="why-card__icon" style="color: #8b5cf6; background: rgba(167, 139, 250, 0.1);">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4a8 8 0 0 0-8 8c0 3 1.5 5 4 7v5h8v-5c2.5-2 4-4 4-7a8 8 0 0 0-8-8z"/><path d="M12 28h8"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Creativity" data-ar="الإبداع"></h4>
+            <p class="why-card__desc" data-en="Express ideas through code, smart projects, and interactive digital creations." data-ar="التعبير عن الأفكار من خلال البرمجة والمشاريع الذكية والإبداعات الرقمية التفاعلية."></p>
+        </div>
+        <div class="why-card reveal" id="why-card-problem">
+            <div class="why-card__icon" style="color: #8b5cf6; background: rgba(167, 139, 250, 0.1);">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="24" height="24" rx="4"/><path d="M10 16h12M16 10v12"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Problem Solving" data-ar="حل المشكلات"></h4>
+            <p class="why-card__desc" data-en="Learn to break big challenges into small, solvable steps — the same way real AI systems are built." data-ar="تعلم تقسيم التحديات الكبيرة إلى خطوات صغيرة قابلة للحل — بنفس الطريقة التي تُبنى بها أنظمة الذكاء الاصطناعي الحقيقية."></p>
+        </div>
+        <div class="why-card reveal" id="why-card-computational">
+            <div class="why-card__icon" style="color: #8b5cf6; background: rgba(167, 139, 250, 0.1);">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="24" height="20" rx="3"/><path d="M4 12h24"/><circle cx="8" cy="9" r="1" fill="currentColor"/><circle cx="12" cy="9" r="1" fill="currentColor"/><path d="M10 18l3 3 5-6"/><path d="M18 18h6M18 22h6"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Computational Thinking" data-ar="التفكير الحاسوبي"></h4>
+            <p class="why-card__desc" data-en="Master algorithms, patterns, and data-driven thinking — the foundation behind every AI model." data-ar="إتقان الخوارزميات والأنماط والتفكير المبني على البيانات — الأساس وراء كل نموذج للذكاء الاصطناعي."></p>
+        </div>
+        <div class="why-card reveal" id="why-card-game">
+            <div class="why-card__icon" style="color: #8b5cf6; background: rgba(167, 139, 250, 0.1);">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M21.18 8.02c-1-2.3-2.85-4.17-5.16-5.18"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="AI & Machine Learning" data-ar="الذكاء الاصطناعي وتعلم الآلة"></h4>
+            <p class="why-card__desc" data-en="Train real AI models to recognize images, sounds, and objects — turning ideas into intelligent projects." data-ar="تدريب نماذج الذكاء الاصطناعي للتعرف على الصور والصوت والكائنات — لتحويل الأفكار لمشاريع ذكية."></p>
+        </div>
+        <div class="why-card reveal" id="why-card-confidence">
+            <div class="why-card__icon" style="color: #8b5cf6; background: rgba(167, 139, 250, 0.1);">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+            </div>
+            <h4 class="why-card__title" data-en="Confidence Building" data-ar="بناء الثقة بالنفس"></h4>
+            <p class="why-card__desc" data-en="Gain confidence by creating, training, and sharing real AI-powered projects." data-ar="اكتساب الثقة بالنفس من خلال إنشاء وتدريب ومشاركة مشاريع حقيقية تعمل بالذكاء الاصطناعي."></p>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ ROADMAP ══════════════════════ -->
+<section class="roadmap" id="roadmap-section">
+    <div class="roadmap__header reveal">
+        <span class="section-badge section-badge--blue" style="background: rgba(167, 139, 250, 0.1); color: #8b5cf6;" data-en="CURRICULUM" data-ar="المنهج الدراسي"></span>
+        <h2 class="section-title">
+            <span data-en="The Learning " data-ar="خريطة "></span><span class="text--orange" style="color: #8b5cf6;" data-en="Roadmap" data-ar="التعلّم"></span>
+        </h2>
+        <p class="roadmap__header-desc" data-en="A step-by-step journey from zero to young AI creator" data-ar="رحلة خطوة بخطوة من الصفر إلى صانع ذكاء اصطناعي صغير"></p>
+    </div>
+
+    <div class="roadmap-timeline">
+
+        <!-- ─── LEVEL 1 ─── -->
+        <div class="level level--blue reveal" id="level-1">
+            <div class="level__badge">
+                <span class="level__number">1</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Basics of Coding & Logic" data-ar="أساسيات البرمجة والمنطق"></h3>
+                        <span class="level__sessions" data-en="Sessions 1 – 4" data-ar="الجلسات ١ – ٤"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--blue" data-en="Foundation" data-ar="التأسيس"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-1">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">01</span>
+                            <h4 class="lesson-card__title" data-en="Welcome to PictoBlox" data-ar="مرحباً بك في بيكتوبلوكس"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Interface" data-ar="واجهة البرنامج"></span>
+                            <span class="topic-tag" data-en="Sprites" data-ar="الكائنات"></span>
+                            <span class="topic-tag" data-en="Motion" data-ar="الحركة"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Interactive Greeting Story" data-ar="قصة ترحيب تفاعلية"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-2">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">02</span>
+                            <h4 class="lesson-card__title" data-en="Control Flow & Events" data-ar="التحكم في التدفق والأحداث"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Loops" data-ar="الحلقات التكرارية"></span>
+                            <span class="topic-tag" data-en="Conditions" data-ar="الشروط"></span>
+                            <span class="topic-tag" data-en="Events" data-ar="الأحداث"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Maze Navigation Game" data-ar="لعبة التنقل في المتاهة"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Mastery of logical sequencing and basic algorithmic concepts." data-ar="إتقان التسلسل المنطقي والمفاهيم الخوارزمية الأساسية."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 2 ─── -->
+        <div class="level level--orange reveal" id="level-2">
+            <div class="level__badge level__badge--orange">
+                <span class="level__number">2</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="AI & Camera Sensing" data-ar="الذكاء الاصطناعي واستشعار الكاميرا"></h3>
+                        <span class="level__sessions" data-en="Sessions 5 – 8" data-ar="الجلسات ٥ – ٨"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--orange" data-en="Computer Vision" data-ar="الرؤية الحاسوبية"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-3">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">03</span>
+                            <h4 class="lesson-card__title" data-en="Video Sensing Basics" data-ar="أساسيات استشعار الفيديو"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="Camera Input" data-ar="إدخال الكاميرا"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Motion Detection" data-ar="اكتشاف الحركة"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Virtual Pet Interaction" data-ar="التفاعل مع الحيوانات الأليفة الافتراضية"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-4">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">04</span>
+                            <h4 class="lesson-card__title" data-en="Face Tracking & Filters" data-ar="تتبع الوجه والفلاتر"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="Face Detection" data-ar="اكتشاف الوجه"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Coordinates" data-ar="الإحداثيات"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Smart Instagram Filters App" data-ar="تطبيق فلاتر ذكية مثل إنستغرام"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Understanding how computers 'see' and track human movement." data-ar="فهم كيفية 'رؤية' أجهزة الكمبيوتر وتتبعها للحركة البشرية."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 3 ─── -->
+        <div class="level level--blue reveal" id="level-3">
+            <div class="level__badge">
+                <span class="level__number">3</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Machine Learning Mastery" data-ar="إتقان تعلم الآلة"></h3>
+                        <span class="level__sessions" data-en="Sessions 9 – 12" data-ar="الجلسات ٩ – ١٢"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--blue" data-en="Model Training" data-ar="تدريب النماذج"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-5">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">05</span>
+                            <h4 class="lesson-card__title" data-en="Training Image Models" data-ar="تدريب نماذج الصور"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Data Collection" data-ar="جمع البيانات"></span>
+                            <span class="topic-tag" data-en="Classification" data-ar="التصنيف"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Recycling Sorting AI" data-ar="ذكاء اصطناعي لفرز النفايات"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-6">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num">06</span>
+                            <h4 class="lesson-card__title" data-en="Audio & Voice AI" data-ar="الذكاء الاصطناعي الصوتي"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag" data-en="Voice Recognition" data-ar="التعرف على الصوت"></span>
+                            <span class="topic-tag" data-en="Speech to Text" data-ar="تحويل الكلام لنص"></span>
+                        </div>
+                        <div class="lesson-card__project">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Voice-Controlled Smart Car" data-ar="سيارة ذكية يتم التحكم بها بالصوت"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Collecting data and training custom machine learning models." data-ar="جمع البيانات وتدريب نماذج تعلم الآلة المخصصة."></p>
+            </div>
+        </div>
+        
+        <!-- ─── LEVEL 4 ─── -->
+        <div class="level level--orange reveal" id="level-4">
+            <div class="level__badge level__badge--orange">
+                <span class="level__number">4</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Advanced Detection & NLP" data-ar="الاستكشاف المتقدم واللغات"></h3>
+                        <span class="level__sessions" data-en="Sessions 13 – 16" data-ar="الجلسات ١٣ – ١٦"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--orange" data-en="Advanced AI" data-ar="ذكاء اصطناعي متقدم"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card" id="lesson-7">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">07</span>
+                            <h4 class="lesson-card__title" data-en="Pose & Object Detection" data-ar="اكتشاف وضعية الجسم والأشياء"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="Body Tracking" data-ar="تتبع الجسم"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Object Recognition" data-ar="التعرف على الأشياء"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Fruit Ninja Motion Game" data-ar="لعبة فروت نينجا الحركية"></span>
+                        </div>
+                    </div>
+                    <div class="lesson-card" id="lesson-8">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--orange">08</span>
+                            <h4 class="lesson-card__title" data-en="Natural Language Processing" data-ar="معالجة اللغات الطبيعية"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--orange" data-en="Text Analysis" data-ar="تحليل النصوص"></span>
+                            <span class="topic-tag topic-tag--orange" data-en="Chatbots" data-ar="روبوتات الدردشة"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--orange">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 7l5 3-5 3V7z"/></svg>
+                            <span data-en="Smart Assistant Chatbot" data-ar="روبوت دردشة مساعد ذكي"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Building complex AI systems using advanced APIs and models." data-ar="بناء أنظمة ذكاء اصطناعي معقدة باستخدام واجهات ونماذج متقدمة."></p>
+            </div>
+        </div>
+
+        <!-- ─── LEVEL 5 ─── -->
+        <div class="level level--blue reveal" id="level-5">
+            <div class="level__badge level__badge--final">
+                <span class="level__number">5</span>
+            </div>
+            <div class="level__content">
+                <div class="level__header">
+                    <div>
+                        <h3 class="level__title" data-en="Young AI Creator" data-ar="صانع الذكاء الاصطناعي"></h3>
+                        <span class="level__sessions" data-en="Sessions 17 – 20" data-ar="الجلسات ١٧ – ٢٠"></span>
+                    </div>
+                    <span class="level__skill-tag level__skill-tag--gradient" data-en="Mastery Level" data-ar="مستوى الإتقان"></span>
+                </div>
+                <div class="lesson-cards">
+                    <div class="lesson-card lesson-card--premium" id="lesson-9">
+                        <div class="lesson-card__head">
+                            <span class="lesson-card__num lesson-card__num--gradient">09</span>
+                            <h4 class="lesson-card__title" data-en="Capstone AI Integration" data-ar="دمج الذكاء الاصطناعي الختامي"></h4>
+                        </div>
+                        <div class="lesson-card__topics">
+                            <span class="topic-tag topic-tag--gradient" data-en="Project Planning" data-ar="تخطيط المشاريع"></span>
+                            <span class="topic-tag topic-tag--gradient" data-en="System Design" data-ar="تصميم الأنظمة"></span>
+                            <span class="topic-tag topic-tag--gradient" data-en="AI Integration" data-ar="دمج الذكاء الاصطناعي"></span>
+                        </div>
+                        <div class="lesson-card__project lesson-card__project--gradient">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="10,2 13,8 19,9 14.5,13.5 15.5,19 10,16 4.5,19 5.5,13.5 1,9 7,8"/></svg>
+                            <span data-en="Final Team-Based AI Game" data-ar="لعبة ذكاء اصطناعي نهائية جماعية"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level__skill">
+                <p class="level__skill-title" data-en="Skill Gained" data-ar="المهارة المكتسبة"></p>
+                <p class="level__skill-desc" data-en="Independently designing and building a complete, real-world AI application." data-ar="تصميم وبناء تطبيق ذكاء اصطناعي حقيقي ومتكامل بشكل مستقل."></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══════════════════════ FINAL PROJECT ══════════════════════ -->
+<section class="final-project" id="final-project-section">
+    <div class="final-project__glow"></div>
+    <div class="final-project__content reveal">
+        <span class="section-badge section-badge--white" style="color: #111; background: #fff;" data-en="CAPSTONE" data-ar="المشروع الختامي"></span>
+        <h2 class="final-project__title" data-en="Final AI Project" data-ar="مشروع الذكاء الاصطناعي النهائي"></h2>
+        <p class="final-project__desc" data-en="Students team up in pairs to design, build, and train their own complete AI-powered game — combining everything they've learned in coding and Artificial Intelligence throughout the course." data-ar="يتعاون الطلاب في أزواج لتصميم وبناء وتدريب لعبتهم الكاملة التي تعمل بالذكاء الاصطناعي — حيث يجمعون بين كل ما تعلموه في البرمجة والذكاء الاصطناعي طوال الدورة."></p>
+        <p class="final-project__desc" style="font-size: 1.1rem; opacity: 0.8; margin-top: -10px;" data-en="Note: We divide the team into 2 groups, each building a distinct AI project." data-ar="ملاحظة: يتم تقسيم الفريق إلى مجموعتين، كل مجموعة تعمل على مشروع ذكاء اصطناعي مستقل."></p>
+        <div class="final-project__games">
+            <div class="game-card reveal" id="game-ai-1" style="flex: 1; justify-content: center; padding: 30px;">
+                <div class="game-card__icon" style="background: rgba(167, 139, 250, 0.2); color: #fff;">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="16" stroke="#fff" stroke-width="2" opacity="0.8"/>
+                        <path d="M12 20h16M20 12v16" stroke="#8b5cf6" stroke-width="3" opacity="0.9"/>
+                        <circle cx="20" cy="20" r="4" fill="#a78bfa"/>
+                    </svg>
+                </div>
+                <span data-en="AI Project 1" data-ar="مشروع الذكاء الاصطناعي ١"></span>
+            </div>
+            <div class="game-card reveal" id="game-ai-2" style="flex: 1; justify-content: center; padding: 30px;">
+                <div class="game-card__icon" style="background: rgba(167, 139, 250, 0.2); color: #fff;">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <rect x="8" y="12" width="24" height="16" rx="4" stroke="#fff" stroke-width="2" opacity="0.8"/>
+                        <circle cx="14" cy="20" r="3" fill="#a78bfa"/>
+                        <circle cx="26" cy="20" r="3" fill="#a78bfa"/>
+                        <path d="M16 26 C16 28, 24 28, 24 26" stroke="#fff" stroke-width="2" opacity="0.9"/>
+                    </svg>
+                </div>
+                <span data-en="AI Project 2" data-ar="مشروع الذكاء الاصطناعي ٢"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════ OUTCOMES ══════════════════════ -->
+<section class="outcomes" id="outcomes-section">
+    <div class="outcomes__header reveal">
+        <span class="section-badge section-badge--orange" data-en="OUTCOMES" data-ar="المخرجات"></span>
+        <h2 class="section-title">
+            <span data-en="What Will Your Child Be Able" data-ar="ماذا سيكون طفلك قادراً"></span><br>
+            <span data-en=" to Do " data-ar=" على فعله "></span><span class="text--orange" data-en="After This Course" data-ar="بعد هذه الدورة"></span><span data-en="?" data-ar="؟"></span>
+        </h2>
+    </div>
+    <div class="outcomes-grid">
+        <div class="outcome-card reveal" id="outcome-games">
+            <div class="outcome-card__icon outcome-card__icon--blue">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="28" height="20" rx="4"/><path d="M9 13v6M6 16h6"/><circle cx="22" cy="13" r="1.5" fill="currentColor"/><circle cx="26" cy="16" r="1.5" fill="currentColor"/><circle cx="22" cy="19" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Build Interactive AI-Powered Games" data-ar="بناء ألعاب تفاعلية مدعومة بالذكاء الاصطناعي"></h4>
+            <p class="outcome-card__desc" data-en="Create fully functional games from scratch — with animations, scoring, levels, and real AI features like recognition and detection built in." data-ar="إنشاء ألعاب كاملة من الصفر — مع الرسوم المتحركة والنتائج والمستويات، وميزات ذكاء اصطناعي حقيقية مثل التعرف على الصور واكتشافها."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-think">
+            <div class="outcome-card__icon outcome-card__icon--orange">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="14" r="10"/><path d="M10 14h4l2-4 2 6 2-2h4"/><path d="M12 28h8M14 24h4"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Think Like a Programmer" data-ar="التفكير كمبرمج"></h4>
+            <p class="outcome-card__desc" data-en="Develop algorithmic thinking and learn to break complex problems into simple, logical steps." data-ar="تطوير التفكير الخوارزمي وتعلم كيفية تقسيم المشكلات المعقدة إلى خطوات بسيطة ومنطقية."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-independent">
+            <div class="outcome-card__icon outcome-card__icon--blue">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Train & Build Their Own AI Models" data-ar="تدريب وبناء نماذج الذكاء الاصطناعي"></h4>
+            <p class="outcome-card__desc" data-en="Confidently collect data, train, and test their own AI models — from image recognition to pose detection — without needing any prior AI background." data-ar="جمع البيانات وتدريب واختبار نماذج الذكاء الاصطناعي الخاصة بهم بثقة — من التعرف على الصور إلى اكتشاف وضعية الجسم — دون الحاجة لأي خبرة سابقة."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-fundamentals">
+            <div class="outcome-card__icon outcome-card__icon--orange">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="24" height="20" rx="3"/><path d="M4 12h24"/><path d="M10 18l3 3 5-6"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Create Projects Independently" data-ar="إنشاء مشاريع بشكل مستقل"></h4>
+            <p class="outcome-card__desc" data-en="Confidently design, plan, and build their own coding and AI projects without help." data-ar="تصميم وتخطيط وبناء مشاريع البرمجة والذكاء الاصطناعي الخاصة بهم بثقة ودون مساعدة."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-creativity">
+            <div class="outcome-card__icon outcome-card__icon--blue">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4C8 4 4 8 4 12c0 6 8 16 12 16s12-10 12-16c0-4-4-8-8-8-2 0-3 1-4 2-1-1-2-2-4-2z"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Understand Programming Fundamentals" data-ar="فهم أساسيات البرمجة"></h4>
+            <p class="outcome-card__desc" data-en="Master loops, conditions, variables, events, and functions — the foundation behind every smart project they build." data-ar="إتقان الحلقات والشروط والمتغيرات والأحداث والدوال — الأساس وراء كل مشروع ذكي يقومون ببنائه."></p>
+        </div>
+        <div class="outcome-card reveal" id="outcome-problem-solving">
+            <div class="outcome-card__icon outcome-card__icon--orange">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4a8 8 0 0 0-8 8c0 3 2 5 4 7v5h8v-5c2-2 4-4 4-7a8 8 0 0 0-8-8z"/><path d="M12 28h8"/><path d="M14 20h4"/></svg>
+            </div>
+            <h4 class="outcome-card__title" data-en="Improve Creativity" data-ar="تحسين الإبداع"></h4>
+            <p class="outcome-card__desc" data-en="Transform imaginative ideas into real, interactive digital creations — powered by both code and AI." data-ar="تحويل الأفكار الخيالية إلى إبداعات رقمية تفاعلية حقيقية — مدعومة بكل من البرمجة والذكاء الاصطناعي."></p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ══════════════════════ ENROLL FORM ══════════════════════ -->
+<section class="section-enroll reveal" id="enroll">
+    <div class="enroll-container">
+        <!-- Text Content Side -->
+        <div class="enroll-content">
+            <div class="enroll-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span data-en="Limited Seats Available!" data-ar="مقاعد محدودة متاحة!">مقاعد محدودة متاحة!</span>
+            </div>
+            
+            <h2 class="enroll-title">
+                <span data-en="Ready to Learn " data-ar="مستعد لتعلم ">مستعد لتعلم </span><span class="text-highlight-orange" data-en="Pictoblox?" data-ar="بيكتوبلوكس؟">بيكتوبلوكس؟</span>
+            </h2>
+            
+            <p class="enroll-subtitle" data-en="Join our next cohort and give your child the skills of the future." data-ar="انضم للدفعة القادمة وامنح طفلك مهارات المستقبل.">
+                انضم للدفعة القادمة وامنح طفلك مهارات المستقبل.
+            </p>
+            
+            <div class="enroll-features-list">
+                <div class="enroll-feature-item">
+                    <div class="enroll-feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <span data-en="Live Interactive Sessions" data-ar="جلسات تفاعلية مباشرة">جلسات تفاعلية مباشرة</span>
+                </div>
+                <div class="enroll-feature-item">
+                    <div class="enroll-feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <span data-en="Expert Instructors" data-ar="دعم مستمر من المدربين">دعم مستمر من المدربين</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Card Side -->
+        <div class="enroll-form-card">
+            <div class="enroll-form-header">
+                <h3 data-en="Reserve a Seat for Your Child" data-ar="احجز مقعداً لطفلك في الكورس">احجز مقعداً لطفلك في الكورس</h3>
+                <p data-en="Register your child's details and our team will contact you." data-ar="سجل بيانات طفلك وسيتواصل معك فريقنا لاختيار المسار الأنسب له.">سجل بيانات طفلك وسيتواصل معك فريقنا لاختيار المسار الأنسب له.</p>
+            </div>
+
+            <form class="enroll-form" action="#" method="POST">
+                
+                <div class="enroll-input-group">
+                    <label class="enroll-field-label" for="student-name-pictoblox" data-en="Student's Name" data-ar="اسم الطالب">اسم الطالب</label>
+                    <div class="enroll-input-wrapper">
+                        <svg class="enroll-input-icon enroll-icon-name" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <input type="text" id="student-name-pictoblox" class="enroll-premium-input" placeholder="اسم الطالب..." data-placeholder-en="Student Name..." required>
+                    </div>
+                </div>
+                
+                <div class="enroll-form-row">
+                    <!-- Age Input -->
+                    <div class="enroll-input-group">
+                        <label class="enroll-field-label" for="student-age-pictoblox" data-en="Student's Age" data-ar="عمر الطالب">عمر الطالب</label>
+                        <div class="enroll-input-wrapper">
+                            <svg class="enroll-input-icon enroll-icon-age" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <input type="number" id="student-age-pictoblox" class="enroll-premium-input" placeholder="العمر (6-17)" data-placeholder-en="Age (6-17)" min="6" max="17" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Phone Input -->
+                    <div class="enroll-input-group">
+                        <label class="enroll-field-label" for="parent-phone-pictoblox" data-en="Parent's Phone" data-ar="رقم موبايل ولي الأمر">رقم موبايل ولي الأمر</label>
+                        <div class="enroll-phone-wrapper">
+                            <div class="enroll-phone-icon-wrapper">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <span class="enroll-phone-prefix">+20</span>
+                            <input type="tel" id="parent-phone-pictoblox" class="enroll-phone-input" placeholder="10xxxxxxxx" data-placeholder-en="10xxxxxxxx" pattern="^(10|11|12|15)[0-9]{8}$" title="يجب أن يكون رقم موبايل مصري صحيح" maxlength="10" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="enroll-submit-btn">
+                    <span data-en="Reserve Your Seat Now" data-ar="احجز مقعدك الآن">احجز مقعدك الآن</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+                
+                <div class="enroll-secure-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span data-en="Your data is secure and will never be shared." data-ar="بياناتك آمنة ولن يتم مشاركتها أبداً.">بياناتك آمنة ولن يتم مشاركتها أبداً.</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer class="footer" id="footer-section">
+    <div class="footer__inner">
+        <div class="footer__brand-row">
+            <img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="footer__logo-icon">
+            <div class="footer__brand-text">
+                <div class="brand-title-row">
+                    <span class="brand-en">ACWAD</span>
+                    <span class="brand-ar">أكواد</span>
+                </div>
+                <span class="footer__brand-sub">BUILD YOUR FUTURE</span>
+            </div>
+        </div>
+        <p class="footer__text" data-en="ACWAD — Empowering the Next Generation of Creators" data-ar="أكواد — تمكين الجيل القادم من المبدعين"></p>
+        <div class="footer__line"></div>
+    </div>
+</footer>
+
+<script>
+// ══════════════════════ LANGUAGE SWITCHER ══════════════════════
+let currentLang = 'en';
+
+function setLang(lang) {
+    currentLang = lang;
+    const html = document.documentElement;
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+    // Toggle active button
+    document.getElementById('btn-en').classList.toggle('lang-btn--active', lang === 'en');
+    document.getElementById('btn-ar').classList.toggle('lang-btn--active', lang === 'ar');
+
+    // Swap all [data-en] / [data-ar] elements
+    document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+    });
+
+    // Replace placeholders for inputs
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+        if (!el.hasAttribute('data-ar-placeholder')) {
+            el.setAttribute('data-ar-placeholder', el.getAttribute('placeholder'));
+        }
+        el.setAttribute('placeholder', el.getAttribute(`data-${lang}-placeholder`));
+    });
+
+    // Update page title
+    if (lang === 'ar') {
+        document.title = 'خريطة طريق برمجة بيكتوبلوكس — أكاديمية ACWAD';
+    } else {
+        document.title = 'PictoBlox AI Creator — ACWAD Academy';
+    }
+
+    // Save preference
+    localStorage.setItem('lang', lang);
+
+    // Dynamic translate the sandbox stack if running or populated
+    updateSandboxTranslation();
+}
+
+// ══════════════════════ SCROLL PROGRESS BAR ══════════════════════
+window.addEventListener('scroll', () => {
+    const bar = document.getElementById('scroll-progress-bar');
+    if (bar) {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        bar.style.width = scrolled + '%';
+    }
+});
+
+// ══════════════════════ SCROLL REVEAL OBSERVER ══════════════════════
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal--visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+});
+
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => {
+    revealObserver.observe(el);
+});
+
+// ══════════════════════ ACTIVE TIMELINE OBSERVER ══════════════════════
+const levelObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Remove active from all levels
+            document.querySelectorAll('.level').forEach(el => el.classList.remove('level--active'));
+            // Add active to current level
+            entry.target.classList.add('level--active');
+        }
+    });
+}, {
+    threshold: 0.5
+});
+
+document.querySelectorAll('.level').forEach(el => {
+    levelObserver.observe(el);
+});
+
+// ══════════════════════ HOVER TILT AND SPOTLIGHT GLOW ══════════════════════
+document.querySelectorAll('.info-card, .what-card, .why-card, .lesson-card, .outcome-card, .game-card').forEach(card => {
+    // Append spotlight overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'spotlight-overlay';
+    if (card.classList.contains('game-card') || card.classList.contains('level__badge')) {
+        overlay.classList.add('spotlight-overlay--white');
+    }
+    card.style.position = 'relative';
+    card.appendChild(overlay);
+
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const px = (x / rect.width) - 0.5;
+        const py = (y / rect.height) - 0.5;
+        
+        card.style.setProperty('--rx', (-py * 12) + 'deg');
+        card.style.setProperty('--ry', (px * 12) + 'deg');
+        card.style.setProperty('--mx', (x / rect.width) * 100 + '%');
+        card.style.setProperty('--my', (y / rect.height) * 100 + '%');
+        
+        card.classList.add('tilt-hover');
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.classList.remove('tilt-hover');
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+    });
+});
+
+// ══════════════════════ HERO PARTICLES STARFIELD ══════════════════════
+const canvas = document.getElementById('hero-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const symbols = ['{ }', '[ ]', '< >', 'JS', 'Scratch', '1', '0', '+', '=', 'if', 'loop'];
+    const colors = ['rgba(13, 71, 161, 0.45)', 'rgba(245, 180, 0, 0.45)', 'rgba(76, 151, 255, 0.45)', 'rgba(153, 102, 255, 0.45)'];
+    
+    let mouseX = null;
+    let mouseY = null;
+    
+    const hero = document.getElementById('hero-section');
+    if (hero) {
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+        
+        hero.addEventListener('mouseleave', () => {
+            mouseX = null;
+            mouseY = null;
+        });
+    }
+    
+    function resizeCanvas() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    class Particle {
+        constructor() {
+            this.reset();
+            this.y = Math.random() * canvas.height;
+        }
+        
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = -20;
+            this.text = symbols[Math.floor(Math.random() * symbols.length)];
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.size = Math.random() * 16 + 12;
+            this.vx = Math.random() * 0.8 - 0.4;
+            this.vy = Math.random() * 0.5 + 0.2;
+            this.alpha = Math.random() * 0.5 + 0.3;
+        }
+        
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            
+            // Mouse repel
+            if (mouseX !== null && mouseY !== null) {
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    const force = (120 - dist) / 120;
+                    const angle = Math.atan2(dy, dx);
+                    this.x += Math.cos(angle) * force * 5;
+                    this.y += Math.sin(angle) * force * 5;
+                }
+            }
+            
+            if (this.y > canvas.height + 20 || this.x < -20 || this.x > canvas.width + 20) {
+                this.reset();
+            }
+        }
+        
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.font = `bold ${this.size}px 'Outfit', sans-serif`;
+            ctx.fillText(this.text, this.x, this.y);
+        }
+    }
+    
+    // Initialize particles
+    const particleCount = 28;
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+    
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw connection lines
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                
+                if (dist < 110) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y - 5);
+                    ctx.lineTo(particles[j].x, particles[j].y - 5);
+                    ctx.strokeStyle = `rgba(13, 71, 161, ${0.1 * (1 - dist / 110)})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        
+        requestAnimationFrame(animateParticles);
+    }
+    
+    animateParticles();
+}
+
+// ════════════════ CUSTOM SELECT LOGIC ════════════════
+document.addEventListener('DOMContentLoaded', () => {
+    const customDropdown = document.getElementById('custom-course-dropdown');
+    if (customDropdown) {
+        const trigger = customDropdown.querySelector('.custom-select-trigger');
+        const triggerText = customDropdown.querySelector('.custom-select-text');
+        const options = customDropdown.querySelectorAll('.custom-option');
+        const hiddenSelect = document.getElementById('course-select');
+
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            customDropdown.classList.toggle('open');
+            trigger.classList.toggle('open');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!customDropdown.contains(e.target)) {
+                customDropdown.classList.remove('open');
+                trigger.classList.remove('open');
+            }
+        });
+
+        options.forEach(opt => {
+            opt.addEventListener('click', () => {
+                options.forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+                
+                const val = opt.getAttribute('data-value');
+                hiddenSelect.value = val;
+                
+                // Update text
+                const titleEl = opt.querySelector('.custom-option-title');
+                const iconEl = opt.querySelector('.custom-option-icon');
+                const triggerIcon = customDropdown.querySelector('#selected-course-icon');
+                
+                triggerText.textContent = titleEl.textContent;
+                triggerText.setAttribute('data-en', titleEl.getAttribute('data-en'));
+                triggerText.setAttribute('data-ar', titleEl.getAttribute('data-ar'));
+                
+                if (triggerIcon && iconEl) {
+                    triggerIcon.style.display = 'flex';
+                    triggerIcon.innerHTML = iconEl.innerHTML;
+                    triggerIcon.className = 'custom-select-trigger-icon ' + val + '-icon';
+                }
+                
+                customDropdown.classList.remove('open');
+                trigger.classList.remove('open');
+            });
+        });
+    }
+});
+
+// ══════════════════════ INTERACTIVE SANDBOX PLAYGROUND ══════════════════════
+const sandboxWorkspace = document.getElementById('sandbox-workspace');
+const mascot = document.getElementById('sandbox-mascot');
+const bubble = document.getElementById('sandbox-bubble');
+const coordsText = document.getElementById('sandbox-coords');
+const gridLines = document.getElementById('sandbox-grid-lines');
+
+let mascotX = 0;
+let mascotY = 0;
+let mascotRot = 0;
+let mascotScaleX = 1;
+
+let isSandboxRunning = false;
+
+// Audio context initializer helper
+let audioCtx = null;
+function getAudioCtx() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    return audioCtx;
+}
+
+// Synthesized meow sound using pure Web Audio API oscillators and gains
+function playSynthesizedMeow() {
+    try {
+        const ctx = getAudioCtx();
+        const osc = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+
+        osc.connect(gainNode);
+        gainNode.connect(ctx.destination);
+
+        const now = ctx.currentTime;
+
+        // Meow frequency sweep: start low, rise quickly, slide down slightly
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(750, now + 0.12);
+        osc.frequency.exponentialRampToValueAtTime(420, now + 0.38);
+
+        // Volume envelope: rapid attack, smooth decay
+        gainNode.gain.setValueAtTime(0, now);
+        gainNode.gain.linearRampToValueAtTime(0.35, now + 0.04);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+        osc.start(now);
+        osc.stop(now + 0.48);
+    } catch (e) {
+        console.error('Web Audio API meow failed:', e);
+    }
+}
+
+// Coordinate sync helper
+function updateMascotTransform() {
+    mascot.style.transform = `translate(calc(-50% + ${mascotX}px), calc(-50% + ${mascotY}px)) rotate(${mascotRot}deg) scaleX(${mascotScaleX})`;
+    // Position bubble above the mascot
+    bubble.style.left = `calc(50% + ${mascotX}px)`;
+    bubble.style.top = `calc(50% + ${mascotY - 70}px)`;
+    // Update live coordinates in stage header (invert Y to match standard Cartesian coordinates)
+    coordsText.textContent = `X: ${mascotX}, Y: ${-mascotY}`;
+}
+
+// Reset Mascot state
+function resetMascot() {
+    mascotX = 0;
+    mascotY = 0;
+    mascotRot = 0;
+    mascotScaleX = 1;
+    updateMascotTransform();
+    bubble.classList.remove('sandbox-bubble--visible');
+}
+
+document.getElementById('btn-reset-mascot').addEventListener('click', resetMascot);
+
+// Grid toggle
+document.getElementById('btn-toggle-grid').addEventListener('click', (e) => {
+    gridLines.classList.toggle('sandbox-grid-lines--visible');
+    e.target.classList.toggle('stage-control-btn--active');
+});
+
+// Click blocks to add to Workspace Stack
+document.querySelectorAll('.scratch-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        const labelEn = btn.getAttribute('data-en');
+        const labelAr = btn.getAttribute('data-ar');
+        addBlockToWorkspace(action, labelEn, labelAr);
+    });
+});
+
+function addBlockToWorkspace(action, labelEn, labelAr) {
+    if (isSandboxRunning) return;
+    
+    // Hide empty helper text
+    const emptyHelper = sandboxWorkspace.querySelector('.workspace-empty');
+    if (emptyHelper) {
+        emptyHelper.style.display = 'none';
+    }
+
+    // Determine category block styling class
+    let categoryClass = 'motion';
+    if (action === 'say') categoryClass = 'looks';
+    if (action === 'sound') categoryClass = 'sound';
+
+    // Limit stack size to 8 blocks for neat UI
+    const existingCount = sandboxWorkspace.querySelectorAll('.workspace-block').length;
+    if (existingCount >= 8) {
+        alert(currentLang === 'ar' ? 'أقصى عدد للأوامر المسموح بها في نفس الوقت هو 8!' : 'Maximum 8 programming blocks allowed in stack!');
+        return;
+    }
+
+    const block = document.createElement('div');
+    block.className = `workspace-block workspace-block--${categoryClass}`;
+    block.setAttribute('data-action', action);
+    block.setAttribute('data-en', labelEn);
+    block.setAttribute('data-ar', labelAr);
+
+    // Label span
+    const labelSpan = document.createElement('span');
+    labelSpan.className = 'block-label';
+    labelSpan.setAttribute('data-en', labelEn);
+    labelSpan.setAttribute('data-ar', labelAr);
+    labelSpan.textContent = currentLang === 'ar' ? labelAr : labelEn;
+
+    // Delete button
+    const delBtn = document.createElement('button');
+    delBtn.className = 'workspace-block__delete';
+    delBtn.innerHTML = '&times;';
+    delBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isSandboxRunning) return;
+        block.remove();
+        checkWorkspaceEmpty();
+    });
+
+    block.appendChild(labelSpan);
+    block.appendChild(delBtn);
+    sandboxWorkspace.appendChild(block);
+}
+
+function checkWorkspaceEmpty() {
+    const blocks = sandboxWorkspace.querySelectorAll('.workspace-block');
+    if (blocks.length === 0) {
+        const emptyHelper = sandboxWorkspace.querySelector('.workspace-empty');
+        if (emptyHelper) {
+            emptyHelper.style.display = 'flex';
+        }
+    }
+}
+
+// Clear all blocks in stack
+document.getElementById('btn-clear-sandbox').addEventListener('click', () => {
+    if (isSandboxRunning) return;
+    sandboxWorkspace.querySelectorAll('.workspace-block').forEach(b => b.remove());
+    checkWorkspaceEmpty();
+    resetMascot();
+});
+
+// Update block translations dynamically
+function updateSandboxTranslation() {
+    sandboxWorkspace.querySelectorAll('.workspace-block .block-label').forEach(el => {
+        el.textContent = el.getAttribute('data-' + currentLang);
+    });
+}
+
+// Green Flag Sequence Runner
+document.getElementById('btn-run-sandbox').addEventListener('click', async () => {
+    if (isSandboxRunning) return;
+    
+    // Trigger audio resume for browser user-interaction rules
+    getAudioCtx();
+
+    const blocks = sandboxWorkspace.querySelectorAll('.workspace-block');
+    if (blocks.length === 0) {
+        alert(currentLang === 'ar' ? 'المجموعة فارغة! أضف بعض الأوامر البرمجية أولاً بالضغط عليها.' : 'Stack is empty! Add some blocks to run them.');
+        return;
+    }
+
+    isSandboxRunning = true;
+    document.getElementById('btn-run-sandbox').style.opacity = '0.6';
+
+    for (let i = 0; i < blocks.length; i++) {
+        const block = blocks[i];
+        
+        // Highlight current running block
+        block.classList.add('workspace-block--running');
+        
+        const action = block.getAttribute('data-action');
+        
+        // Execute block logic
+        await executeBlockAction(action);
+        
+        // Pause 800ms between blocks for animation timing
+        await new Promise(resolve => setTimeout(resolve, 800));
+        
+        block.classList.remove('workspace-block--running');
+    }
+
+    isSandboxRunning = false;
+    document.getElementById('btn-run-sandbox').style.opacity = '1';
+});
+
+function executeBlockAction(action) {
+    return new Promise(resolve => {
+        if (action === 'move') {
+            // Forward step based on current text direction/language
+            // In English LTR: forward is right (+35). In Arabic RTL: forward is left (-35)
+            const step = currentLang === 'ar' ? -35 : 35;
+            mascotX += step;
+            
+            // Boundary checks with automatic mascot flipping
+            if (mascotX > 140) {
+                mascotX = 140;
+                mascotScaleX = -1; // face left
+            } else if (mascotX < -140) {
+                mascotX = -140;
+                mascotScaleX = 1; // face right
+            }
+            updateMascotTransform();
+            resolve();
+        } else if (action === 'turn') {
+            mascotRot += 45;
+            updateMascotTransform();
+            resolve();
+        } else if (action === 'say') {
+            bubble.textContent = currentLang === 'ar' ? 'مرحباً!' : 'Hello!';
+            bubble.classList.add('sandbox-bubble--visible');
+            setTimeout(() => {
+                bubble.classList.remove('sandbox-bubble--visible');
+            }, 1800);
+            resolve();
+        } else if (action === 'sound') {
+            playSynthesizedMeow();
+            // Jiggle cat mascot upward on meow sound
+            const origY = mascotY;
+            mascotY -= 15;
+            updateMascotTransform();
+            setTimeout(() => {
+                mascotY = origY;
+                updateMascotTransform();
+            }, 300);
+            resolve();
+        }
+    });
+}
+
+// Phone Input Strict Validation
+document.addEventListener('input', function(e) {
+    if (e.target.id === 'parent-phone') {
+        let val = e.target.value.replace(/\D/g, ''); // remove non-digits
+        let hasError = false;
+        
+        // If user types '0' at the start (e.g. 010), strip it so it becomes 10
+        if (val.startsWith('0')) {
+            val = val.substring(1);
+        }
+        
+        if (val.length > 0 && val[0] !== '1') {
+            val = '';
+            hasError = true;
+        }
+        if (val.length > 1 && !['0', '1', '2', '5'].includes(val[1])) {
+            val = val[0];
+            hasError = true;
+        }
+        if (val.length > 10) {
+            val = val.substring(0, 10);
+        }
+        
+        e.target.value = val;
+        
+        const errorMsg = document.getElementById('phone-error');
+        if (errorMsg) {
+            if (hasError) {
+                errorMsg.style.display = 'block';
+                clearTimeout(window.phoneErrorTimer);
+                window.phoneErrorTimer = setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 4000);
+            } else if (val.length > 1) {
+                errorMsg.style.display = 'none';
+            }
+        }
+    }
+});
+
+// Initialize saved language
+(function() {
+    const saved = localStorage.getItem('lang');
+    if (saved) {
+        setLang(saved);
+    } else {
+        setLang('en');
+    }
+    // Initialize mascot and bubble position
+    resetMascot();
+})();
+
+// Theme Toggle Function
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+</script>
+
+
+<style>
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* ══════════════════════ PICTOBLOX PURPLE THEME OVERRIDES ══════════════════════ */
+:root {
+    --primary: #8b5cf6;
+    --primary-light: #a78bfa;
+    --primary-dim: rgba(139, 92, 246, 0.1);
+}
+
+.text--orange, .text--blue { color: var(--primary) !important; }
+.dot--orange { background: var(--primary-light) !important; box-shadow: 0 0 10px var(--primary-light) !important; }
+.dot--blue { background: #c4b5fd !important; box-shadow: 0 0 10px #c4b5fd !important; }
+
+.section-badge--orange, .section-badge--blue {
+    background: var(--primary-dim) !important;
+    color: var(--primary) !important;
+}
+
+.why-card__icon, .outcome-card__icon, .info-card__icon, .info-card__icon--orange, .info-card__icon--blue, .outcome-card__icon--orange, .outcome-card__icon--blue {
+    background: var(--primary-dim) !important;
+    color: var(--primary) !important;
+}
+
+.why-card__icon svg, .outcome-card__icon svg, .info-card__icon svg {
+    stroke: var(--primary) !important;
+}
+
+.hero__title--accent {
+    color: var(--primary-light) !important;
+    text-shadow: 0 0 30px rgba(167, 139, 250, 0.5) !important;
+}
+
+/* Update remaining orange/blue elements */
+.roadmap__header-desc { color: var(--primary-light); }
+.final-project__glow { background: radial-gradient(circle at center, rgba(139, 92, 246, 0.3) 0%, transparent 60%) !important; }
+</style>
+
+</body>
+</html>

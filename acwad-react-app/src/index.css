@@ -1,0 +1,104 @@
+:root {
+  /* Navy Blue & Orange Theme (Light by Default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+  --brand-primary: #f97316; /* Orange */
+  --brand-secondary: #2563eb; /* Navy Blue */
+  
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --border-glass: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0a1121;
+  --bg-secondary: #1e293b;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  
+  --bg-card: rgba(30, 41, 59, 0.6);
+  --border-glass: rgba(255, 255, 255, 0.08);
+}
+
+html[dir="rtl"] { text-align: right; }
+html[dir="ltr"] { text-align: left; }
+
+/* ---------------- GLOBAL BACKGROUND MESH ---------------- */
+.global-bg-mesh {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    background: transparent;
+}
+.global-bg-mesh::before, .global-bg-mesh::after {
+    content: '';
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    max-width: 600px;
+    max-height: 600px;
+    border-radius: 50%;
+    /* Replaced heavy filter: blur with performant radial-gradient */
+    opacity: 0.5;
+    will-change: transform;
+    animation: floatGlowGlobal 20s infinite ease-in-out alternate;
+}
+
+/* Light mode mesh */
+.global-bg-mesh::before {
+    background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 60%);
+    top: 20%; right: -15%;
+}
+.global-bg-mesh::after {
+    background: radial-gradient(circle, rgba(249,115,22,0.2) 0%, transparent 60%);
+    top: 30%; left: -15%;
+    animation-delay: -10s;
+}
+
+/* Dark mode mesh */
+[data-theme="dark"] .global-bg-mesh::before {
+    background: radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 60%);
+    opacity: 0.5;
+}
+[data-theme="dark"] .global-bg-mesh::after {
+    background: radial-gradient(circle, rgba(234,88,12,0.2) 0%, transparent 60%);
+    opacity: 0.5;
+}
+
+@keyframes floatGlowGlobal {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(10%, 15%) scale(1.1); }
+    100% { transform: translate(-10%, -5%) scale(0.9); }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Cairo', 'Outfit', sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* Base styles imported from your old CSS will be applied here or in modular CSS files */

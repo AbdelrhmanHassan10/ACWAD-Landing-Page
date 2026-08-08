@@ -624,13 +624,20 @@
             .form-row { grid-template-columns: 1fr; }
             .form-card { padding: 24px; }
             .hero-title { font-size: 2.2rem; }
-            .page-header { padding: 6px 10px; }
-            .header-logo { gap: 8px; }
+            .page-header { padding: 15px 10px; flex-direction: column; gap: 15px; }
+            .header-logo { justify-content: center; width: 100%; gap: 8px; }
             .header-logo img.text { width: 130px; }
             .header-logo img.icon { width: 38px; }
             .lang-btn { padding: 6px 10px; font-size: 0.75rem; }
             .theme-btn { width: 34px; height: 34px; }
             .theme-btn svg { width: 18px !important; height: 18px !important; }
+            
+            [data-theme="dark"] .bg-glow::before {
+                width: 120vw; height: 120vw; filter: blur(80px); opacity: 0.45;
+            }
+            [data-theme="dark"] .bg-glow::after {
+                width: 100vw; height: 100vw; filter: blur(80px); opacity: 0.4;
+            }
         }
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -715,8 +722,8 @@
     <div class="bg-glow"></div>
 
     <header class="page-header">
-        <a href="index.html" class="header-logo">
-            <img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="icon">
+        <a href="/" class="header-logo">
+            <img src="./acwad%20logo(1)(1).png" alt="ACWAD Logo Icon" class="icon">
             <img src="./acwad_logo_transparent copy.png" alt="ACWAD" class="text">
         </a>
         <div style="display: flex; gap: 12px; align-items: center;">
@@ -885,7 +892,7 @@
             
             <div class="footer-brand">
                 <a href="index.html" class="footer-logo-link">
-                    <img src="./acwad logo(1)(1).png" alt="ACWAD Icon" class="footer-icon-img">
+                    <img src="./acwad%20logo(1)(1).png" alt="ACWAD Icon" class="footer-icon-img">
                     <img src="acwad_logo_transparent copy.png" alt="ACWAD Logo" class="footer-logo">
                 </a>
             </div>
@@ -912,11 +919,11 @@
     </footer>
 
     <script>
-    let currentLang = localStorage.getItem('acwad-lang') || 'ar';
+    let currentLang = localStorage.getItem('lang') || 'ar';
 
     function setLang(lang) {
         currentLang = lang;
-        localStorage.setItem('acwad-lang', lang);
+        localStorage.setItem('lang', lang);
         
         document.getElementById('btn-en').classList.toggle('lang-btn--active', lang === 'en');
         document.getElementById('btn-ar').classList.toggle('lang-btn--active', lang === 'ar');

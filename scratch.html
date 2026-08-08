@@ -7,10 +7,17 @@
     <meta name="description" content="A professional project-based learning journey designed to help kids build creativity, logical thinking, and real programming skills through Scratch at ACWAD Academy.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Check theme before render -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
 </head>
 <body>
+<div class="bg-glow"></div>
 <div class="scroll-progress" id="scroll-progress-bar"></div>
 
 <!-- ══════════════════════ HEADER / HERO ══════════════════════ -->
@@ -19,16 +26,22 @@
 
     <div class="hero__top-bar" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; position: relative; z-index: 10; margin-bottom: clamp(24px, 4vw, 40px); flex-wrap: nowrap; gap: 15px; direction: ltr;">
         <div class="hero__brand" style="margin-bottom: 0;">
-            <a href="index.html"><img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="hero__logo-icon" id="acwad-logo"></a>
+            <a href="/"><img src="./acwad%20logo(1)(1).png" alt="ACWAD Logo Icon" class="hero__logo-icon" id="acwad-logo"></a>
             <div class="hero__brand-text">
-                <a href="index.html"><img src="./Screenshot 2026-05-22 210014.png" alt="" style="width: 200px; max-width: 100%;"></a>
+                <a href="/"><img src="./acwad_logo_transparent.png" alt="" style="width: 200px; max-width: 100%;"></a>
             </div>
         </div>
 
-        <!-- ══════════════ LANGUAGE TOGGLE ══════════════ -->
-        <div class="lang-toggle" id="lang-toggle" style="position: relative; top: auto; right: auto; left: auto; margin: 0; flex-shrink: 0;">
-            <button class="lang-btn lang-btn--active" id="btn-en" onclick="setLang('en')">English</button>
-            <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">العربية</button>
+        <!-- ══════════════ CONTROLS ══════════════ -->
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <div class="lang-toggle" id="lang-toggle" style="position: relative; top: auto; right: auto; left: auto; margin: 0; flex-shrink: 0;">
+                <button class="lang-btn lang-btn--active" id="btn-en" onclick="setLang('en')">English</button>
+                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">العربية</button>
+            </div>
         </div>
     </div>
     <div class="hero__content">
@@ -717,10 +730,98 @@
 
 
 
+<!-- ══════════════════════ ENROLL FORM ══════════════════════ -->
+<section class="section-enroll reveal" id="enroll">
+    <div class="enroll-container">
+        <!-- Text Content Side -->
+        <div class="enroll-content">
+            <div class="enroll-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span data-en="Limited Seats Available!" data-ar="مقاعد محدودة متاحة!">مقاعد محدودة متاحة!</span>
+            </div>
+            
+            <h2 class="enroll-title">
+                <span data-en="Ready to Learn " data-ar="مستعد لتعلم ">مستعد لتعلم </span><span class="text-highlight-orange" data-en="Scratch?" data-ar="سكراتش؟">سكراتش؟</span>
+            </h2>
+            
+            <p class="enroll-subtitle" data-en="Join our next cohort and give your child the skills of the future." data-ar="انضم للدفعة القادمة وامنح طفلك مهارات المستقبل.">
+                انضم للدفعة القادمة وامنح طفلك مهارات المستقبل.
+            </p>
+            
+            <div class="enroll-features-list">
+                <div class="enroll-feature-item">
+                    <div class="enroll-feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <span data-en="Live Interactive Sessions" data-ar="جلسات تفاعلية مباشرة">جلسات تفاعلية مباشرة</span>
+                </div>
+                <div class="enroll-feature-item">
+                    <div class="enroll-feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <span data-en="Expert Instructors" data-ar="دعم مستمر من المدربين">دعم مستمر من المدربين</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Card Side -->
+        <div class="enroll-form-card">
+            <div class="enroll-form-header">
+                <h3 data-en="Reserve a Seat for Your Child" data-ar="احجز مقعداً لطفلك في الكورس">احجز مقعداً لطفلك في الكورس</h3>
+                <p data-en="Register your child's details and our team will contact you." data-ar="سجل بيانات طفلك وسيتواصل معك فريقنا لاختيار المسار الأنسب له.">سجل بيانات طفلك وسيتواصل معك فريقنا لاختيار المسار الأنسب له.</p>
+            </div>
+
+            <form class="enroll-form" action="#" method="POST">
+                
+                <div class="enroll-input-group">
+                    <label class="enroll-field-label" for="student-name-scratch" data-en="Student's Name" data-ar="اسم الطالب">اسم الطالب</label>
+                    <div class="enroll-input-wrapper">
+                        <svg class="enroll-input-icon enroll-icon-name" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <input type="text" id="student-name-scratch" class="enroll-premium-input" placeholder="اسم الطالب..." data-placeholder-en="Student Name..." required>
+                    </div>
+                </div>
+                
+                <div class="enroll-form-row">
+                    <!-- Age Input -->
+                    <div class="enroll-input-group">
+                        <label class="enroll-field-label" for="student-age-scratch" data-en="Student's Age" data-ar="عمر الطالب">عمر الطالب</label>
+                        <div class="enroll-input-wrapper">
+                            <svg class="enroll-input-icon enroll-icon-age" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <input type="number" id="student-age-scratch" class="enroll-premium-input" placeholder="العمر (6-17)" data-placeholder-en="Age (6-17)" min="6" max="17" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Phone Input -->
+                    <div class="enroll-input-group">
+                        <label class="enroll-field-label" for="parent-phone-scratch" data-en="Parent's Phone" data-ar="رقم موبايل ولي الأمر">رقم موبايل ولي الأمر</label>
+                        <div class="enroll-phone-wrapper">
+                            <div class="enroll-phone-icon-wrapper">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <span class="enroll-phone-prefix">+20</span>
+                            <input type="tel" id="parent-phone-scratch" class="enroll-phone-input" placeholder="10xxxxxxxx" data-placeholder-en="10xxxxxxxx" pattern="^(10|11|12|15)[0-9]{8}$" title="يجب أن يكون رقم موبايل مصري صحيح" maxlength="10" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="enroll-submit-btn">
+                    <span data-en="Reserve Your Seat Now" data-ar="احجز مقعدك الآن">احجز مقعدك الآن</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+                
+                <div class="enroll-secure-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span data-en="Your data is secure and will never be shared." data-ar="بياناتك آمنة ولن يتم مشاركتها أبداً.">بياناتك آمنة ولن يتم مشاركتها أبداً.</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
 <footer class="footer" id="footer-section">
     <div class="footer__inner">
         <div class="footer__brand-row">
-            <img src="./2.jpg" alt="ACWAD Logo Icon" class="footer__logo-icon">
+            <img src="./acwad logo(1)(1).png" alt="ACWAD Logo Icon" class="footer__logo-icon">
             <div class="footer__brand-text">
                 <div class="brand-title-row">
                     <span class="brand-en">ACWAD</span>
@@ -769,7 +870,7 @@ function setLang(lang) {
     }
 
     // Save preference
-    localStorage.setItem('acwad-lang', lang);
+    localStorage.setItem('lang', lang);
 
     // Dynamic translate the sandbox stack if running or populated
     updateSandboxTranslation();
@@ -1314,7 +1415,7 @@ document.addEventListener('input', function(e) {
 
 // Initialize saved language
 (function() {
-    const saved = localStorage.getItem('acwad-lang');
+    const saved = localStorage.getItem('lang');
     if (saved) {
         setLang(saved);
     } else {
@@ -1323,6 +1424,14 @@ document.addEventListener('input', function(e) {
     // Initialize mascot and bubble position
     resetMascot();
 })();
+
+// Theme Toggle Function
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
 </script>
 
 

@@ -1,0 +1,91 @@
+/* ---------------- FOOTER ---------------- */
+.page-footer {
+    margin-top: 80px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.page-footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #3b82f6, #f97316, transparent);
+    opacity: 0.5;
+}
+
+.footer-cta-box {
+    max-width: 1000px;
+    margin: 40px auto 40px;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border-radius: 24px;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.15);
+    color: #1e293b;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+.cta-text h4 { font-size: 1.4rem; margin-bottom: 6px; font-weight: 800; color: #1e293b; }
+.cta-text p { color: #64748b; font-size: 0.95rem; margin: 0; }
+.cta-button {
+    background: #3b82f6; color: white; display: flex; align-items: center; gap: 8px;
+    padding: 14px 28px; border-radius: 12px; font-weight: 700; text-decoration: none;
+    transition: all 0.3s;
+}
+.cta-button:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(59,130,246,0.4); color: white; }
+.cta-button svg { width: 18px; height: 18px; }
+
+.footer-main {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding: 0 40px; gap: 40px;
+}
+
+.footer-slogan { color: #64748b; font-weight: 600; font-size: 1rem; line-height: 1.6; text-align: start; margin: 0; }
+
+.footer-brand { display: flex; justify-content: center; }
+.footer-logo-link { display: flex; align-items: center; gap: 15px; transition: transform 0.3s; text-decoration: none; }
+.footer-logo-link:hover { transform: scale(1.02); }
+.footer-logo { width: 140px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
+.footer-icon-img { width: 45px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
+
+.footer-socials { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.social-title { font-weight: 700; color: #1e293b; font-size: 1.1rem; }
+.social-icons-wrapper { display: flex; gap: 12px; }
+
+.social-icon {
+    width: 44px; height: 44px; border-radius: 12px; background: #f1f5f9; color: #475569;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-icon svg { width: 20px; height: 20px; }
+.social-icon:hover { background: #3b82f6; color: white; transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3); }
+
+.footer-bottom {
+    max-width: 1200px; margin: 40px auto 0; padding: 20px 40px 0;
+    border-top: 1px solid #e2e8f0; text-align: center;
+    font-size: 0.9rem; color: #94a3b8; font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .footer-cta-box { flex-direction: column; text-align: center; gap: 20px; padding: 24px; margin: 40px 20px 40px; }
+    .footer-main { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; gap: 30px; }
+    .footer-slogan { text-align: center; order: 2; }
+    .footer-brand { order: 1; margin-bottom: 0; }
+    .footer-socials, html[dir="ltr"] .footer-socials { align-items: center; order: 3; }
+}
+
+/* ---------------- DARK MODE ---------------- */
+[data-theme="dark"] .page-footer { background: #0f172a; border-top-color: #1e293b; }
+[data-theme="dark"] .footer-cta-box { background: linear-gradient(135deg, #1e293b, #0f172a); border-color: rgba(255,255,255,0.05); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5); }
+[data-theme="dark"] .footer-cta-box .cta-text h4 { color: white; }
+[data-theme="dark"] .footer-cta-box .cta-text p { color: #94a3b8; }
+[data-theme="dark"] .footer-slogan { color: #94a3b8; }
+[data-theme="dark"] .social-title { color: #f8fafc; }
+[data-theme="dark"] .social-icon { background: rgba(255, 255, 255, 0.05); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1); }
+[data-theme="dark"] .social-icon:hover { background: #3b82f6; border-color: #3b82f6; color: white; }
+[data-theme="dark"] .footer-bottom { border-top-color: rgba(255, 255, 255, 0.05); color: #64748b; }
