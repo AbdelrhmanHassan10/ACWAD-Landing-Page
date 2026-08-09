@@ -4,6 +4,14 @@
     overflow-x: hidden;
 }
 
+.home-page .hero {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 60%, transparent 100%);
+}
+
+[data-theme="dark"] .home-page .hero {
+    background: transparent;
+}
+
 /* ---------------- PREMIUM HERO SECTION ---------------- */
 .hero-premium-badge {
     display: inline-flex;
