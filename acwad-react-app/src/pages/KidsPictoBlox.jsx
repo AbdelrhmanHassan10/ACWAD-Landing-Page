@@ -43,7 +43,7 @@ const KidsPictoBlox = () => {
             reveals.forEach(reveal => {
                 const elementTop = reveal.getBoundingClientRect().top;
                 if (elementTop < windowHeight - elementVisible) {
-                    reveal.classList.add('active');
+                    reveal.classList.add('reveal--visible');
                 }
             });
         };
@@ -58,6 +58,7 @@ const KidsPictoBlox = () => {
 
     return (
         <div className="kids-track-page">
+            <div className="bg-glow"></div>
             <Header />
             <header className="hero" id="hero-section" style={{"-AccentColor":"#8b5cf6"}}>
     <canvas id="hero-canvas"></canvas>
@@ -785,22 +786,7 @@ const KidsPictoBlox = () => {
     </div>
 </section>
 
-<footer className="footer" id="footer-section">
-    <div className="footer__inner">
-        <div className="footer__brand-row">
-            <img src="/assets/kids/acwad logo(1)(1).png" alt="ACWAD Logo Icon" className="footer__logo-icon" />
-            <div className="footer__brand-text">
-                <div className="brand-title-row">
-                    <span className="brand-en">ACWAD</span>
-                    <span className="brand-ar">أكواد</span>
-                </div>
-                <span className="footer__brand-sub">BUILD YOUR FUTURE</span>
-            </div>
-        </div>
-        <p className="footer__text" data-en="ACWAD — Empowering the Next Generation of Creators" data-ar="أكواد — تمكين الجيل القادم من المبدعين"></p>
-        <div className="footer__line"></div>
-    </div>
-</footer>
+
 
 
         </div>

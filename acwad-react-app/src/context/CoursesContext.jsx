@@ -34,7 +34,16 @@ export function CoursesProvider({ children }) {
         const unsubKids = onValue(kidsRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                const coursesArray = Object.values(data);
+                // Fix old links coming from Firebase for kids tracks
+                const coursesArray = Object.values(data).map(course => {
+                    if (course.link && course.link.includes('/kids-track/')) {
+                        return {
+                            ...course,
+                            link: course.link.replace('/kids-track/', '/kids/').replace('.html', '')
+                        };
+                    }
+                    return course;
+                });
                 setKidsCourses(coursesArray);
             }
         }, (error) => {
