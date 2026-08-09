@@ -96,7 +96,7 @@ function Home() {
         }
       }
       
-      const particleCount = 35;
+      const particleCount = window.innerWidth <= 768 ? 12 : 35;
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
