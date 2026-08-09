@@ -103,7 +103,6 @@ function Home() {
       
       function animateParticles() {
         animationFrameId = requestAnimationFrame(animateParticles);
-        if (window.innerWidth <= 768) return; 
         
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
