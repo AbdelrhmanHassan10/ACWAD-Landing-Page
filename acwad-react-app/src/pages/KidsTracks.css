@@ -733,7 +733,7 @@ html[lang="ar"] .roadmap-timeline {
 html[lang="ar"] .roadmap-timeline::before {
     left: 50%;
     right: auto;
-    transform: translateX(50%);
+    transform: translateX(-50%);
 }
 
 .level {
@@ -770,11 +770,11 @@ html[lang="ar"] .roadmap-timeline::before {
 html[lang="ar"] .level__badge {
     left: 50%;
     right: auto;
-    transform: translate(50%, 0);
+    transform: translate(-50%, 0);
 }
 
 html[lang="ar"] .level:hover .level__badge {
-    transform: translate(50%, 0) scale(1.1);
+    transform: translate(-50%, 0) scale(1.1);
 }
 
 .level__badge--orange {
