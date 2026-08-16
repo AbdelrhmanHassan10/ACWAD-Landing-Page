@@ -563,10 +563,10 @@ export const kidsCourses = [
     id: 'pictoblox',
     title: { ar: 'مسار بيكتوبلوكس للذكاء الاصطناعي', en: 'PictoBlox AI Track' },
     description: {
-        ar: 'رحلة تعتمد على المشاريع لتحويل الأطفال إلى صُنّاع لبرامج الذكاء الاصطناعي الحقيقية.',
-        en: 'A project-based journey that turns kids into builders of real AI programs.'
+        ar: 'رحلة تعتمد على المشاريع لتحويل الأطفال إلى بناة للذكاء الاصطناعي الحقيقي — تعليمهم التفكير المنطقي والبرمجة بهدف.',
+        en: 'A project-based journey that turns kids into builders of real AI — teaching them to think logically and code with purpose.'
     },
-    duration: { ar: '20 جلسة', en: '20 Sessions' },
+    duration: { ar: '14 جلسة', en: '14 Sessions' },
     link: '/kids/pictoblox',
     image: '/assets/courses/kids_pictoblox.png',
     iconSvg: '',
