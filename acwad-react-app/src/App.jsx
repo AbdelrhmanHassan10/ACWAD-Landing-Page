@@ -10,6 +10,7 @@ import CourseDetails from './pages/CourseDetails';
 import Booking from './pages/Booking';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import Footer from './components/Footer';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
@@ -60,6 +61,7 @@ function MainLayout() {
           <Route path="/book" element={<Booking />} />
           <Route path="/book-kids/:courseId" element={<Booking type="kids" />} />
           <Route path="/book-kids" element={<Booking type="kids" />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/login" element={<AdminLogin />} />
         </Routes>

@@ -67,8 +67,24 @@
 
 .footer-bottom {
     max-width: 1200px; margin: 40px auto 0; padding: 20px 40px 0;
-    border-top: 1px solid #e2e8f0; text-align: center;
+    border-top: 1px solid #e2e8f0;
+    display: flex; justify-content: space-between; align-items: center;
     font-size: 0.9rem; color: #94a3b8; font-weight: 600;
+}
+
+.privacy-link {
+    color: #64748b; 
+    text-decoration: none; 
+    font-weight: 700;
+    transition: all 0.3s;
+    padding: 8px 16px;
+    background: #f1f5f9;
+    border-radius: 8px;
+}
+
+.privacy-link:hover {
+    color: #3b82f6; 
+    background: #e2e8f0;
 }
 
 @media (max-width: 768px) {
@@ -77,6 +93,7 @@
     .footer-slogan { text-align: center; order: 2; }
     .footer-brand { order: 1; margin-bottom: 0; }
     .footer-socials, html[dir="ltr"] .footer-socials { align-items: center; order: 3; }
+    .footer-bottom { flex-direction: column; gap: 15px; }
 }
 
 /* ---------------- DARK MODE ---------------- */
@@ -89,3 +106,5 @@
 [data-theme="dark"] .social-icon { background: rgba(255, 255, 255, 0.05); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1); }
 [data-theme="dark"] .social-icon:hover { background: #3b82f6; border-color: #3b82f6; color: white; }
 [data-theme="dark"] .footer-bottom { border-top-color: rgba(255, 255, 255, 0.05); color: #64748b; }
+[data-theme="dark"] .privacy-link { background: rgba(255,255,255,0.05); color: #94a3b8; }
+[data-theme="dark"] .privacy-link:hover { color: #fff; background: rgba(255,255,255,0.1); }

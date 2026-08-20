@@ -53,6 +53,9 @@ function Footer() {
 
             <div className="footer-bottom">
                 <span>{lang === 'ar' ? '© 2026 أكاديمية أكواد. جميع الحقوق محفوظة.' : '© 2026 ACWAD Academy. All rights reserved.'}</span>
+                <Link to="/privacy" className="privacy-link">
+                    {lang === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
+                </Link>
             </div>
         </footer>
     );

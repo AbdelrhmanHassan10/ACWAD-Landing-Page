@@ -1,0 +1,168 @@
+.privacy-page {
+  padding-top: clamp(20px, 5vh, 60px);
+  min-height: 100vh;
+  padding-bottom: clamp(3rem, 10vh, 6rem);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.privacy-container {
+  width: 92%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 5vw, 4rem);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  border-top: 5px solid #2563eb;
+  border-radius: clamp(16px, 3vw, 24px);
+  backdrop-filter: blur(20px);
+  color: #334155;
+  box-shadow: 0 20px 50px -10px rgba(37, 99, 235, 0.15);
+}
+
+.privacy-container h1 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.last-updated {
+  text-align: center;
+  color: #f97316;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  margin: 0 auto clamp(2rem, 6vw, 3.5rem) auto;
+  font-weight: 700;
+  background: rgba(249, 115, 22, 0.1);
+  display: block;
+  width: fit-content;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.privacy-section {
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background: #f8fafc;
+  border-radius: clamp(12px, 2vw, 16px);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.privacy-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.privacy-section h2 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: #1e3a8a;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.privacy-section h2::before {
+  content: '';
+  display: block;
+  width: clamp(6px, 1.5vw, 8px);
+  height: clamp(20px, 4vw, 24px);
+  background: #f97316;
+  border-radius: 4px;
+}
+
+.privacy-section p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: clamp(1rem, 2vw, 1.05rem);
+  color: #475569;
+}
+
+.privacy-section ul {
+  list-style-type: none;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+[dir="ltr"] .privacy-section ul {
+  padding-left: 0.5rem;
+  padding-right: 0;
+}
+
+.privacy-section li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  color: #475569;
+  position: relative;
+  padding-right: clamp(15px, 3vw, 20px);
+  font-size: clamp(1rem, 2vw, 1.05rem);
+}
+
+[dir="ltr"] .privacy-section li {
+  padding-left: clamp(15px, 3vw, 20px);
+  padding-right: 0;
+}
+
+.privacy-section li::before {
+  content: '•';
+  color: #f97316;
+  font-weight: bold;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 0;
+  top: -4px;
+}
+
+[dir="ltr"] .privacy-section li::before {
+  left: 0;
+  right: auto;
+}
+
+.privacy-section strong {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.privacy-section a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 800;
+  transition: all 0.3s;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(37, 99, 235, 0.1);
+  word-break: break-all;
+}
+
+.privacy-section a:hover {
+  color: #fff;
+  background: #2563eb;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] .privacy-container {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+}
+[data-theme="dark"] .privacy-container h1 {
+  background: linear-gradient(135deg, #60a5fa, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="dark"] .privacy-section {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+[data-theme="dark"] .privacy-section h2 { color: #f8fafc; }
+[data-theme="dark"] .privacy-section p { color: #cbd5e1; }
+[data-theme="dark"] .privacy-section li { color: #cbd5e1; }
+[data-theme="dark"] .privacy-section strong { color: #fff; }
+[data-theme="dark"] .privacy-section a { background: rgba(96, 165, 250, 0.15); color: #60a5fa; }
+[data-theme="dark"] .privacy-section a:hover { background: #60a5fa; color: #0f172a; }
