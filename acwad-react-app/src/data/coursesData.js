@@ -540,7 +540,7 @@ export const kidsCourses = [
         ar: 'البداية المثالية لتعلم المنطق البرمجي وصناعة الألعاب التفاعلية بطريقة بصرية سهلة وممتعة.',
         en: 'The perfect start to learn programming logic and build interactive games visually in a fun and easy way.'
     },
-    duration: { ar: '9 جلسات', en: '9 Sessions' },
+    duration: { ar: '10 جلسات', en: '10 Sessions' },
     link: '/kids/scratch',
     image: '/assets/courses/kids_scratch.png',
     iconSvg: '',
@@ -553,7 +553,7 @@ export const kidsCourses = [
         ar: 'تعلم لغة بايثون وابنِ تطبيقات حقيقية، من الألعاب البسيطة إلى البرامج الذكية.',
         en: 'Learn Python and build real applications, from simple games to smart programs.'
     },
-    duration: { ar: '12 جلسة', en: '12 Sessions' },
+    duration: { ar: '20 جلسة', en: '20 Sessions' },
     link: '/kids/python',
     image: '/assets/courses/kids_python_v2.png',
     iconSvg: '',

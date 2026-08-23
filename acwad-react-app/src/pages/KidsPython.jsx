@@ -96,7 +96,7 @@ const KidsPython = () => {
         </div>
         <div className="info-card__text">
             <span className="info-card__label" data-en="Total Sessions" data-ar="إجمالي الجلسات"></span>
-            <span className="info-card__value" data-en="18 Sessions" data-ar="١٨ جلسة"></span>
+            <span className="info-card__value" data-en="20 Sessions" data-ar="٢٠ جلسة"></span>
         </div>
     </div>
     <div className="info-card reveal" id="info-hands-on">
@@ -756,7 +756,7 @@ const KidsPython = () => {
                 <div className="level__header">
                     <div>
                         <h3 className="level__title" data-en="Projects & Mastery" data-ar="المشاريع والإتقان"></h3>
-                        <span className="level__sessions" data-en="Sessions 17 – 18" data-ar="الجلسات ١٧ – ١٨"></span>
+                        <span className="level__sessions" data-en="Sessions 17 – 20" data-ar="الجلسات ١٧ – ٢٠"></span>
                     </div>
                     <span className="level__skill-tag level__skill-tag--gradient" data-en="Mastery Level" data-ar="مستوى الإتقان"></span>
                 </div>

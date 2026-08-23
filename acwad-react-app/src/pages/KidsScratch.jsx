@@ -96,7 +96,7 @@ const KidsScratch = () => {
         </div>
         <div className="info-card__text">
             <span className="info-card__label" data-en="Total Sessions" data-ar="إجمالي الجلسات"></span>
-            <span className="info-card__value" data-en="9 Sessions" data-ar="٩ جلسات"></span>
+            <span className="info-card__value" data-en="10 Sessions" data-ar="١٠ جلسات"></span>
         </div>
     </div>
     <div className="info-card reveal" id="info-hands-on">
@@ -602,7 +602,7 @@ const KidsScratch = () => {
                 <div className="level__header">
                     <div>
                         <h3 className="level__title" data-en="Junior Programmer" data-ar="المبرمج الصغير"></h3>
-                        <span className="level__sessions" data-en="Session 9" data-ar="الجلسة ٩"></span>
+                        <span className="level__sessions" data-en="Sessions 9 – 10" data-ar="الجلسات ٩ – ١٠"></span>
                     </div>
                     <span className="level__skill-tag level__skill-tag--gradient" data-en="Mastery Level" data-ar="مستوى الإتقان"></span>
                 </div>
