@@ -155,7 +155,7 @@ function Home() {
             </div>
             
             <h1 className="hero__title" id="main-title">
-                <span>{lang === 'ar' ? 'اصنع مستقبلك مع' : 'Shape Your Future With'}</span><br/>
+                <span>{lang === 'ar' ? 'ابني مستقبلك مع' : 'Build Your Future With'}</span><br/>
                 <span className="hero__title--accent">{lang === 'ar' ? 'أكواد' : 'ACWAD'}</span>
             </h1>
             
